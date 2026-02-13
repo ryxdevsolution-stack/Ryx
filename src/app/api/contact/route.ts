@@ -101,25 +101,26 @@ export async function POST(req: NextRequest) {
       <div style="padding:20px 32px;">
         <h2 style="margin:0 0 16px;font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;color:#7c3aed;">Project Details</h2>
 
-        <div style="display:flex;gap:12px;margin-bottom:16px;">
-          ${safeService ? `
-          <div style="background:#f5f3ff;border:1px solid #ede9fe;border-radius:10px;padding:14px 18px;flex:1;min-width:0;">
-            <p style="margin:0 0 4px;font-size:11px;color:#6b7280;text-transform:uppercase;letter-spacing:0.8px;font-weight:600;">Service</p>
-            <p style="margin:0;font-size:14px;color:#111827;font-weight:600;">${safeService}</p>
-          </div>` : ""}
-          ${safeBudget ? `
-          <div style="background:#f0fdf4;border:1px solid #dcfce7;border-radius:10px;padding:14px 18px;flex:1;min-width:0;">
-            <p style="margin:0 0 4px;font-size:11px;color:#6b7280;text-transform:uppercase;letter-spacing:0.8px;font-weight:600;">Budget</p>
-            <p style="margin:0;font-size:14px;color:#111827;font-weight:600;">${safeBudget}</p>
-          </div>` : ""}
-          ${safeTimeline ? `
-          <div style="background:#eff6ff;border:1px solid #dbeafe;border-radius:10px;padding:14px 18px;flex:1;min-width:0;">
-            <p style="margin:0 0 4px;font-size:11px;color:#6b7280;text-transform:uppercase;letter-spacing:0.8px;font-weight:600;">Timeline</p>
-            <p style="margin:0;font-size:14px;color:#111827;font-weight:600;">${safeTimeline}</p>
-          </div>` : ""}
-        </div>
-
-        ${!safeService && !safeBudget && !safeTimeline ? `<p style="color:#9ca3af;font-size:13px;font-style:italic;margin:0 0 16px;">No service/budget/timeline specified</p>` : ""}
+        ${safeService || safeBudget || safeTimeline ? `
+        <table width="100%" cellpadding="0" cellspacing="0" style="border-collapse:separate;border-spacing:10px 0;margin:0 -10px 16px;">
+          <tr>
+            ${safeService ? `
+            <td style="background:#f5f3ff;border:1px solid #ede9fe;border-radius:10px;padding:14px 18px;vertical-align:top;">
+              <p style="margin:0 0 4px;font-size:11px;color:#6b7280;text-transform:uppercase;letter-spacing:0.8px;font-weight:600;">Service</p>
+              <p style="margin:0;font-size:14px;color:#111827;font-weight:600;">${safeService}</p>
+            </td>` : ""}
+            ${safeBudget ? `
+            <td style="background:#f0fdf4;border:1px solid #dcfce7;border-radius:10px;padding:14px 18px;vertical-align:top;">
+              <p style="margin:0 0 4px;font-size:11px;color:#6b7280;text-transform:uppercase;letter-spacing:0.8px;font-weight:600;">Budget</p>
+              <p style="margin:0;font-size:14px;color:#111827;font-weight:600;">${safeBudget}</p>
+            </td>` : ""}
+            ${safeTimeline ? `
+            <td style="background:#eff6ff;border:1px solid #dbeafe;border-radius:10px;padding:14px 18px;vertical-align:top;">
+              <p style="margin:0 0 4px;font-size:11px;color:#6b7280;text-transform:uppercase;letter-spacing:0.8px;font-weight:600;">Timeline</p>
+              <p style="margin:0;font-size:14px;color:#111827;font-weight:600;">${safeTimeline}</p>
+            </td>` : ""}
+          </tr>
+        </table>` : `<p style="color:#9ca3af;font-size:13px;font-style:italic;margin:0 0 16px;">No service/budget/timeline specified</p>`}
       </div>
 
       <!-- Divider -->
@@ -186,29 +187,35 @@ export async function POST(req: NextRequest) {
       <!-- What happens next -->
       <h3 style="margin:0 0 14px;font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:1.2px;color:#7c3aed;">What Happens Next?</h3>
 
-      <div style="margin:0 0 12px;display:flex;align-items:flex-start;gap:12px;">
-        <div style="min-width:28px;height:28px;background:#f5f3ff;border:1px solid #ede9fe;border-radius:8px;text-align:center;line-height:28px;font-size:12px;font-weight:700;color:#7c3aed;">1</div>
-        <div>
-          <p style="margin:0;font-size:14px;color:#111827;font-weight:600;">We review your requirements</p>
-          <p style="margin:2px 0 0;font-size:13px;color:#6b7280;">Our team analyzes your project needs and prepares a tailored approach.</p>
-        </div>
-      </div>
-
-      <div style="margin:0 0 12px;display:flex;align-items:flex-start;gap:12px;">
-        <div style="min-width:28px;height:28px;background:#f5f3ff;border:1px solid #ede9fe;border-radius:8px;text-align:center;line-height:28px;font-size:12px;font-weight:700;color:#7c3aed;">2</div>
-        <div>
-          <p style="margin:0;font-size:14px;color:#111827;font-weight:600;">Free discovery call</p>
-          <p style="margin:2px 0 0;font-size:13px;color:#6b7280;">We schedule a call to discuss your vision, goals, and technical requirements.</p>
-        </div>
-      </div>
-
-      <div style="margin:0 0 24px;display:flex;align-items:flex-start;gap:12px;">
-        <div style="min-width:28px;height:28px;background:#f5f3ff;border:1px solid #ede9fe;border-radius:8px;text-align:center;line-height:28px;font-size:12px;font-weight:700;color:#7c3aed;">3</div>
-        <div>
-          <p style="margin:0;font-size:14px;color:#111827;font-weight:600;">Detailed proposal & timeline</p>
-          <p style="margin:2px 0 0;font-size:13px;color:#6b7280;">You receive a comprehensive proposal with scope, timeline, and transparent pricing.</p>
-        </div>
-      </div>
+      <table width="100%" cellpadding="0" cellspacing="0" style="border-collapse:collapse;">
+        <tr>
+          <td width="40" style="padding:0 12px 16px 0;vertical-align:top;">
+            <div style="width:28px;height:28px;background:#f5f3ff;border:1px solid #ede9fe;border-radius:8px;text-align:center;line-height:28px;font-size:12px;font-weight:700;color:#7c3aed;">1</div>
+          </td>
+          <td style="padding:0 0 16px 0;vertical-align:top;">
+            <p style="margin:0;font-size:14px;color:#111827;font-weight:600;">We review your requirements</p>
+            <p style="margin:2px 0 0;font-size:13px;color:#6b7280;">Our team analyzes your project needs and prepares a tailored approach.</p>
+          </td>
+        </tr>
+        <tr>
+          <td width="40" style="padding:0 12px 16px 0;vertical-align:top;">
+            <div style="width:28px;height:28px;background:#f5f3ff;border:1px solid #ede9fe;border-radius:8px;text-align:center;line-height:28px;font-size:12px;font-weight:700;color:#7c3aed;">2</div>
+          </td>
+          <td style="padding:0 0 16px 0;vertical-align:top;">
+            <p style="margin:0;font-size:14px;color:#111827;font-weight:600;">Free discovery call</p>
+            <p style="margin:2px 0 0;font-size:13px;color:#6b7280;">We schedule a call to discuss your vision, goals, and technical requirements.</p>
+          </td>
+        </tr>
+        <tr>
+          <td width="40" style="padding:0 12px 24px 0;vertical-align:top;">
+            <div style="width:28px;height:28px;background:#f5f3ff;border:1px solid #ede9fe;border-radius:8px;text-align:center;line-height:28px;font-size:12px;font-weight:700;color:#7c3aed;">3</div>
+          </td>
+          <td style="padding:0 0 24px 0;vertical-align:top;">
+            <p style="margin:0;font-size:14px;color:#111827;font-weight:600;">Detailed proposal & timeline</p>
+            <p style="margin:2px 0 0;font-size:13px;color:#6b7280;">You receive a comprehensive proposal with scope, timeline, and transparent pricing.</p>
+          </td>
+        </tr>
+      </table>
 
       <!-- Contact Info -->
       <div style="border-top:1px solid #f3f4f6;padding-top:20px;">

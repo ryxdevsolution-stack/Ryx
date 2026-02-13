@@ -3,7 +3,8 @@
 import { useState, useRef, useEffect, useCallback } from "react"
 import { useRouter, usePathname } from "next/navigation"
 import { motion, AnimatePresence } from "framer-motion"
-import { X, Send, Bot, User, Loader2, ArrowRight, Zap } from "lucide-react"
+import { X, Send, User, ArrowRight } from "lucide-react"
+import Image from "next/image"
 
 interface Message {
   role: "user" | "assistant"
@@ -197,8 +198,8 @@ export function ChatWidget() {
             {/* Header */}
             <div className="flex items-center justify-between px-5 py-4 bg-gray-950">
               <div className="flex items-center gap-3">
-                <div className="w-9 h-9 bg-gradient-to-br from-violet-500 to-purple-600 rounded-xl flex items-center justify-center shadow-lg shadow-violet-500/30">
-                  <Zap className="w-4 h-4 text-white" />
+                <div className="w-9 h-9 rounded-xl overflow-hidden shadow-lg shadow-violet-500/30">
+                  <Image src="/RYX_Logo.png" alt="RYX" width={36} height={36} className="w-full h-full object-cover" />
                 </div>
                 <div>
                   <h3 className="text-sm font-bold text-white tracking-wide">RAVEN</h3>
@@ -225,16 +226,16 @@ export function ChatWidget() {
                   className={`flex gap-2.5 ${msg.role === "user" ? "flex-row-reverse" : "flex-row"}`}
                 >
                   <div
-                    className={`shrink-0 w-7 h-7 rounded-lg flex items-center justify-center ${
+                    className={`shrink-0 w-7 h-7 rounded-lg flex items-center justify-center overflow-hidden ${
                       msg.role === "user"
                         ? "bg-gray-900"
-                        : "bg-gradient-to-br from-violet-500 to-purple-600"
+                        : ""
                     }`}
                   >
                     {msg.role === "user" ? (
                       <User className="w-3.5 h-3.5 text-white" />
                     ) : (
-                      <Bot className="w-3.5 h-3.5 text-white" />
+                      <Image src="/chatbot.png" alt="RAVEN" width={28} height={28} className="w-full h-full object-cover rounded-lg" />
                     )}
                   </div>
                   <div
@@ -267,8 +268,8 @@ export function ChatWidget() {
 
               {isLoading && (
                 <div className="flex gap-2.5">
-                  <div className="shrink-0 w-7 h-7 rounded-lg bg-gradient-to-br from-violet-500 to-purple-600 flex items-center justify-center">
-                    <Bot className="w-3.5 h-3.5 text-white" />
+                  <div className="shrink-0 w-7 h-7 rounded-lg overflow-hidden">
+                    <Image src="/chatbot.png" alt="RAVEN" width={28} height={28} className="w-full h-full object-cover" />
                   </div>
                   <div className="bg-white border border-gray-200/80 px-4 py-3 rounded-2xl rounded-bl-md shadow-sm">
                     <div className="flex gap-1">
@@ -344,9 +345,9 @@ export function ChatWidget() {
                 animate={{ scale: 1, opacity: 1 }}
                 exit={{ scale: 0.5, opacity: 0 }}
                 transition={{ duration: 0.15 }}
-                className="flex items-center justify-center"
+                className="flex items-center justify-center w-8 h-8 rounded-full overflow-hidden"
               >
-                <Zap className="w-5 h-5 text-violet-400" />
+                <Image src="/chatbot.png" alt="RAVEN" width={32} height={32} className="w-full h-full object-cover" />
               </motion.div>
             )}
           </AnimatePresence>
