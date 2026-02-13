@@ -38,7 +38,8 @@
       "Bash(for port in 3001 3002 3003 3004)",
       "Bash(do lsof -ti:$port)",
       "Bash(done)",
-      "Bash(for port in 3000 3001 3002 3003 3004 3005)"
+      "Bash(for port in 3000 3001 3002 3003 3004 3005)",
+      "Bash(sudo sed:*)"
     ]
   }
 }
