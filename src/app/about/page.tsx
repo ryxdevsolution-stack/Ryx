@@ -3,17 +3,14 @@
 import { NavbarMinimal } from "@/components/layout/navbar-minimal"
 import { FooterMinimal } from "@/components/layout/footer-minimal"
 import { AnimatedCursor } from "@/components/ui/animated-cursor"
-import { TeamAnimated } from "@/components/sections/team-animated"
-import { TestimonialsAnimated } from "@/components/sections/testimonials-animated"
-import { JourneyTimeline } from "@/components/sections/journey-timeline"
 import { motion } from "framer-motion"
-import { Target, Heart, Rocket, Award, Users, TrendingUp, ArrowRight, Sparkles } from "lucide-react"
+import { Target, Heart, Rocket, Users, TrendingUp, ArrowRight, Sparkles, MessageSquare, Code, Shield } from "lucide-react"
 
 const stats = [
-  { icon: Users, value: "200+", label: "Happy Clients", gradient: "from-violet-500 to-purple-600" },
-  { icon: Rocket, value: "500+", label: "Projects Delivered", gradient: "from-blue-500 to-cyan-500" },
-  { icon: Award, value: "25+", label: "Awards Won", gradient: "from-pink-500 to-rose-500" },
-  { icon: TrendingUp, value: "98%", label: "Client Satisfaction", gradient: "from-emerald-500 to-teal-500" },
+  { icon: Rocket, value: "5+", label: "Projects Delivered", gradient: "from-violet-500 to-purple-600" },
+  { icon: Code, value: "1", label: "Live SaaS Product", gradient: "from-blue-500 to-cyan-500" },
+  { icon: TrendingUp, value: "10+", label: "Technologies We Use", gradient: "from-pink-500 to-rose-500" },
+  { icon: MessageSquare, value: "WhatsApp", label: "Direct Founder Support", gradient: "from-emerald-500 to-teal-500" },
 ]
 
 const values = [
@@ -75,8 +72,7 @@ export default function AboutPage() {
               </h1>
 
               <p className="text-lg md:text-xl text-gray-500 max-w-2xl mx-auto leading-relaxed">
-                Founded in 2023, RYX is a passionate team of innovators dedicated to
-                delivering exceptional digital solutions that drive business growth.
+                Founded in 2023, RYX is a software development company based in Coimbatore, India. We build billing software, websites, mobile apps, and custom CRMs for businesses locally and globally.
               </p>
             </motion.div>
           </div>
@@ -142,9 +138,7 @@ export default function AboutPage() {
                 </div>
                 <h3 className="text-xl font-bold text-gray-900 mb-3">Our Mission</h3>
                 <p className="text-gray-500 leading-relaxed text-[15px]">
-                  To empower businesses with innovative digital solutions that drive growth,
-                  efficiency, and success in the modern digital landscape. We believe in
-                  transforming challenges into opportunities through technology.
+                  To build software that actually solves real business problems — not just flashy demos, but tools that business owners use every day. We started with Valoryx because we needed better billing software ourselves.
                 </p>
               </motion.div>
 
@@ -160,9 +154,7 @@ export default function AboutPage() {
                 </div>
                 <h3 className="text-xl font-bold text-gray-900 mb-3">Our Vision</h3>
                 <p className="text-gray-500 leading-relaxed text-[15px]">
-                  To be the leading digital transformation partner for businesses worldwide,
-                  known for our innovation, excellence, and commitment to client success.
-                  We aim to shape the future of digital experiences.
+                  To become the go-to software partner for small and medium businesses in India and worldwide. We want every business owner to have access to the same quality tools that large enterprises use, at a price they can afford.
                 </p>
               </motion.div>
             </div>
@@ -213,14 +205,65 @@ export default function AboutPage() {
           </div>
         </section>
 
-        {/* ━━━━ JOURNEY TIMELINE ━━━━ */}
-        <JourneyTimeline />
+        {/* ━━━━ WHY CHOOSE US ━━━━ */}
+        <section className="py-24 md:py-32 bg-gray-50">
+          <div className="max-w-6xl mx-auto px-6 md:px-12">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5 }}
+              className="text-center mb-16"
+            >
+              <span className="inline-block text-xs font-semibold tracking-[0.2em] uppercase text-violet-600 mb-4">
+                Why Us
+              </span>
+              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+                Why Businesses Choose Us
+              </h2>
+            </motion.div>
 
-        {/* ━━━━ TEAM ━━━━ */}
-        <TeamAnimated />
-
-        {/* ━━━━ TESTIMONIALS ━━━━ */}
-        <TestimonialsAnimated />
+            <div className="grid md:grid-cols-3 gap-6">
+              {[
+                {
+                  icon: Users,
+                  title: "Direct Developer Access",
+                  description: "We\u2019re not a 500-person agency. When you work with us, you work directly with the developers who build your product.",
+                  gradient: "from-violet-500 to-purple-600",
+                },
+                {
+                  icon: Shield,
+                  title: "We Use Our Own Software",
+                  description: "We use our own software daily \u2014 Valoryx is built because we needed it first. That\u2019s how you know it works.",
+                  gradient: "from-pink-500 to-rose-500",
+                },
+                {
+                  icon: MessageSquare,
+                  title: "WhatsApp Support",
+                  description: "Based in Coimbatore, available on WhatsApp. No ticket systems, no waiting 48 hours for a reply.",
+                  gradient: "from-blue-500 to-cyan-500",
+                },
+              ].map((item, index) => (
+                <motion.div
+                  key={item.title}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5, delay: index * 0.1 }}
+                  className="group"
+                >
+                  <div className="bg-white rounded-2xl border border-gray-200/60 p-8 md:p-10 h-full hover:shadow-lg hover:shadow-gray-200/50 hover:border-gray-300/80 transition-all duration-300">
+                    <div className={`w-12 h-12 bg-gradient-to-br ${item.gradient} rounded-xl flex items-center justify-center mb-6 shadow-lg shadow-gray-900/10`}>
+                      <item.icon className="w-5 h-5 text-white" />
+                    </div>
+                    <h3 className="text-lg font-bold text-gray-900 mb-2">{item.title}</h3>
+                    <p className="text-gray-500 leading-relaxed text-[15px]">{item.description}</p>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+        </section>
       </main>
 
       {/* ━━━━ CTA — revealed behind the page ━━━━ */}

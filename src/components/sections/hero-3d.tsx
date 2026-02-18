@@ -3,7 +3,6 @@
 import dynamic from 'next/dynamic'
 import { motion } from 'framer-motion'
 import { ArrowRight, Sparkles, Zap } from 'lucide-react'
-import Link from 'next/link'
 
 const ParticleMolecule = dynamic(() => import('@/components/ui/particle-molecule'), { ssr: false })
 
@@ -54,7 +53,7 @@ export function Hero3D() {
             className="inline-flex items-center gap-2 px-4 sm:px-5 py-2 sm:py-2.5 mb-6 sm:mb-8 bg-white/80 backdrop-blur-md rounded-full border border-violet-200 shadow-lg shadow-violet-100"
           >
             <Sparkles className="w-4 h-4 sm:w-5 sm:h-5 text-violet-600" />
-            <span className="text-sm sm:text-base font-bold bg-gradient-to-r from-violet-600 to-pink-600 bg-clip-text text-transparent">Welcome to RYX</span>
+            <span className="text-sm sm:text-base font-bold bg-gradient-to-r from-violet-600 to-pink-600 bg-clip-text text-transparent">Built in Coimbatore, Serving Globally</span>
           </motion.div>
 
           {/* Main Heading */}
@@ -65,10 +64,10 @@ export function Hero3D() {
             className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold mb-4 sm:mb-6 leading-tight"
           >
             <span className="inline-block bg-gradient-to-r from-violet-600 via-purple-600 to-pink-600 bg-clip-text text-transparent animate-gradient">
-              Transform Ideas
+              We Build Software
             </span>
             <br />
-            <span className="text-gray-900 drop-shadow-sm">Into Reality</span>
+            <span className="text-gray-900 drop-shadow-sm">That Actually Solves Your Business Problems</span>
           </motion.h1>
 
           {/* Description */}
@@ -78,8 +77,8 @@ export function Hero3D() {
             transition={{ duration: 0.6, delay: 0.3 }}
             className="text-lg sm:text-xl md:text-2xl text-gray-700 max-w-4xl mx-auto mb-10 sm:mb-14 px-4 sm:px-0 font-light leading-relaxed"
           >
-            Build production-ready SaaS, manage databases, and deploy AI solutions
-            <span className="block mt-2 bg-gradient-to-r from-violet-600 to-pink-600 bg-clip-text text-transparent font-semibold">Deploy in days, not months</span>
+            From GST-compliant billing software to custom CRMs and web apps — we don&apos;t just write code, we build tools that run your business smoother.
+            <span className="block mt-2 bg-gradient-to-r from-violet-600 to-pink-600 bg-clip-text text-transparent font-semibold">Offline or online, your workflow never stops.</span>
           </motion.p>
 
           {/* CTA Buttons */}
@@ -89,22 +88,36 @@ export function Hero3D() {
             transition={{ duration: 0.6, delay: 0.5 }}
             className="flex flex-col sm:flex-row gap-4 sm:gap-5 justify-center px-4 sm:px-0"
           >
-            <Link
-              href="/portfolio"
+            <a
+              href="https://wa.me/916374853277"
+              target="_blank"
+              rel="noopener noreferrer"
               className="group relative inline-flex items-center justify-center gap-2 px-8 sm:px-10 py-4 sm:py-5 bg-gradient-to-r from-violet-600 to-pink-600 text-white text-base sm:text-lg font-bold rounded-2xl shadow-xl hover:shadow-2xl hover:shadow-violet-300/50 transition-all duration-300 hover:scale-105 overflow-hidden"
             >
-              <span className="relative z-10">View Our Work</span>
+              <span className="relative z-10">Talk to Us on WhatsApp</span>
               <ArrowRight className="w-5 h-5 sm:w-6 sm:h-6 relative z-10 group-hover:translate-x-1 transition-transform" />
               <div className="absolute inset-0 bg-gradient-to-r from-pink-600 to-violet-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-            </Link>
-            <Link
-              href="/contact"
+            </a>
+            <a
+              href="https://mj-billing.vercel.app/landing"
+              target="_blank"
+              rel="noopener noreferrer"
               className="group inline-flex items-center justify-center gap-2 px-8 sm:px-10 py-4 sm:py-5 bg-white backdrop-blur-xl border-2 border-violet-200 text-gray-900 text-base sm:text-lg font-bold rounded-2xl hover:bg-violet-50 hover:border-violet-400 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105"
             >
-              Get Started
+              Try Valoryx Free
               <Zap className="w-5 h-5 sm:w-6 sm:h-6 text-violet-600 group-hover:text-pink-600 transition-colors" />
-            </Link>
+            </a>
           </motion.div>
+
+          {/* Trust Line */}
+          <motion.p
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.6, delay: 0.7 }}
+            className="mt-6 text-sm text-gray-500 font-medium"
+          >
+            No credit card needed &bull; 14-day free trial &bull; Made in India
+          </motion.p>
         </motion.div>
       </div>
 

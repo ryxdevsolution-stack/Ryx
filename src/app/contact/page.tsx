@@ -9,22 +9,21 @@ import { useState, useEffect } from "react"
 import { RAVEN_EVENTS } from "@/components/ui/chat-widget"
 
 const services = [
-  "Web Development",
-  "Mobile App Development",
+  "Billing Software",
+  "Website",
+  "Mobile App",
+  "CRM",
   "UI/UX Design",
-  "AI Integration",
-  "Database Management",
-  "Micro SaaS",
-  "SEO & Marketing",
-  "Cloud Solutions",
+  "SEO",
+  "Other",
 ]
 
 const budgetRanges = [
-  "Under $1,000",
-  "$1,000 - $5,000",
-  "$5,000 - $15,000",
-  "$15,000 - $50,000",
-  "$50,000+",
+  "Under \u20b950,000",
+  "\u20b950,000 - \u20b92,00,000",
+  "\u20b92,00,000 - \u20b95,00,000",
+  "\u20b95,00,000 - \u20b910,00,000",
+  "\u20b910,00,000+",
 ]
 
 const timelines = [
@@ -128,14 +127,14 @@ export default function ContactPage() {
               </span>
 
               <h1 className="text-5xl md:text-6xl font-bold leading-[1.1] tracking-tight text-gray-900 mb-6">
-                Let&apos;s build something{" "}
+                Let&apos;s Build Something{" "}
                 <span className="bg-gradient-to-r from-violet-600 to-pink-500 bg-clip-text text-transparent">
-                  incredible
+                  Together
                 </span>
               </h1>
 
               <p className="text-lg md:text-xl text-gray-500 max-w-2xl mx-auto leading-relaxed">
-                Tell us about your project and we&apos;ll get back to you within 24 hours with a detailed proposal.
+                Whether you need a billing solution, a website, or a custom CRM — reach out and we&apos;ll get back to you within 2 hours.
               </p>
             </motion.div>
           </div>
@@ -146,10 +145,10 @@ export default function ContactPage() {
           <div className="max-w-6xl mx-auto px-6 md:px-12">
             <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
               {[
-                { icon: Mail, label: "Email", value: "ryxdevsolution@gmail.com", gradient: "from-violet-500 to-purple-600", shadow: "shadow-violet-500/20" },
-                { icon: Phone, label: "Phone", value: "+91 86672 58008", gradient: "from-blue-500 to-cyan-500", shadow: "shadow-blue-500/20" },
+                { icon: Mail, label: "Email", value: "ryxdevsolutions@gmail.com", gradient: "from-violet-500 to-purple-600", shadow: "shadow-violet-500/20" },
+                { icon: Phone, label: "Phone / WhatsApp", value: "+91 6374853277", gradient: "from-blue-500 to-cyan-500", shadow: "shadow-blue-500/20" },
                 { icon: Clock, label: "Hours", value: "Mon-Sat, 9am-6pm IST", gradient: "from-pink-500 to-rose-500", shadow: "shadow-pink-500/20" },
-                { icon: Globe, label: "Location", value: "Remote First, Worldwide", gradient: "from-emerald-500 to-teal-500", shadow: "shadow-emerald-500/20" },
+                { icon: MapPin, label: "Location", value: "Coimbatore, Tamil Nadu, India", gradient: "from-emerald-500 to-teal-500", shadow: "shadow-emerald-500/20" },
               ].map((item, i) => (
                 <motion.div
                   key={item.label}
@@ -385,7 +384,7 @@ export default function ContactPage() {
                       className="flex items-center gap-2 bg-emerald-50 border border-emerald-200 rounded-xl px-4 py-3"
                     >
                       <MessageCircle className="w-4 h-4 text-emerald-600" />
-                      <p className="text-sm text-emerald-700 font-medium">Sent! We&apos;ll get back to you within 24 hours.</p>
+                      <p className="text-sm text-emerald-700 font-medium">Sent! We&apos;ll get back to you within 2 hours.</p>
                     </motion.div>
                   )}
 
@@ -415,14 +414,18 @@ export default function ContactPage() {
             Prefer a quick chat?
           </h2>
           <p className="text-gray-400 mb-6">
-            Click the RAVEN icon in the bottom right and describe your project. Our AI will handle the rest.
+            Reach us directly on WhatsApp or email. No ticket systems, no waiting.
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-            <a href="mailto:ryxdevsolution@gmail.com" className="inline-flex items-center gap-2 px-6 py-3 bg-white text-gray-900 font-semibold rounded-xl hover:bg-gray-100 transition-colors text-sm">
-              <Mail className="w-4 h-4" />
-              Email Us Directly
+            <a href="https://wa.me/916374853277" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 px-6 py-3 bg-green-500 text-white font-semibold rounded-xl hover:bg-green-600 transition-colors text-sm">
+              <MessageCircle className="w-4 h-4" />
+              Chat on WhatsApp
             </a>
-            <a href="tel:+918667258008" className="inline-flex items-center gap-2 px-6 py-3 border border-gray-700 text-gray-300 font-semibold rounded-xl hover:border-gray-500 hover:text-white transition-colors text-sm">
+            <a href="mailto:ryxdevsolutions@gmail.com" className="inline-flex items-center gap-2 px-6 py-3 bg-white text-gray-900 font-semibold rounded-xl hover:bg-gray-100 transition-colors text-sm">
+              <Mail className="w-4 h-4" />
+              Email Us
+            </a>
+            <a href="tel:+916374853277" className="inline-flex items-center gap-2 px-6 py-3 border border-gray-700 text-gray-300 font-semibold rounded-xl hover:border-gray-500 hover:text-white transition-colors text-sm">
               <Phone className="w-4 h-4" />
               Call Us
             </a>

@@ -5,7 +5,7 @@ import { FooterMinimal } from "@/components/layout/footer-minimal";
 import { AnimatedCursor } from "@/components/ui/animated-cursor";
 import { motion, useScroll, useTransform } from "framer-motion";
 import dynamic from "next/dynamic";
-import { useRef, useState, useEffect, useCallback } from "react";
+import { useRef, useState, useEffect } from "react";
 import Tilt from "react-parallax-tilt";
 import {
   Code, Database, Palette, Cpu, Smartphone, Globe,
@@ -21,57 +21,45 @@ const ParticleMorph = dynamic(
 const mainServices = [
   {
     icon: Code,
-    title: "Web Development",
-    description: "Custom websites and web applications built with cutting-edge technologies",
-    image: "https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=800&h=600&fit=crop",
-    features: ["React/Next.js", "Node.js Backend", "Responsive Design", "SEO Optimization"],
+    title: "Billing & Invoicing Software",
+    description: "Valoryx — our GST-compliant billing software that works offline with SQLite and syncs to cloud via Supabase. Generate invoices, track payments, manage inventory, and file GST returns.",
+    features: ["GST billing with CGST, SGST, IGST & HSN codes", "Real-time inventory with low-stock alerts", "Offline mode with auto-sync when back online", "Thermal printer support — no driver needed"],
     gradient: "from-violet-600 to-purple-600",
-    price: "$5,000+"
   },
   {
     icon: Database,
-    title: "Database Management",
-    description: "Scalable database solutions optimized for performance and reliability",
-    image: "https://images.unsplash.com/photo-1544383835-bda2bc66a55d?w=800&h=600&fit=crop",
-    features: ["MySQL/PostgreSQL", "MongoDB", "Redis Caching", "Data Migration"],
+    title: "Websites & Web Applications",
+    description: "Fast, SEO-optimized websites using Next.js and React. Landing pages, dashboards, and full web applications with user management — all production-ready.",
+    features: ["Next.js / React based development", "Mobile-responsive from day one", "SEO-optimized structure and performance", "Supabase / MySQL backend integration"],
     gradient: "from-blue-600 to-cyan-600",
-    price: "$3,000+"
   },
   {
     icon: Smartphone,
-    title: "Mobile Development",
-    description: "Native and cross-platform mobile apps that users love",
-    image: "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=800&h=600&fit=crop",
-    features: ["React Native", "Flutter", "iOS/Android", "App Store Deployment"],
+    title: "Mobile App Development",
+    description: "Cross-platform Android and iOS apps built with React Native. One codebase, two platforms — your app reaches every customer without doubling the cost.",
+    features: ["React Native for Android & iOS", "Push notifications & real-time updates", "App Store & Play Store deployment", "Offline-capable architecture"],
     gradient: "from-pink-600 to-rose-600",
-    price: "$8,000+"
   },
   {
     icon: Palette,
     title: "UI/UX Design",
-    description: "Beautiful, intuitive designs that enhance user experience",
-    image: "https://images.unsplash.com/photo-1561070791-2526d30994b5?w=800&h=600&fit=crop",
-    features: ["User Research", "Wireframing", "Prototyping", "Design Systems"],
+    description: "Clean, functional designs that your users can navigate without a manual. Interfaces that look professional and convert visitors into customers.",
+    features: ["Figma-based design workflow", "Mobile-first responsive layouts", "Conversion-focused UI patterns", "Consistent design systems"],
     gradient: "from-orange-600 to-amber-600",
-    price: "$2,500+"
   },
   {
     icon: Cpu,
-    title: "AI Integration",
-    description: "Intelligent solutions powered by machine learning and AI",
-    image: "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=800&h=600&fit=crop",
-    features: ["ChatGPT Integration", "Custom ML Models", "Computer Vision", "NLP Solutions"],
+    title: "CRM & Custom Business Software",
+    description: "Custom CRMs, ERPs, and internal tools tailored to how your business actually works. Role-based access, audit logs, dashboards, and bulk operations.",
+    features: ["Role-based access with audit logging", "Custom dashboards and analytics", "Bulk import/export with Excel support", "Multi-tenant SaaS architecture"],
     gradient: "from-green-600 to-teal-600",
-    price: "$10,000+"
   },
   {
     icon: Globe,
-    title: "Digital Marketing",
-    description: "Strategic marketing solutions to grow your online presence",
-    image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=600&fit=crop",
-    features: ["SEO Strategy", "Content Marketing", "Social Media", "Analytics"],
+    title: "SEO & Digital Presence",
+    description: "We structure every website for Google from the ground up — proper meta tags, structured data, fast loading, and mobile optimization.",
+    features: ["On-page SEO setup", "Google Search Console integration", "Core Web Vitals optimization", "Structured data / Schema markup"],
     gradient: "from-indigo-600 to-purple-600",
-    price: "$2,000/mo"
   }
 ];
 
@@ -120,69 +108,20 @@ const process = [
   }
 ];
 
-const pricing = [
-  {
-    name: "Starter",
-    price: "$2,999",
-    description: "Perfect for small businesses and startups",
-    features: [
-      "5-page website",
-      "Responsive design",
-      "Basic SEO",
-      "Contact form",
-      "1 month support"
-    ],
-    gradient: "from-gray-600 to-gray-700",
-    popular: false
-  },
-  {
-    name: "Professional",
-    price: "$7,999",
-    description: "Ideal for growing businesses",
-    features: [
-      "10-page website",
-      "Custom design",
-      "Advanced SEO",
-      "CMS integration",
-      "E-commerce ready",
-      "3 months support"
-    ],
-    gradient: "from-violet-600 to-purple-600",
-    popular: true
-  },
-  {
-    name: "Enterprise",
-    price: "Custom",
-    description: "Tailored solutions for large organizations",
-    features: [
-      "Unlimited pages",
-      "Custom features",
-      "API integrations",
-      "Advanced security",
-      "Dedicated team",
-      "12 months support"
-    ],
-    gradient: "from-orange-600 to-amber-600",
-    popular: false
-  }
-];
-
 // Default shapes per section block when no service is hovered
-const BLOCK_DEFAULT_SHAPES: (number | null)[] = [null, 4, 5]; // sphere, neural network, bar chart
+const BLOCK_DEFAULT_SHAPES: (number | null)[] = [null, 4];
 
 export default function ServicesPage() {
   const containerRef = useRef<HTMLDivElement>(null);
   const [hoveredService, setHoveredService] = useState<number | null>(null);
   const [activeBlock, setActiveBlock] = useState(0);
 
-  // Refs for the 3 zigzag content blocks
+  // Refs for the 2 zigzag content blocks
   const block1Ref = useRef<HTMLDivElement>(null);
   const block2Ref = useRef<HTMLDivElement>(null);
-  const block3Ref = useRef<HTMLDivElement>(null);
-
   // Track which block is in viewport to trigger scroll-based morphing
   useEffect(() => {
-    const refs = [block1Ref, block2Ref, block3Ref];
+    const refs = [block1Ref, block2Ref];
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
@@ -291,13 +230,13 @@ export default function ServicesPage() {
                 transition={{ duration: 0.8, delay: 0.4 }}
                 className="text-xl md:text-2xl text-gray-700 max-w-3xl mx-auto"
               >
-                From concept to launch, we deliver exceptional digital solutions that drive growth and innovation
+                From billing software to custom CRMs — we build tools that run your business smoother
               </motion.p>
             </motion.div>
           </div>
         </section>
 
-        {/* Services + Process + Pricing — Zigzag sections with sticky particle background */}
+        {/* Services + Process — Zigzag sections with sticky particle background */}
         <section className="relative bg-gradient-to-b from-purple-50 via-pink-50 to-orange-50">
           {/* Sticky particle canvas — stays in viewport while content scrolls */}
           <div className="sticky top-0 h-screen w-full z-0 pointer-events-none">
@@ -371,7 +310,6 @@ export default function ServicesPage() {
                             </motion.div>
                             <div>
                               <h3 className="text-lg font-bold text-white">{service.title}</h3>
-                              <span className="text-white/80 text-xs">Starting at {service.price}</span>
                             </div>
                           </div>
                           <div className="p-5">
@@ -475,100 +413,6 @@ export default function ServicesPage() {
               </div>
             </motion.div>
 
-            {/* ── Block 3: Pricing Plans ── aligned LEFT */}
-            <motion.div
-              ref={block3Ref}
-              initial={{ opacity: 0, x: -80 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true, margin: "-50px" }}
-              transition={{ duration: 0.8 }}
-              className="flex justify-start"
-            >
-              <div className="w-full lg:w-[75%]">
-                <motion.div
-                  initial={{ opacity: 0, y: 50 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  className="mb-12"
-                >
-                  <h2 className="text-5xl md:text-6xl font-bold mb-4">
-                    <span className="bg-gradient-to-r from-violet-600 to-pink-600 bg-clip-text text-transparent">
-                      Pricing Plans
-                    </span>
-                  </h2>
-                  <p className="text-xl text-gray-700 max-w-2xl">
-                    Transparent pricing with no hidden fees
-                  </p>
-                </motion.div>
-
-                <div className="grid md:grid-cols-3 gap-6">
-                  {pricing.map((plan, index) => (
-                    <motion.div
-                      key={plan.name}
-                      initial={{ opacity: 0, y: 50 }}
-                      whileInView={{ opacity: 1, y: 0 }}
-                      viewport={{ once: true }}
-                      transition={{ duration: 0.8, delay: index * 0.1 }}
-                    >
-                      <Tilt
-                        tiltMaxAngleX={5}
-                        tiltMaxAngleY={5}
-                        perspective={1000}
-                        scale={plan.popular ? 1.05 : 1.02}
-                      >
-                        <motion.div
-                          className={`relative h-full p-8 bg-white/85 backdrop-blur-lg rounded-3xl shadow-xl border ${
-                            plan.popular ? 'border-violet-300 ring-4 ring-violet-600 ring-offset-4' : 'border-violet-100/80 hover:border-violet-300'
-                          } hover:shadow-2xl hover:shadow-violet-200/50 transition-all duration-300`}
-                          whileHover={{ y: -10 }}
-                        >
-                          {plan.popular && (
-                            <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 px-4 py-1 bg-gradient-to-r from-violet-600 to-pink-600 text-white text-sm font-bold rounded-full">
-                              Most Popular
-                            </div>
-                          )}
-                          <h3 className={`text-2xl font-bold mb-2 bg-gradient-to-r ${plan.gradient} bg-clip-text text-transparent`}>
-                            {plan.name}
-                          </h3>
-                          <div className="mb-4">
-                            <span className="text-5xl font-bold text-gray-900">{plan.price}</span>
-                            {plan.price !== "Custom" && <span className="text-gray-700">/project</span>}
-                          </div>
-                          <p className="text-gray-700 mb-8">{plan.description}</p>
-                          <ul className="space-y-3 mb-8">
-                            {plan.features.map((feature, i) => (
-                              <motion.li
-                                key={i}
-                                initial={{ opacity: 0, x: -20 }}
-                                whileInView={{ opacity: 1, x: 0 }}
-                                transition={{ duration: 0.3, delay: i * 0.1 }}
-                                className="flex items-start gap-2 text-sm"
-                              >
-                                <CheckCircle className="w-5 h-5 text-green-500 mt-0.5" />
-                                <span className="text-gray-700">{feature}</span>
-                              </motion.li>
-                            ))}
-                          </ul>
-                          <motion.a
-                            href="/contact"
-                            className={`block w-full py-3 text-center font-semibold rounded-full transition-all ${
-                              plan.popular
-                                ? 'bg-gradient-to-r from-violet-600 to-pink-600 text-white hover:shadow-lg'
-                                : 'bg-violet-100 text-gray-900 hover:bg-violet-200 border border-violet-200'
-                            }`}
-                            whileHover={{ scale: 1.05 }}
-                            whileTap={{ scale: 0.95 }}
-                          >
-                            Get Started
-                          </motion.a>
-                        </motion.div>
-                      </Tilt>
-                    </motion.div>
-                  ))}
-                </div>
-              </div>
-            </motion.div>
-
             </div>
           </div>
         </section>
@@ -590,10 +434,10 @@ export default function ServicesPage() {
           <div className="container mx-auto px-6 md:px-12 relative z-10">
             <div className="grid md:grid-cols-4 gap-8 text-center">
               {[
-                { icon: Rocket, value: "500+", label: "Projects Launched" },
-                { icon: Users, value: "200+", label: "Happy Clients" },
-                { icon: Clock, value: "50K+", label: "Hours Worked" },
-                { icon: Award, value: "25+", label: "Awards Won" }
+                { icon: Rocket, value: "5+", label: "Projects Delivered" },
+                { icon: Users, value: "1", label: "Live SaaS Product" },
+                { icon: Clock, value: "10+", label: "Technologies We Use" },
+                { icon: Award, value: "WhatsApp", label: "Direct Founder Support" }
               ].map((stat, index) => (
                 <motion.div
                   key={stat.label}

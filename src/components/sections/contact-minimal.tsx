@@ -120,17 +120,17 @@ export function ContactMinimal() {
             <div className="space-y-4 sm:space-y-6">
               <div>
                 <h4 className="text-sm sm:text-base font-semibold mb-1 sm:mb-2 text-gray-900">Email</h4>
-                <p className="text-sm sm:text-base text-gray-600 break-all">contact@ryxdigital.com</p>
+                <p className="text-sm sm:text-base text-gray-600 break-all">ryxdevsolutions@gmail.com</p>
               </div>
 
               <div>
                 <h4 className="text-sm sm:text-base font-semibold mb-1 sm:mb-2 text-gray-900">Phone</h4>
-                <p className="text-sm sm:text-base text-gray-600">+91 98765 43210</p>
+                <p className="text-sm sm:text-base text-gray-600">+91 63748 53277 / +91 86672 58008 / +91 90035 23067</p>
               </div>
 
               <div>
                 <h4 className="text-sm sm:text-base font-semibold mb-1 sm:mb-2 text-gray-900">Location</h4>
-                <p className="text-sm sm:text-base text-gray-600">Mumbai, India</p>
+                <p className="text-sm sm:text-base text-gray-600">Coimbatore, Tamil Nadu, India</p>
               </div>
 
               <div>
@@ -154,7 +154,7 @@ export function ContactMinimal() {
                 <CheckCircle className="w-16 h-16 text-violet-600 mb-6" />
                 <h3 className="text-2xl font-bold text-gray-900 mb-2">Thank you!</h3>
                 <p className="text-gray-600">
-                  Your message has been sent. We'll get back to you soon.
+                  Your message has been sent. We'll get back to you within 2 hours.
                 </p>
               </div>
             ) : (

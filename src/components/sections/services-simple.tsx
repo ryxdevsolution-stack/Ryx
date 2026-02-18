@@ -22,44 +22,44 @@ const SERVICES_PARTICLE_COLORS = [
 const services = [
   {
     icon: Code,
-    title: "Web Development",
-    description: "Custom websites and web applications built with modern technologies",
-    features: ["React/Next.js", "Responsive Design", "SEO Optimization"],
+    title: "Billing & Invoicing Software",
+    description: "Valoryx — our GST-compliant billing software that works offline with SQLite and syncs to cloud via Supabase.",
+    features: ["GST billing with CGST, SGST, IGST", "Real-time inventory with low-stock alerts", "Offline mode with auto-sync"],
     gradient: "from-violet-600 to-purple-600"
   },
   {
-    icon: Database,
-    title: "Database Solutions",
-    description: "Scalable database architecture and management",
-    features: ["PostgreSQL", "MongoDB", "Performance Optimization"],
+    icon: Globe,
+    title: "Websites & Web Applications",
+    description: "Fast, SEO-optimized websites and web apps built with Next.js and React. Production-ready from day one.",
+    features: ["Next.js / React development", "Mobile-responsive design", "SEO-optimized structure"],
     gradient: "from-blue-600 to-cyan-600"
   },
   {
     icon: Smartphone,
-    title: "Mobile Development",
-    description: "Native and cross-platform mobile applications",
-    features: ["React Native", "iOS/Android", "App Store Deployment"],
+    title: "Mobile App Development",
+    description: "Cross-platform Android and iOS apps built with React Native. One codebase, two platforms.",
+    features: ["React Native for Android & iOS", "Push notifications & real-time updates", "App Store & Play Store deployment"],
     gradient: "from-pink-600 to-rose-600"
+  },
+  {
+    icon: Database,
+    title: "CRM & Custom Business Software",
+    description: "Custom CRMs, ERPs, and internal tools tailored to how your business actually works.",
+    features: ["Role-based access with audit logging", "Custom dashboards and analytics", "Multi-tenant SaaS architecture"],
+    gradient: "from-orange-600 to-amber-600"
   },
   {
     icon: Palette,
     title: "UI/UX Design",
-    description: "Beautiful, intuitive designs that enhance user experience",
-    features: ["User Research", "Prototyping", "Design Systems"],
-    gradient: "from-orange-600 to-amber-600"
-  },
-  {
-    icon: Cpu,
-    title: "AI Integration",
-    description: "Intelligent solutions powered by machine learning",
-    features: ["ChatGPT Integration", "Custom ML Models", "NLP Solutions"],
+    description: "Clean, functional designs that your users can navigate without a manual.",
+    features: ["Figma-based design workflow", "Mobile-first responsive layouts", "Conversion-focused UI patterns"],
     gradient: "from-green-600 to-teal-600"
   },
   {
-    icon: Globe,
-    title: "Digital Marketing",
-    description: "Strategic marketing to grow your online presence",
-    features: ["SEO Strategy", "Content Marketing", "Analytics"],
+    icon: Cpu,
+    title: "SEO & Digital Presence",
+    description: "We structure every website for Google from the ground up — proper meta tags, structured data, and fast loading.",
+    features: ["On-page SEO setup", "Core Web Vitals optimization", "Structured data / Schema markup"],
     gradient: "from-indigo-600 to-purple-600"
   }
 ]
@@ -185,7 +185,7 @@ export function ServicesSimple() {
             </span>
           </h2>
           <p className="text-lg sm:text-xl md:text-2xl text-gray-700 max-w-3xl mx-auto px-4 sm:px-0 font-light">
-            Transform your business with cutting-edge digital solutions
+            From billing software to custom CRMs — solutions built for real businesses
           </p>
         </motion.div>
 

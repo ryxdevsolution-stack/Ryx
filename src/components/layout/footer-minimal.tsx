@@ -4,8 +4,7 @@ import Link from "next/link"
 import { motion } from "framer-motion"
 import dynamic from "next/dynamic"
 import {
-  Mail, Phone,
-  Twitter, Linkedin, Github, Instagram,
+  Mail, Phone, MessageCircle,
 } from "lucide-react"
 
 const Hexocet = dynamic(
@@ -15,9 +14,13 @@ const Hexocet = dynamic(
 
 const footerLinks = {
   services: [
+    { name: "Billing Software", href: "/services" },
     { name: "Web Development", href: "/services" },
-    { name: "UI/UX Design", href: "/services" },
-    { name: "AI Solutions", href: "/services" },
+    { name: "Mobile Apps", href: "/services" },
+    { name: "CRM Solutions", href: "/services" },
+  ],
+  products: [
+    { name: "Valoryx Billing", href: "https://mj-billing.vercel.app/landing" },
   ],
   company: [
     { name: "About", href: "/about" },
@@ -26,12 +29,6 @@ const footerLinks = {
   ],
 }
 
-const socialLinks = [
-  { Icon: Twitter, href: "https://twitter.com", label: "Twitter" },
-  { Icon: Linkedin, href: "https://linkedin.com", label: "LinkedIn" },
-  { Icon: Github, href: "https://github.com", label: "GitHub" },
-  { Icon: Instagram, href: "https://instagram.com", label: "Instagram" },
-]
 
 export function FooterMinimal() {
   return (
@@ -63,21 +60,25 @@ export function FooterMinimal() {
                 </motion.div>
               </Link>
               <p className="text-gray-600 mb-4 text-sm">
-                Transforming ideas into digital reality.
+                Software that solves real business problems. Based in Coimbatore, serving globally.
               </p>
               {/* Contact Info */}
               <div className="space-y-2">
-                <a href="mailto:ryxdevsolution@gmail.com" className="flex items-center gap-2 text-gray-600 hover:text-violet-600 transition-colors text-sm">
+                <a href="mailto:ryxdevsolutions@gmail.com" className="flex items-center gap-2 text-gray-600 hover:text-violet-600 transition-colors text-sm">
                   <Mail className="w-4 h-4" />
-                  <span>ryxdevsolution@gmail.com</span>
+                  <span>ryxdevsolutions@gmail.com</span>
+                </a>
+                <a href="tel:+916374853277" className="flex items-center gap-2 text-gray-600 hover:text-violet-600 transition-colors text-sm">
+                  <Phone className="w-4 h-4" />
+                  <span>+91 63748 53277</span>
                 </a>
                 <a href="tel:+918667258008" className="flex items-center gap-2 text-gray-600 hover:text-violet-600 transition-colors text-sm">
                   <Phone className="w-4 h-4" />
                   <span>+91 86672 58008</span>
                 </a>
-                <a href="tel:+916374853277" className="flex items-center gap-2 text-gray-600 hover:text-violet-600 transition-colors text-sm">
+                <a href="tel:+919003523067" className="flex items-center gap-2 text-gray-600 hover:text-violet-600 transition-colors text-sm">
                   <Phone className="w-4 h-4" />
-                  <span>+91 63748 53277</span>
+                  <span>+91 90035 23067</span>
                 </a>
               </div>
             </motion.div>
@@ -130,7 +131,7 @@ export function FooterMinimal() {
               </ul>
             </motion.div>
 
-            {/* Social Links */}
+            {/* Products & Contact */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -138,24 +139,33 @@ export function FooterMinimal() {
               transition={{ duration: 0.6, delay: 0.3 }}
             >
               <h4 className="text-sm font-semibold mb-4 text-gray-900">
-                Follow Us
+                Products
               </h4>
-              <div className="flex gap-3">
-                {socialLinks.map((social) => (
-                  <motion.a
-                    key={social.label}
-                    href={social.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="w-10 h-10 bg-white/80 backdrop-blur-sm rounded-lg flex items-center justify-center text-gray-600 hover:text-violet-600 hover:bg-white shadow-sm border border-violet-100 transition-all"
-                    whileHover={{ scale: 1.1, rotate: 5 }}
-                    whileTap={{ scale: 0.95 }}
-                    aria-label={social.label}
-                  >
-                    <social.Icon className="w-4 h-4" />
-                  </motion.a>
+              <ul className="space-y-2 mb-6">
+                {footerLinks.products.map((link) => (
+                  <li key={link.name}>
+                    <a
+                      href={link.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-sm text-gray-600 hover:text-violet-600 transition-colors"
+                    >
+                      {link.name}
+                    </a>
+                  </li>
                 ))}
-              </div>
+              </ul>
+              <motion.a
+                href="https://wa.me/916374853277"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 px-4 py-2 bg-green-500 text-white text-sm font-semibold rounded-lg hover:bg-green-600 transition-colors"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                <MessageCircle className="w-4 h-4" />
+                Chat on WhatsApp
+              </motion.a>
             </motion.div>
           </div>
         </div>

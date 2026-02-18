@@ -17,12 +17,12 @@ const inter = Inter({
 // Top-tier SEO metadata
 export const metadata: Metadata = {
   title: {
-    default: "RYX - Micro SaaS, Database Management & AI Solutions",
+    default: "RYX — Billing Software, Web Development & Custom CRM Solutions | Coimbatore",
     template: "%s | RYX"
   },
-  description: "RYX builds scalable micro SaaS tools, manages Supabase/MySQL databases, and delivers SEO-optimized websites with AI-powered prompt engineering. Deploy in days, not months.",
-  keywords: ["micro saas", "database management", "supabase", "mysql", "prompt engineering", "fullstack development", "web design", "ai solutions"],
-  authors: [{ name: "RYX Team" }],
+  description: "RYX builds Valoryx — a GST-compliant billing software that works offline and online. We also develop websites, mobile apps, and custom CRMs for businesses in India and worldwide. Based in Coimbatore.",
+  keywords: ["billing software india", "GST billing software", "offline billing app", "invoice software", "web development coimbatore", "custom CRM development", "react native app development", "supabase developer", "next.js development company"],
+  authors: [{ name: "RYX" }],
   creator: "RYX",
   metadataBase: new URL("https://ryx.dev"),
   alternates: {
@@ -33,21 +33,21 @@ export const metadata: Metadata = {
     locale: "en_US",
     url: "https://ryx.dev",
     siteName: "RYX",
-    title: "RYX - Micro SaaS & Database Solutions",
-    description: "Deploy scalable micro SaaS products, optimize databases, and build AI-powered applications. From idea to production in days.",
+    title: "RYX — Billing Software, Websites & Custom CRM Solutions",
+    description: "We build Valoryx — GST-compliant billing that works offline. Plus websites, apps, and CRMs for businesses in India and globally.",
     images: [
       {
         url: "/og-image.jpg",
         width: 1200,
         height: 630,
-        alt: "RYX - Micro SaaS & Database Solutions",
+        alt: "RYX — Billing Software, Websites & Custom CRM Solutions",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "RYX - Micro SaaS & Database Solutions",
-    description: "Deploy scalable micro SaaS products, optimize databases, and build AI-powered applications.",
+    title: "RYX — Billing Software & Web Development",
+    description: "GST-compliant billing software + custom web & app development. Based in Coimbatore, serving globally.",
     images: ["/og-image.jpg"],
   },
   robots: {
@@ -60,9 +60,6 @@ export const metadata: Metadata = {
       "max-image-preview": "large",
       "max-snippet": -1,
     },
-  },
-  verification: {
-    google: "your-google-verification-code",
   },
 };
 
@@ -78,38 +75,29 @@ export default function RootLayout({
     "name": "RYX",
     "url": "https://ryx.dev",
     "logo": "https://ryx.dev/RYX_Logo.png",
-    "description": "RYX builds scalable micro SaaS tools, manages Supabase/MySQL databases, and delivers SEO-optimized websites with AI-powered prompt engineering.",
+    "description": "RYX builds Valoryx — a GST-compliant billing software — and develops websites, mobile apps, and custom CRM solutions for businesses in India and worldwide.",
     "foundingDate": "2023",
     "address": {
       "@type": "PostalAddress",
-      "addressLocality": "Remote First",
-      "addressCountry": "Worldwide"
+      "addressLocality": "Coimbatore",
+      "addressRegion": "Tamil Nadu",
+      "addressCountry": "India"
     },
     "contactPoint": {
       "@type": "ContactPoint",
-      "telephone": "+1-555-RYX-TECH",
+      "telephone": "+91-6374853277",
       "contactType": "Customer Service",
-      "email": "hello@ryx.dev"
+      "email": "ryxdevsolutions@gmail.com"
     },
-    "sameAs": [
-      "https://github.com/ryx-team",
-      "https://linkedin.com/company/ryx-team",
-      "https://twitter.com/ryx_team"
-    ],
-    "areaServed": "Worldwide",
+    "areaServed": ["India", "Worldwide"],
     "serviceType": [
-      "Micro SaaS Development",
-      "Database Management",
-      "Web Development", 
-      "AI Integration",
-      "Prompt Engineering"
-    ],
-    "aggregateRating": {
-      "@type": "AggregateRating",
-      "ratingValue": "4.9",
-      "reviewCount": "120",
-      "bestRating": "5"
-    }
+      "Billing Software Development",
+      "Web Application Development",
+      "Mobile App Development",
+      "Custom CRM Development",
+      "UI/UX Design",
+      "SEO Services"
+    ]
   };
 
   return (

@@ -6,146 +6,57 @@ import { AnimatedCursor } from "@/components/ui/animated-cursor"
 import { motion, useScroll, useTransform, useSpring, useMotionValue } from "framer-motion"
 import { useRef, useState, useEffect } from "react"
 import Tilt from "react-parallax-tilt"
-import Image from "next/image"
-import Link from "next/link"
 import {
-  ArrowUpRight, Eye, Heart, Share2, Github, Globe,
-  Play, Pause, ChevronLeft, ChevronRight, Layers,
-  Sparkles, Code, Palette, Cpu, Star
+  ArrowUpRight, Globe,
+  Play, Layers,
+  Sparkles, Code
 } from "lucide-react"
 
 // Featured projects data
 const featuredProjects = [
   {
     id: 1,
-    title: "AI-Powered Analytics Platform",
-    category: "Machine Learning",
-    client: "TechCorp International",
-    description: "Revolutionary analytics platform using GPT-4 and custom ML models for predictive insights",
-    image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1600&h=900&fit=crop",
-    video: "https://images.unsplash.com/photo-1633356122102-3fe601e05bd2?w=1600&h=900&fit=crop",
-    technologies: ["React", "Python", "TensorFlow", "AWS", "PostgreSQL"],
+    title: "Valoryx — GST Billing Software",
+    category: "Full Stack Product",
+    description: "A complete billing and inventory management system for Indian retail businesses. Works offline with SQLite, syncs to cloud via Supabase. Features GST-compliant invoicing, real-time inventory tracking, payment management, audit logs, and thermal printer support.",
+    technologies: ["Next.js", "Supabase", "SQLite", "Tailwind CSS"],
     results: {
-      performance: "+250%",
-      users: "50K+",
-      accuracy: "98.5%"
+      feature1: "Offline + Online",
+      feature2: "GST Compliant",
+      feature3: "Thermal Print"
     },
     gradient: "from-violet-600 to-purple-600",
-    link: "/portfolio/ai-analytics",
-    github: "https://github.com",
-    live: "https://example.com"
+    link: "https://mj-billing.vercel.app/landing",
+    live: "https://mj-billing.vercel.app/landing"
   },
   {
     id: 2,
-    title: "E-Commerce Revolution",
-    category: "Full Stack Development",
-    client: "ShopMaster Pro",
-    description: "Next-gen shopping platform with AR try-on, AI recommendations, and Web3 payments",
-    image: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=1600&h=900&fit=crop",
-    video: "https://images.unsplash.com/photo-1472851294608-062f824d29cc?w=1600&h=900&fit=crop",
-    technologies: ["Next.js", "Three.js", "Stripe", "Ethereum", "Node.js"],
+    title: "RYX — Company Landing Page",
+    category: "Web Development",
+    description: "A modern, animated landing page built with Next.js showcasing our services, portfolio, and contact information. Features smooth animations, responsive design, and SEO optimization.",
+    technologies: ["Next.js", "Tailwind CSS", "Framer Motion", "Three.js"],
     results: {
-      sales: "+340%",
-      conversion: "12.5%",
-      retention: "85%"
+      feature1: "3D Particles",
+      feature2: "AI Chatbot",
+      feature3: "SEO Optimized"
     },
     gradient: "from-pink-600 to-rose-600",
-    link: "/portfolio/ecommerce",
-    github: "https://github.com",
-    live: "https://example.com"
-  },
-  {
-    id: 3,
-    title: "SaaS Management Dashboard",
-    category: "UI/UX Design",
-    client: "CloudSync Systems",
-    description: "Comprehensive dashboard with real-time data visualization and team collaboration",
-    image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1600&h=900&fit=crop",
-    video: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1600&h=900&fit=crop",
-    technologies: ["Vue.js", "D3.js", "Firebase", "Tailwind", "WebSockets"],
-    results: {
-      efficiency: "+180%",
-      satisfaction: "95%",
-      uptime: "99.9%"
-    },
-    gradient: "from-blue-600 to-cyan-600",
-    link: "/portfolio/saas-dashboard",
-    github: "https://github.com",
-    live: "https://example.com"
-  },
-  {
-    id: 4,
-    title: "Blockchain Trading Platform",
-    category: "Web3 Development",
-    client: "CryptoTrade Global",
-    description: "Decentralized trading platform with smart contracts and liquidity pools",
-    image: "https://images.unsplash.com/photo-1639762681485-074b7f938ba0?w=1600&h=900&fit=crop",
-    video: "https://images.unsplash.com/photo-1640340434855-6084b1f4901c?w=1600&h=900&fit=crop",
-    technologies: ["Solidity", "Web3.js", "React", "Hardhat", "IPFS"],
-    results: {
-      volume: "$50M+",
-      users: "25K+",
-      transactions: "100K+"
-    },
-    gradient: "from-orange-600 to-amber-600",
-    link: "/portfolio/blockchain",
-    github: "https://github.com",
-    live: "https://example.com"
-  },
-  {
-    id: 5,
-    title: "Healthcare AI Assistant",
-    category: "Healthcare Tech",
-    client: "MediCare Plus",
-    description: "AI-powered medical assistant for diagnosis support and patient management",
-    image: "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=1600&h=900&fit=crop",
-    video: "https://images.unsplash.com/photo-1584982751601-97dcc096659c?w=1600&h=900&fit=crop",
-    technologies: ["Python", "TensorFlow", "React Native", "MongoDB", "Docker"],
-    results: {
-      accuracy: "96.8%",
-      timeReduction: "-65%",
-      patients: "10K+"
-    },
-    gradient: "from-green-600 to-teal-600",
-    link: "/portfolio/healthcare",
-    github: "https://github.com",
-    live: "https://example.com"
-  },
-  {
-    id: 6,
-    title: "Social Media Analytics",
-    category: "Data Analytics",
-    client: "SocialBoost Pro",
-    description: "Comprehensive social media analytics with sentiment analysis and trend prediction",
-    image: "https://images.unsplash.com/photo-1611162617474-5b21e879e113?w=1600&h=900&fit=crop",
-    video: "https://images.unsplash.com/photo-1611162616305-c69b3fa7fbe0?w=1600&h=900&fit=crop",
-    technologies: ["Node.js", "Redis", "ElasticSearch", "React", "GraphQL"],
-    results: {
-      insights: "+400%",
-      engagement: "+220%",
-      roi: "450%"
-    },
-    gradient: "from-indigo-600 to-purple-600",
-    link: "/portfolio/social-analytics",
-    github: "https://github.com",
-    live: "https://example.com"
+    link: "/",
+    live: "/"
   }
 ]
 
 // Project categories
 const categories = [
-  { name: "All", count: 24, icon: Layers },
-  { name: "Web Development", count: 8, icon: Code },
-  { name: "UI/UX Design", count: 6, icon: Palette },
-  { name: "Machine Learning", count: 5, icon: Cpu },
-  { name: "Mobile Apps", count: 5, icon: Globe }
+  { name: "All", count: 2, icon: Layers },
+  { name: "Full Stack", count: 1, icon: Code },
+  { name: "Web Development", count: 1, icon: Globe },
 ]
 
 export default function PortfolioPage() {
   const containerRef = useRef<HTMLDivElement>(null)
   const [selectedCategory, setSelectedCategory] = useState("All")
   const [hoveredProject, setHoveredProject] = useState<number | null>(null)
-  const [currentImageIndex, setCurrentImageIndex] = useState<{ [key: number]: number }>({})
   const mouseX = useMotionValue(0)
   const mouseY = useMotionValue(0)
 
@@ -170,21 +81,6 @@ export default function PortfolioPage() {
   const springX = useSpring(mouseX, { stiffness: 100, damping: 20 })
   const springY = useSpring(mouseY, { stiffness: 100, damping: 20 })
 
-  // Auto-play image carousel
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentImageIndex(prev => {
-        const newIndexes = { ...prev }
-        featuredProjects.forEach((project) => {
-          if (hoveredProject === project.id) {
-            newIndexes[project.id] = (prev[project.id] || 0) === 0 ? 1 : 0
-          }
-        })
-        return newIndexes
-      })
-    }, 3000)
-    return () => clearInterval(interval)
-  }, [hoveredProject])
 
   return (
     <>
@@ -255,11 +151,11 @@ export default function PortfolioPage() {
                     WebkitTextFillColor: "transparent",
                   }}
                 >
-                  Creative Works
+                  Our Work
                 </motion.span>
                 <br />
                 <span className="text-5xl md:text-6xl lg:text-7xl">
-                  That Inspire Innovation
+                  Real Projects, Real Results
                 </span>
               </motion.h1>
 
@@ -270,7 +166,7 @@ export default function PortfolioPage() {
                 transition={{ duration: 0.8, delay: 0.4 }}
                 className="text-xl md:text-2xl text-gray-700 max-w-3xl mx-auto mb-12"
               >
-                Explore our collection of cutting-edge projects showcasing excellence in design, development, and innovation
+                Projects we've actually built and shipped — no stock images, no fake metrics
               </motion.p>
 
               {/* Stats */}
@@ -281,9 +177,9 @@ export default function PortfolioPage() {
                 className="grid grid-cols-3 gap-8 max-w-2xl mx-auto"
               >
                 {[
-                  { value: "150+", label: "Projects Completed" },
-                  { value: "98%", label: "Client Satisfaction" },
-                  { value: "25+", label: "Awards Won" }
+                  { value: "5+", label: "Projects Delivered" },
+                  { value: "1", label: "Live SaaS Product" },
+                  { value: "10+", label: "Technologies We Use" }
                 ].map((stat, i) => (
                   <motion.div
                     key={stat.label}
@@ -438,12 +334,9 @@ export default function PortfolioPage() {
                           animate={hoveredProject === project.id ? { scale: 1.1 } : { scale: 1 }}
                           transition={{ duration: 0.6 }}
                         >
-                          <Image
-                            src={currentImageIndex[project.id] === 1 ? project.video : project.image}
-                            alt={project.title}
-                            fill
-                            className="object-cover"
-                          />
+                          <div className={`absolute inset-0 bg-gradient-to-br ${project.gradient} flex items-center justify-center`}>
+                            <span className="text-white/80 text-4xl font-bold">{project.title.split("\u2014")[0].trim()}</span>
+                          </div>
                         </motion.div>
 
                         {/* Gradient Overlay */}
@@ -493,12 +386,11 @@ export default function PortfolioPage() {
 
                       {/* Content */}
                       <div className="p-8">
-                        {/* Title and Client */}
+                        {/* Title */}
                         <div className="mb-4">
                           <h3 className={`text-3xl font-bold mb-2 bg-gradient-to-r ${project.gradient} bg-clip-text text-transparent`}>
                             {project.title}
                           </h3>
-                          <p className="text-gray-700 text-sm">for {project.client}</p>
                         </div>
 
                         {/* Description */}
@@ -536,15 +428,7 @@ export default function PortfolioPage() {
                             whileHover={{ scale: 1.05 }}
                             whileTap={{ scale: 0.95 }}
                           >
-                            View Case Study
-                          </motion.a>
-                          <motion.a
-                            href={project.github}
-                            className="p-3 bg-violet-100 hover:bg-violet-200 rounded-full transition-colors border border-violet-200"
-                            whileHover={{ scale: 1.1, rotate: 360 }}
-                            whileTap={{ scale: 0.9 }}
-                          >
-                            <Github className="w-5 h-5 text-violet-600" />
+                            View Project
                           </motion.a>
                           <motion.a
                             href={project.live}
@@ -589,27 +473,6 @@ export default function PortfolioPage() {
               ))}
             </div>
 
-            {/* View All Button */}
-            <motion.div
-              initial={{ opacity: 0, y: 50 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              className="text-center mt-20"
-            >
-              <motion.button
-                className="inline-flex items-center gap-3 px-10 py-5 bg-gradient-to-r from-violet-600 to-pink-600 text-white font-bold text-lg rounded-full shadow-2xl group"
-                whileHover={{ scale: 1.05, boxShadow: "0 25px 50px rgba(139, 92, 246, 0.4)" }}
-                whileTap={{ scale: 0.95 }}
-              >
-                <span>Load More Projects</span>
-                <motion.div
-                  animate={{ rotate: [0, 360] }}
-                  transition={{ duration: 2, repeat: Infinity, ease: "linear" }}
-                >
-                  <Sparkles className="w-6 h-6" />
-                </motion.div>
-              </motion.button>
-            </motion.div>
           </motion.div>
         </section>
 
