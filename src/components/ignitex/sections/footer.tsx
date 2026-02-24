@@ -72,7 +72,7 @@ export function Footer() {
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.8, ease: [0.4, 0, 0.2, 1] }}
         >
-          <span className="block text-[80px] sm:text-[120px] lg:text-[160px] xl:text-[200px] font-bold tracking-widest leading-none text-white/5 select-none">
+          <span className="block text-[80px] sm:text-[120px] lg:text-[160px] xl:text-[200px] font-bold tracking-widest leading-none text-white/15 select-none">
             RYX
           </span>
         </motion.div>
@@ -182,7 +182,7 @@ export function Footer() {
 
           {/* Get in touch */}
           <motion.div
-            className="lg:col-span-2"
+            className="lg:col-span-2 min-w-0"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -194,23 +194,25 @@ export function Footer() {
             <ul className="space-y-3">
               <li>
                 <a
-                  href={`tel:${SITE_CONFIG.company.phone.replace(/\s/g, "")}`}
-                  className="text-sm text-white/70 hover:text-white transition-colors"
-                >
-                  {SITE_CONFIG.company.phone}
-                </a>
-              </li>
-              <li>
-                <a
                   href={`mailto:${SITE_CONFIG.company.email}`}
-                  className="text-sm text-white/70 hover:text-white transition-colors break-all"
+                  className="text-sm text-white/70 hover:text-white transition-colors break-words"
                 >
                   {SITE_CONFIG.company.email}
                 </a>
               </li>
               <li>
                 <a
-                  href={SITE_CONFIG.company.whatsapp}
+                  href="https://wa.me/916374853277"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-sm text-white/70 hover:text-ig-green transition-colors"
+                >
+                  WhatsApp us
+                </a>
+              </li>
+              <li>
+                <a
+                  href="https://wa.me/918667258008"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-sm text-white/70 hover:text-ig-green transition-colors"

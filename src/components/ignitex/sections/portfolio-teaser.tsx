@@ -4,9 +4,9 @@ import { motion } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
 import Link from "next/link";
 import { SectionLabel } from "../section-label";
-import { ScriptText } from "../script-text";
 import { PillButton } from "../pill-button";
 import { EASE_STANDARD } from "../motion";
+import { CinematicHeading } from "../cinematic-heading";
 
 const PROJECTS = [
   {
@@ -37,15 +37,9 @@ export function PortfolioTeaserSection() {
         <div className="flex flex-col sm:flex-row items-start sm:items-end justify-between gap-6 mb-14">
           <div>
             <SectionLabel text="Selected work" variant="dark" />
-            <motion.h2
-              className="mt-5 ig-heading-1 text-white"
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-80px" }}
-              transition={{ duration: 0.7, ease: EASE_STANDARD }}
-            >
-              Work that <ScriptText>Speaks</ScriptText>
-            </motion.h2>
+            <CinematicHeading className="mt-5 ig-heading-1 text-white" variant="dark" delay={0.1}>
+              Work that Speaks
+            </CinematicHeading>
           </div>
           <PillButton
             label="View all projects"

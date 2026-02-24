@@ -4,7 +4,7 @@ export const SITE_CONFIG = {
     shortName: "RYX",
     email: "ryxdevsolutions@gmail.com",
     phone: "+91 6374853277",
-    whatsapp: "https://wa.me/916374853277",
+    whatsapp: "https://wa.me/918667258008",
     city: "Coimbatore",
     state: "Tamil Nadu",
     country: "India",

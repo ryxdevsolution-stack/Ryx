@@ -5,9 +5,9 @@ import { motion } from "framer-motion";
 import { Copy, Check, Mail, Send } from "lucide-react";
 import Image from "next/image";
 import { SectionLabel } from "../section-label";
-import { ScriptText } from "../script-text";
 import { PillButton } from "../pill-button";
 import { SITE_CONFIG } from "@/lib/site-config";
+import { CinematicHeading } from "../cinematic-heading";
 
 const CONNECT_POINTS = [
   "We reply within 24 hours",
@@ -78,15 +78,9 @@ export function ContactCTASection() {
         {/* Header */}
         <SectionLabel text="Start the conversation today" variant="dark" className="mb-6" />
 
-        <motion.h2
-          className="ig-heading-1 max-w-3xl mb-14 sm:mb-20"
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-80px" }}
-          transition={{ duration: 0.7, ease: [0.4, 0, 0.2, 1] }}
-        >
-          Start your <ScriptText>Project</ScriptText> today
-        </motion.h2>
+        <CinematicHeading className="ig-heading-1 max-w-3xl mb-14 sm:mb-20" variant="dark" delay={0.1}>
+          Start your Project today
+        </CinematicHeading>
 
         {/* Two-column layout */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16">

@@ -1,7 +1,6 @@
 "use client";
 
 import { useState } from "react";
-import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { SectionLabel } from "../section-label";
 import { StarRating } from "../star-rating";
@@ -11,7 +10,7 @@ interface Testimonial {
   name: string;
   role: string;
   company: string;
-  avatar: string;
+  color: string;
 }
 
 const TESTIMONIALS: Testimonial[] = [
@@ -21,7 +20,7 @@ const TESTIMONIALS: Testimonial[] = [
     name: "Sarah Lim",
     role: "Marketing Director",
     company: "NovaTech Labs",
-    avatar: "/images/testimonial-1.jpg",
+    color: "#7C3AED",
   },
   {
     quote:
@@ -29,7 +28,7 @@ const TESTIMONIALS: Testimonial[] = [
     name: "Rahul Menon",
     role: "CEO",
     company: "TradeFlow India",
-    avatar: "/images/testimonial-2.jpg",
+    color: "#0EA5E9",
   },
   {
     quote:
@@ -37,7 +36,7 @@ const TESTIMONIALS: Testimonial[] = [
     name: "Priya Sharma",
     role: "Founder",
     company: "UrbanCraft Studio",
-    avatar: "/images/testimonial-3.jpg",
+    color: "#EC4899",
   },
   {
     quote:
@@ -45,7 +44,7 @@ const TESTIMONIALS: Testimonial[] = [
     name: "David Chen",
     role: "CTO",
     company: "SkyBridge Analytics",
-    avatar: "/images/testimonial-4.jpg",
+    color: "#16DD47",
   },
   {
     quote:
@@ -53,7 +52,7 @@ const TESTIMONIALS: Testimonial[] = [
     name: "Amara Okafor",
     role: "Operations Lead",
     company: "GreenLeaf Global",
-    avatar: "/images/testimonial-5.jpg",
+    color: "#F59E0B",
   },
   {
     quote:
@@ -61,9 +60,25 @@ const TESTIMONIALS: Testimonial[] = [
     name: "James Wilson",
     role: "Director",
     company: "Atlas Ventures",
-    avatar: "/images/testimonial-6.jpg",
+    color: "#EF4444",
   },
 ];
+
+function AvatarIllustration({ name, color }: { name: string; color: string }) {
+  const initials = name.split(" ").map((n) => n[0]).join("").toUpperCase();
+  return (
+    <div
+      className="w-full h-full rounded-full flex items-center justify-center text-sm font-bold select-none"
+      style={{
+        background: `${color}25`,
+        border: `1.5px solid ${color}60`,
+        color,
+      }}
+    >
+      {initials}
+    </div>
+  );
+}
 
 const quoteVariants = {
   enter: { opacity: 0, y: 20 },
@@ -105,21 +120,15 @@ export function TestimonialsSection() {
               aria-label={`View testimonial from ${t.name}`}
             >
               <motion.div
-                className={`w-12 h-12 sm:w-14 sm:h-14 rounded-full overflow-hidden border-2 transition-colors duration-300 ${
+                className={`w-12 h-12 sm:w-14 sm:h-14 rounded-full overflow-hidden transition-all duration-300 ${
                   i === activeIndex
-                    ? "border-white"
-                    : "border-white/20 group-hover:border-white/50"
+                    ? "ring-2 ring-white"
+                    : "ring-1 ring-white/20 group-hover:ring-white/50"
                 }`}
                 whileHover={{ scale: 1.08 }}
                 whileTap={{ scale: 0.95 }}
               >
-                <Image
-                  src={t.avatar}
-                  alt={t.name}
-                  width={56}
-                  height={56}
-                  className="w-full h-full object-cover"
-                />
+                <AvatarIllustration name={t.name} color={t.color} />
               </motion.div>
               {i === activeIndex && (
                 <motion.div
@@ -151,13 +160,19 @@ export function TestimonialsSection() {
             </blockquote>
 
             {/* Person */}
-            <div>
-              <p className="text-base font-semibold text-white">
-                {active.name}
-              </p>
-              <p className="text-sm text-white/50 mt-0.5">
-                {active.role}, {active.company}
-              </p>
+            <div className="flex items-center gap-3">
+              <div
+                className="w-9 h-9 rounded-full flex-shrink-0 flex items-center justify-center text-xs font-bold"
+                style={{ background: `${active.color}25`, border: `1.5px solid ${active.color}60`, color: active.color }}
+              >
+                {active.name.split(" ").map((n) => n[0]).join("").toUpperCase()}
+              </div>
+              <div>
+                <p className="text-base font-semibold text-white">{active.name}</p>
+                <p className="text-sm text-white/50 mt-0.5">
+                  {active.role}, {active.company}
+                </p>
+              </div>
             </div>
           </motion.div>
         </AnimatePresence>

@@ -3,9 +3,9 @@
 import { useEffect, useRef, useState } from "react";
 import { motion, useInView } from "framer-motion";
 import { SectionLabel } from "../section-label";
-import { ScriptText } from "../script-text";
 import { PillButton } from "../pill-button";
 import { SITE_CONFIG } from "@/lib/site-config";
+import { CinematicHeading } from "../cinematic-heading";
 
 // Parse "15+" → {value: 15, suffix: "+"}  |  "98%" → {value: 98, suffix: "%"}
 function parseStat(raw: string): { value: number; suffix: string } {
@@ -82,17 +82,9 @@ export function MetricsSection() {
               variant="light"
               className="mb-6"
             />
-            <motion.h2
-              className="ig-heading-1 mb-8"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
-            >
-              Metrics that
-              <br />
-              <ScriptText>Prove</ScriptText> value
-            </motion.h2>
+            <CinematicHeading className="ig-heading-1 mb-8" variant="light" delay={0.1}>
+              Metrics that Prove value
+            </CinematicHeading>
             <PillButton
               label="Know more about us"
               href="/about"

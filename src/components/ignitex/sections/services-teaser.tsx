@@ -3,9 +3,9 @@
 import { motion } from "framer-motion";
 import { Code2, Smartphone, Palette, Receipt } from "lucide-react";
 import { SectionLabel } from "../section-label";
-import { ScriptText } from "../script-text";
 import { PillButton } from "../pill-button";
 import { EASE_STANDARD } from "../motion";
+import { CinematicHeading } from "../cinematic-heading";
 
 const SERVICES = [
   {
@@ -38,15 +38,9 @@ export function ServicesTeaserSection() {
         <div className="flex flex-col sm:flex-row items-start sm:items-end justify-between gap-6 mb-14">
           <div>
             <SectionLabel text="What we do" variant="light" />
-            <motion.h2
-              className="mt-5 ig-heading-1"
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-80px" }}
-              transition={{ duration: 0.7, ease: EASE_STANDARD }}
-            >
-              Services that <ScriptText>Scale</ScriptText>
-            </motion.h2>
+            <CinematicHeading className="mt-5 ig-heading-1" variant="light" delay={0.1}>
+              Services that Scale
+            </CinematicHeading>
           </div>
           <PillButton label="See all services" href="/services" variant="dark" size="md" />
         </div>

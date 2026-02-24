@@ -13,9 +13,22 @@ const SERVICES = [
 
 export function HeroSection() {
   return (
-    <section className="relative min-h-screen bg-gradient-to-b from-neutral-300 via-neutral-200 to-neutral-400 overflow-hidden">
+    <section className="relative min-h-screen bg-ig-dark overflow-hidden">
+      {/* MP4 video background */}
+      <video
+        className="absolute inset-0 w-full h-full object-cover"
+        src="/hero.mp4"
+        autoPlay
+        muted
+        loop
+        playsInline
+      />
+
+      {/* Dark overlay for text readability */}
+      <div className="absolute inset-0 bg-black/55" />
+
       {/* Diagonal texture overlay */}
-      <div className="absolute inset-0 ig-texture opacity-50" />
+      <div className="absolute inset-0 ig-texture opacity-30" />
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-28 sm:pt-32 pb-16 min-h-screen flex flex-col justify-between">
         {/* Main heading */}
@@ -30,7 +43,7 @@ export function HeroSection() {
               Build
             </motion.h1>
             <motion.div
-              className="text-[clamp(3rem,12vw,12rem)] font-medium leading-[0.85] tracking-tight text-white/30"
+              className="text-[clamp(3rem,12vw,12rem)] font-medium leading-[0.85] tracking-tight"
               initial={{ opacity: 0, y: 50 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{
@@ -39,7 +52,7 @@ export function HeroSection() {
                 ease: [0.4, 0, 0.2, 1],
               }}
             >
-              <ScriptText className="text-white/40">&</ScriptText>
+              <ScriptText className="text-white/50">&</ScriptText>
             </motion.div>
             <motion.h1
               className="text-[clamp(3rem,12vw,12rem)] font-medium leading-[0.85] tracking-tight text-white"
