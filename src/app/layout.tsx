@@ -1,17 +1,34 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Geist } from "next/font/google";
+import localFont from "next/font/local";
 import { ThemeProvider } from "next-themes";
 import { Analytics } from "@vercel/analytics/react";
 import { Toaster } from "sonner";
-import { ChatWidget } from "@/components/ui/chat-widget";
+import dynamic from "next/dynamic";
+
+const ChatWidget = dynamic(
+  () => import("@/components/ui/chat-widget").then((m) => ({ default: m.ChatWidget })),
+  { loading: () => null }
+);
 import "./globals.css";
 
-const inter = Inter({
+const geist = Geist({
   subsets: ["latin"],
-  variable: "--font-inter",
+  variable: "--font-geist",
   display: "swap",
   preload: true,
-  adjustFontFallback: true,
+});
+
+const greatVibes = localFont({
+  src: [
+    {
+      path: "../fonts/GreatVibes-Regular.ttf",
+      weight: "400",
+      style: "normal",
+    },
+  ],
+  variable: "--font-script",
+  display: "swap",
 });
 
 // Top-tier SEO metadata
@@ -110,7 +127,7 @@ export default function RootLayout({
           }}
         />
       </head>
-      <body className={`${inter.variable} font-sans antialiased bg-background text-foreground`}>
+      <body className={`${geist.variable} ${greatVibes.variable} font-sans antialiased bg-background text-foreground`}>
         <ThemeProvider
           attribute="class"
           defaultTheme="system"

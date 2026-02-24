@@ -230,9 +230,11 @@ async function sendRavenEmail(args: { name: string; email: string; projectType?:
   })
 }
 
-const openai = new OpenAI({
-  apiKey: process.env.OPENAI_API_KEY,
-})
+function getOpenAI() {
+  return new OpenAI({
+    apiKey: process.env.OPENAI_API_KEY || "",
+  })
+}
 
 const SYSTEM_PROMPT = `You are RAVEN — RYX's intelligent AI assistant. You are sharp, confident, and deeply knowledgeable about everything RYX offers.
 
@@ -339,7 +341,7 @@ export async function POST(req: NextRequest) {
 
     const trimmedMessages = messages.slice(-20)
 
-    const response = await openai.chat.completions.create({
+    const response = await getOpenAI().chat.completions.create({
       model: "gpt-4o-mini",
       messages: [
         { role: "system", content: SYSTEM_PROMPT },
@@ -376,7 +378,7 @@ export async function POST(req: NextRequest) {
         const contactMessage = `${args.name}, I've got everything. Let me fill that in for you.`
 
         // Get a follow-up response from the model
-        const followUp = await openai.chat.completions.create({
+        const followUp = await getOpenAI().chat.completions.create({
           model: "gpt-4o-mini",
           messages: [
             { role: "system", content: SYSTEM_PROMPT },
