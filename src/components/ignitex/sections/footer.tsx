@@ -8,29 +8,59 @@ import {
   Linkedin,
   Twitter,
   Instagram,
+  Github,
   ArrowUpRight,
   Send,
 } from "lucide-react";
 import { SITE_CONFIG } from "@/lib/site-config";
 
-const SOCIAL_LINKS = [
-  { name: "Facebook", icon: Facebook, href: "https://facebook.com" },
-  { name: "LinkedIn", icon: Linkedin, href: "https://linkedin.com" },
-  { name: "Twitter / X", icon: Twitter, href: "https://x.com" },
-  { name: "Instagram", icon: Instagram, href: "https://instagram.com" },
+const SOCIAL_ICONS = {
+  facebook: Facebook,
+  linkedin: Linkedin,
+  twitter: Twitter,
+  instagram: Instagram,
+  github: Github,
+} as const;
+
+const SOCIAL_LABELS = {
+  facebook: "Facebook",
+  linkedin: "LinkedIn",
+  twitter: "Twitter / X",
+  instagram: "Instagram",
+  github: "GitHub",
+} as const;
+
+type SocialKey = keyof typeof SOCIAL_ICONS;
+
+const SOCIAL_ENTRIES = (Object.keys(SITE_CONFIG.social) as SocialKey[]).map(
+  (key) => ({
+    name: SOCIAL_LABELS[key],
+    icon: SOCIAL_ICONS[key],
+    href: SITE_CONFIG.social[key],
+  })
+);
+
+const FOOTER_NAV = [
+  ...SITE_CONFIG.nav,
+  { label: "Terms & Privacy", href: "/terms" },
 ];
 
 export function Footer() {
   const [email, setEmail] = useState("");
+  const [subscribed, setSubscribed] = useState(false);
 
   const handleNewsletter = (e: React.FormEvent) => {
     e.preventDefault();
-    // TODO: wire to newsletter service
+    setSubscribed(true);
     setEmail("");
+    setTimeout(() => setSubscribed(false), 4000);
   };
 
   return (
-    <footer className="relative bg-ig-dark text-white overflow-hidden">
+    <footer
+      aria-label="Site footer"
+      className="relative bg-ig-dark text-white overflow-hidden"
+    >
       <div className="absolute inset-0 ig-texture-dark" />
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -49,24 +79,29 @@ export function Footer() {
 
         {/* Social links row */}
         <motion.div
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 border-t border-b border-ig-white-10"
+          className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 border-t border-b border-ig-white-10"
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5, delay: 0.1 }}
         >
-          {SOCIAL_LINKS.map((social, idx) => (
+          {SOCIAL_ENTRIES.map((social, idx) => (
             <a
               key={social.name}
               href={social.href}
               target="_blank"
               rel="noopener noreferrer"
               className={`flex items-center justify-between gap-3 px-5 py-4 group transition-colors hover:bg-ig-white-5 ${
-                idx < SOCIAL_LINKS.length - 1 ? "lg:border-r border-b lg:border-b-0 border-ig-white-10" : "border-b lg:border-b-0"
+                idx < SOCIAL_ENTRIES.length - 1
+                  ? "lg:border-r border-b lg:border-b-0 border-ig-white-10"
+                  : "border-b lg:border-b-0"
               }`}
             >
               <div className="flex items-center gap-3">
-                <social.icon size={16} className="text-white/40 group-hover:text-white transition-colors" />
+                <social.icon
+                  size={16}
+                  className="text-white/40 group-hover:text-white transition-colors"
+                />
                 <span className="text-sm font-medium">{social.name}</span>
               </div>
               <ArrowUpRight
@@ -92,7 +127,10 @@ export function Footer() {
               Get updates on our latest projects, insights, and announcements
               delivered straight to your inbox.
             </p>
-            <form onSubmit={handleNewsletter} className="flex items-center gap-2 max-w-md">
+            <form
+              onSubmit={handleNewsletter}
+              className="flex items-center gap-2 max-w-md"
+            >
               <input
                 type="email"
                 required
@@ -110,6 +148,11 @@ export function Footer() {
                 <Send size={14} />
               </button>
             </form>
+            {subscribed && (
+              <p className="text-xs text-ig-green mt-3">
+                ✓ You&apos;re subscribed!
+              </p>
+            )}
           </motion.div>
 
           {/* Main links */}
@@ -124,7 +167,7 @@ export function Footer() {
               Main links
             </h4>
             <ul className="space-y-3">
-              {SITE_CONFIG.nav.map((link) => (
+              {FOOTER_NAV.map((link) => (
                 <li key={link.href}>
                   <Link
                     href={link.href}
@@ -165,6 +208,16 @@ export function Footer() {
                   {SITE_CONFIG.company.email}
                 </a>
               </li>
+              <li>
+                <a
+                  href={SITE_CONFIG.company.whatsapp}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-sm text-white/70 hover:text-ig-green transition-colors"
+                >
+                  WhatsApp us
+                </a>
+              </li>
             </ul>
           </motion.div>
 
@@ -180,9 +233,16 @@ export function Footer() {
               Offline
             </h4>
             <address className="not-italic space-y-1 text-sm text-white/70 leading-relaxed">
-              <p className="font-medium text-white/90">{SITE_CONFIG.company.name}</p>
-              <p>{SITE_CONFIG.company.city}, {SITE_CONFIG.company.state}</p>
+              <p className="font-medium text-white/90">
+                {SITE_CONFIG.company.name}
+              </p>
+              <p>
+                {SITE_CONFIG.company.city}, {SITE_CONFIG.company.state}
+              </p>
               <p>{SITE_CONFIG.company.country}</p>
+              <p className="text-white/40 text-xs mt-2">
+                Est. {SITE_CONFIG.company.founded}
+              </p>
             </address>
           </motion.div>
         </div>
@@ -190,12 +250,17 @@ export function Footer() {
         {/* Bottom bar */}
         <div className="border-t border-ig-white-10 py-6 flex flex-col sm:flex-row items-center justify-between gap-4">
           <p className="text-xs text-ig-text-light-muted">
-            Designed by RYX, Powered by Next.js
+            Designed & built by RYX, powered by Next.js
           </p>
           <div className="flex items-center gap-4 text-xs text-ig-text-light-muted">
-            <span>&copy; {new Date().getFullYear()} RYX. All rights reserved</span>
-            <Link href="/privacy" className="hover:text-white transition-colors">
-              Privacy Policy
+            <span>
+              &copy; {new Date().getFullYear()} RYX. All rights reserved
+            </span>
+            <Link
+              href="/terms"
+              className="hover:text-white transition-colors"
+            >
+              Terms & Privacy
             </Link>
           </div>
         </div>

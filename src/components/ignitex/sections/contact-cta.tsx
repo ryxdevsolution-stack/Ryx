@@ -21,6 +21,10 @@ interface FormState {
   message: string;
 }
 
+type SubmitStatus = "idle" | "loading" | "success" | "error";
+
+const VALID_FIELDS = new Set<string>(["name", "email", "message"]);
+
 export function ContactCTASection() {
   const [form, setForm] = useState<FormState>({
     name: "",
@@ -28,8 +32,7 @@ export function ContactCTASection() {
     message: "",
   });
   const [copied, setCopied] = useState(false);
-
-  const VALID_FIELDS = new Set<string>(["name", "email", "message"]);
+  const [status, setStatus] = useState<SubmitStatus>("idle");
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -39,9 +42,21 @@ export function ContactCTASection() {
     setForm((prev) => ({ ...prev, [field]: e.target.value }));
   };
 
-  const handleSubmit = (e: FormEvent) => {
+  const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
-    // TODO: wire to backend / email service
+    setStatus("loading");
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(form),
+      });
+      if (!res.ok) throw new Error("Request failed");
+      setStatus("success");
+      setForm({ name: "", email: "", message: "" });
+    } catch {
+      setStatus("error");
+    }
   };
 
   const copyEmail = async () => {
@@ -130,13 +145,33 @@ export function ContactCTASection() {
                 />
               </div>
 
-              <button
-                type="submit"
-                className="inline-flex items-center gap-2.5 rounded-full bg-white text-black px-6 py-3 text-sm font-medium transition-opacity hover:opacity-90 cursor-pointer"
-              >
-                <span>Submit</span>
-                <Send size={14} />
-              </button>
+              {status === "success" ? (
+                <div className="inline-flex items-center gap-2.5 rounded-full bg-ig-green/20 text-ig-green px-6 py-3 text-sm font-medium">
+                  <Check size={14} />
+                  <span>Message sent!</span>
+                </div>
+              ) : (
+                <button
+                  type="submit"
+                  disabled={status === "loading"}
+                  className="inline-flex items-center gap-2.5 rounded-full bg-white text-black px-6 py-3 text-sm font-medium transition-opacity hover:opacity-90 cursor-pointer disabled:opacity-60 disabled:cursor-not-allowed"
+                >
+                  {status === "loading" ? (
+                    <>
+                      <span>Sending…</span>
+                      <Send size={14} className="animate-pulse" />
+                    </>
+                  ) : (
+                    <>
+                      <span>Submit</span>
+                      <Send size={14} />
+                    </>
+                  )}
+                </button>
+              )}
+              {status === "error" && (
+                <p className="mt-2 text-xs text-red-400">Something went wrong. Please try again or email us directly.</p>
+              )}
             </form>
 
             {/* Email copy row */}

@@ -5,10 +5,12 @@ import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
 import Image from "next/image";
 import { X } from "lucide-react";
+import { usePathname } from "next/navigation";
 import { SITE_CONFIG } from "@/lib/site-config";
 
 export function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
+  const pathname = usePathname();
 
   return (
     <>
@@ -87,7 +89,7 @@ export function Navbar() {
                   <Link
                     href={link.href}
                     onClick={() => setIsOpen(false)}
-                    className="block text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-medium text-white/40 hover:text-white transition-colors duration-300 py-2"
+                    className={`block text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-medium transition-colors duration-300 py-2 ${pathname === link.href ? "text-white" : "text-white/40 hover:text-white"}`}
                   >
                     {link.label}
                   </Link>

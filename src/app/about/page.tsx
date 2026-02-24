@@ -1,311 +1,278 @@
 "use client"
 
-import { NavbarMinimal } from "@/components/layout/navbar-minimal"
-import { FooterMinimal } from "@/components/layout/footer-minimal"
-import { AnimatedCursor } from "@/components/ui/animated-cursor"
+import dynamic from "next/dynamic"
 import { motion } from "framer-motion"
-import { Target, Heart, Rocket, Users, TrendingUp, ArrowRight, Sparkles, MessageSquare, Code, Shield } from "lucide-react"
+import { Target, Heart, Rocket, Users, MessageSquare, Shield, Zap } from "lucide-react"
+import Image from "next/image"
+import { Navbar } from "@/components/ignitex/navbar"
+import { SectionLabel } from "@/components/ignitex/section-label"
+import { ScriptText } from "@/components/ignitex/script-text"
+import { PillButton } from "@/components/ignitex/pill-button"
+import { SITE_CONFIG } from "@/lib/site-config"
+import { EASE_STANDARD } from "@/components/ignitex/motion"
 
-const stats = [
-  { icon: Rocket, value: "5+", label: "Projects Delivered", gradient: "from-violet-500 to-purple-600" },
-  { icon: Code, value: "1", label: "Live SaaS Product", gradient: "from-blue-500 to-cyan-500" },
-  { icon: TrendingUp, value: "10+", label: "Technologies We Use", gradient: "from-pink-500 to-rose-500" },
-  { icon: MessageSquare, value: "WhatsApp", label: "Direct Founder Support", gradient: "from-emerald-500 to-teal-500" },
-]
+const ContactCTASection = dynamic(
+  () => import("@/components/ignitex/sections/contact-cta").then((m) => ({ default: m.ContactCTASection })),
+  { loading: () => <div className="min-h-[50vh] bg-ig-dark" /> }
+)
+const Footer = dynamic(
+  () => import("@/components/ignitex/sections/footer").then((m) => ({ default: m.Footer })),
+  { loading: () => <div className="min-h-[40vh] bg-ig-dark" /> }
+)
 
-const values = [
+const VALUES = [
   {
     icon: Target,
     title: "Innovation First",
     description: "We embrace cutting-edge technologies to deliver future-ready solutions that keep you ahead of the curve.",
-    gradient: "from-violet-500 to-purple-600",
-    bgLight: "bg-violet-50",
   },
   {
     icon: Heart,
     title: "Client Success",
     description: "Your success is our priority. We go above and beyond to exceed expectations at every step.",
-    gradient: "from-pink-500 to-rose-500",
-    bgLight: "bg-pink-50",
   },
   {
-    icon: Rocket,
+    icon: Zap,
     title: "Agile Delivery",
     description: "Fast, efficient, and flexible development process that adapts seamlessly to your evolving needs.",
-    gradient: "from-blue-500 to-cyan-500",
-    bgLight: "bg-blue-50",
   },
-]
+] as const
+
+const WHY_US = [
+  {
+    icon: Users,
+    title: "Direct Developer Access",
+    description: "We're not a 500-person agency. When you work with us, you work directly with the developers who build your product.",
+  },
+  {
+    icon: Shield,
+    title: "We Use Our Own Software",
+    description: "We use our own software daily — Valoryx is built because we needed it first. That's how you know it works.",
+  },
+  {
+    icon: MessageSquare,
+    title: "WhatsApp Support",
+    description: "Based in Coimbatore, available on WhatsApp. No ticket systems, no waiting 48 hours for a reply.",
+  },
+] as const
+
+const VIEWPORT = { once: true, margin: "-80px" } as const
+
+function fadeUpCard(i: number) {
+  return {
+    initial: { opacity: 0, y: 30 },
+    whileInView: { opacity: 1, y: 0 },
+    viewport: VIEWPORT,
+    transition: { duration: 0.55, delay: i * 0.08, ease: EASE_STANDARD },
+  } as const
+}
 
 export default function AboutPage() {
   return (
     <>
-      <AnimatedCursor />
-      <NavbarMinimal />
+      <Navbar />
+      <main>
+        {/* ── Hero — ig-section-dark ── */}
+        <section className="ig-section-dark relative overflow-hidden">
+          <div className="absolute inset-0 ig-texture-dark" />
+          <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-32 sm:pt-40 pb-20 sm:pb-28">
+            <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-16">
+              <div className="flex-1 max-w-2xl">
+                <SectionLabel text="Our story" variant="dark" className="mb-6" />
+                <motion.h1
+                  className="ig-heading-1 text-white mb-6"
+                  initial={{ opacity: 0, y: 40 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.7, ease: EASE_STANDARD }}
+                >
+                  We build digital products that{" "}
+                  <ScriptText>Matter</ScriptText>
+                </motion.h1>
+                <motion.p
+                  className="text-ig-text-light-muted text-base sm:text-lg mb-10 max-w-xl leading-relaxed"
+                  initial={{ opacity: 0, y: 40 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.7, delay: 0.15, ease: EASE_STANDARD }}
+                >
+                  Founded in 2023, Coimbatore, India. We build billing software,
+                  websites, mobile apps, and custom CRMs for businesses locally and globally.
+                </motion.p>
+                <motion.div
+                  initial={{ opacity: 0, y: 40 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.7, delay: 0.3, ease: EASE_STANDARD }}
+                >
+                  <PillButton label="Start a project" href="/contact" variant="dark" size="md" />
+                </motion.div>
+              </div>
 
-      {/* ── Page Container ── */}
-      <main className="relative z-10 bg-white rounded-b-[2rem] shadow-[0_4px_40px_rgba(0,0,0,0.06)]">
-
-        {/* ━━━━ HERO ━━━━ */}
-        <section className="relative pt-36 pb-24 md:pt-44 md:pb-32 bg-gradient-to-b from-gray-50 via-gray-50/50 to-white overflow-hidden">
-          {/* Decorative blobs */}
-          <div className="absolute top-20 left-1/4 w-72 h-72 bg-violet-200/30 rounded-full blur-3xl" />
-          <div className="absolute bottom-10 right-1/4 w-64 h-64 bg-pink-200/20 rounded-full blur-3xl" />
-
-          <div className="relative max-w-5xl mx-auto px-6 md:px-12">
-            <motion.div
-              initial={{ opacity: 0, y: 24 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7, ease: [0.25, 0.1, 0.25, 1] }}
-              className="text-center"
-            >
-              <span className="inline-flex items-center gap-2 text-xs font-semibold tracking-[0.2em] uppercase text-violet-600 mb-6 bg-violet-50 px-4 py-2 rounded-full border border-violet-100">
-                <Sparkles className="w-3.5 h-3.5" />
-                About RYX
-              </span>
-
-              <h1 className="text-5xl md:text-6xl lg:text-[4.5rem] font-bold leading-[1.1] tracking-tight text-gray-900 mb-8">
-                We build digital products{" "}
-                <span className="bg-gradient-to-r from-violet-600 to-pink-500 bg-clip-text text-transparent">
-                  that matter
-                </span>
-              </h1>
-
-              <p className="text-lg md:text-xl text-gray-500 max-w-2xl mx-auto leading-relaxed">
-                Founded in 2023, RYX is a software development company based in Coimbatore, India. We build billing software, websites, mobile apps, and custom CRMs for businesses locally and globally.
-              </p>
-            </motion.div>
+              <div className="hidden lg:flex flex-1 items-center justify-center">
+                <Image
+                  src="/illustrations/about.svg"
+                  alt=""
+                  width={400}
+                  height={300}
+                  className="w-full h-auto opacity-80"
+                  aria-hidden
+                />
+              </div>
+            </div>
           </div>
         </section>
 
-        {/* ━━━━ STATS ━━━━ */}
-        <section className="py-16 md:py-20">
-          <div className="max-w-6xl mx-auto px-6 md:px-12">
-            <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
-              {stats.map((stat, index) => (
+        {/* ── Stats — ig-section-white ── */}
+        <section className="ig-section-white">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-20">
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 md:gap-6">
+              {SITE_CONFIG.stats.map((stat, i) => (
                 <motion.div
                   key={stat.label}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.5, delay: index * 0.1 }}
-                  className="group relative bg-white rounded-2xl border border-gray-200/60 p-6 md:p-8 text-center hover:shadow-lg hover:shadow-gray-200/50 hover:border-gray-300/80 transition-all duration-300"
+                  {...fadeUpCard(i)}
+                  className="ig-card-light p-6 md:p-8 flex flex-col items-center text-center"
                 >
-                  <div className={`w-12 h-12 bg-gradient-to-br ${stat.gradient} rounded-xl flex items-center justify-center mx-auto mb-4 shadow-lg shadow-violet-500/10`}>
-                    <stat.icon className="w-5 h-5 text-white" />
-                  </div>
-                  <div className="text-3xl md:text-4xl font-bold text-gray-900 mb-1">
-                    {stat.value}
-                  </div>
-                  <p className="text-sm text-gray-500 font-medium">{stat.label}</p>
+                  <span className="text-4xl font-bold text-black mb-1">{stat.value}</span>
+                  <span className="text-sm text-neutral-500">{stat.label}</span>
                 </motion.div>
               ))}
             </div>
           </div>
         </section>
 
-        {/* ━━━━ MISSION & VISION ━━━━ */}
-        <section className="py-24 md:py-32 bg-gray-50">
-          <div className="max-w-6xl mx-auto px-6 md:px-12">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
+        {/* ── Mission & Vision — ig-section-light ── */}
+        <section className="ig-section-light">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 sm:py-28">
+            <SectionLabel text="What drives us" variant="light" className="mb-6" />
+            <motion.h2
+              className="ig-heading-2 mb-14"
+              initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5 }}
-              className="text-center mb-16"
+              viewport={VIEWPORT}
+              transition={{ duration: 0.6, ease: EASE_STANDARD }}
             >
-              <span className="inline-block text-xs font-semibold tracking-[0.2em] uppercase text-violet-600 mb-4">
-                What Drives Us
-              </span>
-              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-                Mission & Vision
-              </h2>
-              <p className="text-gray-500 max-w-lg mx-auto">
-                The foundations that guide our work and define our purpose.
-              </p>
-            </motion.div>
+              Mission &amp; <ScriptText>Vision</ScriptText>
+            </motion.h2>
 
-            <div className="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto">
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5 }}
-                className="group bg-white rounded-2xl border border-gray-200/60 p-8 md:p-10 hover:shadow-lg hover:shadow-violet-500/5 transition-all duration-300"
-              >
-                <div className="w-12 h-12 bg-gradient-to-br from-violet-500 to-purple-600 rounded-xl flex items-center justify-center mb-6 shadow-lg shadow-violet-500/20">
-                  <Target className="w-5 h-5 text-white" />
+            <div className="grid md:grid-cols-2 gap-6">
+              <motion.div className="ig-card-light p-8 md:p-10" {...fadeUpCard(0)}>
+                <div className="w-10 h-10 rounded-lg bg-black text-white flex items-center justify-center mb-6">
+                  <Target size={18} />
                 </div>
-                <h3 className="text-xl font-bold text-gray-900 mb-3">Our Mission</h3>
-                <p className="text-gray-500 leading-relaxed text-[15px]">
-                  To build software that actually solves real business problems — not just flashy demos, but tools that business owners use every day. We started with Valoryx because we needed better billing software ourselves.
+                <h3 className="ig-heading-4 mb-3">Our Mission</h3>
+                <p className="text-sm text-neutral-500 leading-relaxed">
+                  To build software that actually solves real business problems —
+                  not just flashy demos, but tools that business owners use every day.
+                  We started with Valoryx because we needed better billing software ourselves.
                 </p>
               </motion.div>
 
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: 0.1 }}
-                className="group bg-white rounded-2xl border border-gray-200/60 p-8 md:p-10 hover:shadow-lg hover:shadow-pink-500/5 transition-all duration-300"
-              >
-                <div className="w-12 h-12 bg-gradient-to-br from-pink-500 to-rose-500 rounded-xl flex items-center justify-center mb-6 shadow-lg shadow-pink-500/20">
-                  <Rocket className="w-5 h-5 text-white" />
+              <motion.div className="ig-card-light p-8 md:p-10" {...fadeUpCard(1)}>
+                <div className="w-10 h-10 rounded-lg bg-black text-white flex items-center justify-center mb-6">
+                  <Rocket size={18} />
                 </div>
-                <h3 className="text-xl font-bold text-gray-900 mb-3">Our Vision</h3>
-                <p className="text-gray-500 leading-relaxed text-[15px]">
-                  To become the go-to software partner for small and medium businesses in India and worldwide. We want every business owner to have access to the same quality tools that large enterprises use, at a price they can afford.
+                <h3 className="ig-heading-4 mb-3">Our Vision</h3>
+                <p className="text-sm text-neutral-500 leading-relaxed">
+                  To become the go-to software partner for small and medium businesses
+                  in India and worldwide. Every business owner deserves enterprise-grade
+                  tools at a price they can afford.
                 </p>
               </motion.div>
             </div>
           </div>
         </section>
 
-        {/* ━━━━ CORE VALUES ━━━━ */}
-        <section className="py-24 md:py-32">
-          <div className="max-w-6xl mx-auto px-6 md:px-12">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
+        {/* ── Team — ig-section-dark ── */}
+        <section className="ig-section-dark relative">
+          <div className="absolute inset-0 ig-texture-dark" />
+          <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 sm:py-28">
+            <SectionLabel text="The people" variant="dark" className="mb-6" />
+            <motion.h2
+              className="ig-heading-2 text-white mb-14"
+              initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5 }}
-              className="text-center mb-16"
+              viewport={VIEWPORT}
+              transition={{ duration: 0.6, ease: EASE_STANDARD }}
             >
-              <span className="inline-block text-xs font-semibold tracking-[0.2em] uppercase text-violet-600 mb-4">
-                What We Stand For
-              </span>
-              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-                Our Core Values
-              </h2>
-              <p className="text-gray-500 max-w-lg mx-auto">
-                The principles that guide everything we do, from first meeting to final launch.
-              </p>
-            </motion.div>
+              Meet the <ScriptText>Team</ScriptText>
+            </motion.h2>
 
-            <div className="grid md:grid-cols-3 gap-6">
-              {values.map((value, index) => (
+            <div className="grid sm:grid-cols-3 gap-6">
+              {SITE_CONFIG.team.map((member, i) => (
                 <motion.div
-                  key={value.title}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.5, delay: index * 0.1 }}
-                  className="group"
+                  key={member.name}
+                  className="ig-card-dark p-6"
+                  {...fadeUpCard(i)}
                 >
-                  <div className="bg-white rounded-2xl border border-gray-200/60 p-8 md:p-10 h-full hover:shadow-lg hover:shadow-gray-200/50 hover:border-gray-300/80 transition-all duration-300">
-                    <div className={`w-12 h-12 bg-gradient-to-br ${value.gradient} rounded-xl flex items-center justify-center mb-6 shadow-lg shadow-gray-900/10`}>
-                      <value.icon className="w-5 h-5 text-white" />
-                    </div>
-                    <h3 className="text-lg font-bold text-gray-900 mb-2">{value.title}</h3>
-                    <p className="text-gray-500 leading-relaxed text-[15px]">{value.description}</p>
+                  <div className="w-16 h-16 rounded-full bg-ig-white-10 flex items-center justify-center text-2xl font-bold text-white mb-5 select-none">
+                    {member.name.charAt(0)}
                   </div>
+                  <h3 className="text-lg font-semibold text-white">{member.name}</h3>
+                  <p className="text-xs text-ig-green mt-0.5 mb-3">{member.role}</p>
+                  <p className="text-sm text-ig-text-light-muted leading-relaxed">{member.bio}</p>
                 </motion.div>
               ))}
             </div>
           </div>
         </section>
 
-        {/* ━━━━ WHY CHOOSE US ━━━━ */}
-        <section className="py-24 md:py-32 bg-gray-50">
-          <div className="max-w-6xl mx-auto px-6 md:px-12">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
+        {/* ── Core Values — ig-section-white ── */}
+        <section className="ig-section-white">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 sm:py-28">
+            <SectionLabel text="What we stand for" variant="light" className="mb-6" />
+            <motion.h2
+              className="ig-heading-2 mb-14"
+              initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5 }}
-              className="text-center mb-16"
+              viewport={VIEWPORT}
+              transition={{ duration: 0.6, ease: EASE_STANDARD }}
             >
-              <span className="inline-block text-xs font-semibold tracking-[0.2em] uppercase text-violet-600 mb-4">
-                Why Us
-              </span>
-              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-                Why Businesses Choose Us
-              </h2>
-            </motion.div>
+              Our Core <ScriptText>Values</ScriptText>
+            </motion.h2>
 
             <div className="grid md:grid-cols-3 gap-6">
-              {[
-                {
-                  icon: Users,
-                  title: "Direct Developer Access",
-                  description: "We\u2019re not a 500-person agency. When you work with us, you work directly with the developers who build your product.",
-                  gradient: "from-violet-500 to-purple-600",
-                },
-                {
-                  icon: Shield,
-                  title: "We Use Our Own Software",
-                  description: "We use our own software daily \u2014 Valoryx is built because we needed it first. That\u2019s how you know it works.",
-                  gradient: "from-pink-500 to-rose-500",
-                },
-                {
-                  icon: MessageSquare,
-                  title: "WhatsApp Support",
-                  description: "Based in Coimbatore, available on WhatsApp. No ticket systems, no waiting 48 hours for a reply.",
-                  gradient: "from-blue-500 to-cyan-500",
-                },
-              ].map((item, index) => (
-                <motion.div
-                  key={item.title}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.5, delay: index * 0.1 }}
-                  className="group"
-                >
-                  <div className="bg-white rounded-2xl border border-gray-200/60 p-8 md:p-10 h-full hover:shadow-lg hover:shadow-gray-200/50 hover:border-gray-300/80 transition-all duration-300">
-                    <div className={`w-12 h-12 bg-gradient-to-br ${item.gradient} rounded-xl flex items-center justify-center mb-6 shadow-lg shadow-gray-900/10`}>
-                      <item.icon className="w-5 h-5 text-white" />
-                    </div>
-                    <h3 className="text-lg font-bold text-gray-900 mb-2">{item.title}</h3>
-                    <p className="text-gray-500 leading-relaxed text-[15px]">{item.description}</p>
+              {VALUES.map((value, i) => (
+                <motion.div key={value.title} className="ig-card-light p-8" {...fadeUpCard(i)}>
+                  <div className="w-10 h-10 rounded-lg bg-black text-white flex items-center justify-center mb-6">
+                    <value.icon size={18} />
                   </div>
+                  <h3 className="ig-heading-4 mb-2">{value.title}</h3>
+                  <p className="text-sm text-neutral-500 leading-relaxed">{value.description}</p>
                 </motion.div>
               ))}
             </div>
           </div>
         </section>
+
+        {/* ── Why Choose Us — ig-section-light ── */}
+        <section className="ig-section-light">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 sm:py-28">
+            <SectionLabel text="Why us" variant="light" className="mb-6" />
+            <motion.h2
+              className="ig-heading-2 mb-14"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={VIEWPORT}
+              transition={{ duration: 0.6, ease: EASE_STANDARD }}
+            >
+              Why Businesses <ScriptText>Choose Us</ScriptText>
+            </motion.h2>
+
+            <div className="grid md:grid-cols-3 gap-6">
+              {WHY_US.map((item, i) => (
+                <motion.div key={item.title} className="ig-card-light p-8" {...fadeUpCard(i)}>
+                  <div className="w-10 h-10 rounded-lg bg-black text-white flex items-center justify-center mb-6">
+                    <item.icon size={18} />
+                  </div>
+                  <h3 className="ig-heading-4 mb-2">{item.title}</h3>
+                  <p className="text-sm text-neutral-500 leading-relaxed">{item.description}</p>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <ContactCTASection />
       </main>
-
-      {/* ━━━━ CTA — revealed behind the page ━━━━ */}
-      <section className="sticky bottom-0 z-0 py-24 md:py-32 bg-gray-950 overflow-hidden">
-        {/* Decorative gradient orbs */}
-        <div className="absolute top-1/2 left-1/4 -translate-y-1/2 w-96 h-96 bg-violet-600/10 rounded-full blur-3xl" />
-        <div className="absolute top-1/2 right-1/4 -translate-y-1/2 w-80 h-80 bg-pink-600/10 rounded-full blur-3xl" />
-
-        <div className="relative max-w-4xl mx-auto px-6 md:px-12 text-center">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-          >
-            <span className="inline-block text-xs font-semibold tracking-[0.2em] uppercase text-gray-500 mb-6">
-              Start Your Project
-            </span>
-
-            <h2 className="text-4xl md:text-5xl font-bold text-white mb-6 leading-tight">
-              Ready to bring your{" "}
-              <span className="bg-gradient-to-r from-violet-400 to-pink-400 bg-clip-text text-transparent">
-                ideas to life
-              </span>
-              ?
-            </h2>
-            <p className="text-lg text-gray-400 max-w-xl mx-auto mb-10">
-              Let&apos;s work together to transform your vision into reality.
-            </p>
-
-            <a
-              href="/contact"
-              className="inline-flex items-center gap-2 px-7 py-3.5 bg-gradient-to-r from-violet-600 to-pink-500 text-white font-semibold rounded-xl hover:opacity-90 transition-opacity duration-200 shadow-lg shadow-violet-500/25"
-            >
-              Get In Touch
-              <ArrowRight className="w-4 h-4" />
-            </a>
-          </motion.div>
-        </div>
-      </section>
-
-      <FooterMinimal />
+      <Footer />
     </>
   )
 }

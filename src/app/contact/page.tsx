@@ -1,12 +1,20 @@
 "use client"
 
-import { NavbarMinimal } from "@/components/layout/navbar-minimal"
-import { FooterMinimal } from "@/components/layout/footer-minimal"
-import { AnimatedCursor } from "@/components/ui/animated-cursor"
+import dynamic from "next/dynamic"
+import { Navbar } from "@/components/ignitex/navbar"
+import { SectionLabel } from "@/components/ignitex/section-label"
+import { ScriptText } from "@/components/ignitex/script-text"
+import { SITE_CONFIG } from "@/lib/site-config"
+import { EASE_STANDARD } from "@/components/ignitex/motion"
 import { motion } from "framer-motion"
-import { Mail, Phone, MapPin, Send, Sparkles, Clock, Globe, MessageCircle, Zap } from "lucide-react"
+import { Mail, Phone, MapPin, Send, Clock, MessageCircle, Zap } from "lucide-react"
 import { useState, useEffect } from "react"
 import { RAVEN_EVENTS } from "@/components/ui/chat-widget"
+
+const Footer = dynamic(
+  () => import("@/components/ignitex/sections/footer").then((m) => ({ default: m.Footer })),
+  { loading: () => <div className="min-h-[40vh] bg-ig-dark" /> }
+)
 
 const services = [
   "Billing Software",
@@ -19,11 +27,11 @@ const services = [
 ]
 
 const budgetRanges = [
-  "Under \u20b950,000",
-  "\u20b950,000 - \u20b92,00,000",
-  "\u20b92,00,000 - \u20b95,00,000",
-  "\u20b95,00,000 - \u20b910,00,000",
-  "\u20b910,00,000+",
+  "Under ₹50,000",
+  "₹50,000 - ₹2,00,000",
+  "₹2,00,000 - ₹5,00,000",
+  "₹5,00,000 - ₹10,00,000",
+  "₹10,00,000+",
 ]
 
 const timelines = [
@@ -33,6 +41,13 @@ const timelines = [
   "2 - 3 months",
   "3+ months",
   "Not sure yet",
+]
+
+const INFO_CARDS = [
+  { icon: Mail, label: "Email", value: SITE_CONFIG.company.email },
+  { icon: Phone, label: "Phone / WhatsApp", value: SITE_CONFIG.company.phone },
+  { icon: Clock, label: "Hours", value: "Mon–Sat, 9am–6pm IST" },
+  { icon: MapPin, label: "Location", value: SITE_CONFIG.company.location },
 ]
 
 export default function ContactPage() {
@@ -105,73 +120,54 @@ export default function ContactPage() {
 
   return (
     <>
-      <AnimatedCursor />
-      <NavbarMinimal />
-
-      <main className="relative z-10 bg-white rounded-b-[2rem] shadow-[0_4px_40px_rgba(0,0,0,0.06)]">
-        {/* ━━━━ HERO ━━━━ */}
-        <section className="relative pt-36 pb-20 md:pt-44 md:pb-24 bg-gradient-to-b from-gray-50 via-gray-50/50 to-white overflow-hidden">
-          <div className="absolute top-20 left-1/4 w-72 h-72 bg-violet-200/30 rounded-full blur-3xl" />
-          <div className="absolute bottom-10 right-1/4 w-64 h-64 bg-pink-200/20 rounded-full blur-3xl" />
-
-          <div className="relative max-w-5xl mx-auto px-6 md:px-12">
-            <motion.div
-              initial={{ opacity: 0, y: 24 }}
+      <Navbar />
+      <main>
+        {/* ── Hero — dark ── */}
+        <section className="ig-section-dark relative overflow-hidden pt-32 pb-16 sm:pt-40 sm:pb-24">
+          <div className="absolute inset-0 ig-texture-dark" />
+          <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <SectionLabel text="Get in touch" variant="dark" />
+            <motion.h1
+              className="ig-heading-1 text-white mt-5"
+              initial={{ opacity: 0, y: 40 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7, ease: [0.25, 0.1, 0.25, 1] }}
-              className="text-center"
+              transition={{ duration: 0.8, ease: EASE_STANDARD }}
             >
-              <span className="inline-flex items-center gap-2 text-xs font-semibold tracking-[0.2em] uppercase text-violet-600 mb-6 bg-violet-50 px-4 py-2 rounded-full border border-violet-100">
-                <Sparkles className="w-3.5 h-3.5" />
-                Get In Touch
-              </span>
+              Let&apos;s Build Something <ScriptText>Together</ScriptText>
+            </motion.h1>
+            <motion.p
+              className="text-white/70 text-base sm:text-lg max-w-xl mt-4 leading-relaxed"
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7, delay: 0.2, ease: EASE_STANDARD }}
+            >
+              Whether you need a billing solution, a website, or a custom CRM — reach out and we&apos;ll get back to you within 2 hours.
+            </motion.p>
 
-              <h1 className="text-5xl md:text-6xl font-bold leading-[1.1] tracking-tight text-gray-900 mb-6">
-                Let&apos;s Build Something{" "}
-                <span className="bg-gradient-to-r from-violet-600 to-pink-500 bg-clip-text text-transparent">
-                  Together
-                </span>
-              </h1>
-
-              <p className="text-lg md:text-xl text-gray-500 max-w-2xl mx-auto leading-relaxed">
-                Whether you need a billing solution, a website, or a custom CRM — reach out and we&apos;ll get back to you within 2 hours.
-              </p>
+            {/* Info cards */}
+            <motion.div
+              className="grid grid-cols-2 lg:grid-cols-4 gap-3 mt-10"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.35, ease: EASE_STANDARD }}
+            >
+              {INFO_CARDS.map((card) => (
+                <div
+                  key={card.label}
+                  className="ig-card-dark p-4 flex flex-col gap-2"
+                >
+                  <card.icon size={16} className="text-ig-green" />
+                  <p className="text-xs text-ig-text-light-muted">{card.label}</p>
+                  <p className="text-sm font-medium text-white">{card.value}</p>
+                </div>
+              ))}
             </motion.div>
           </div>
         </section>
 
-        {/* ━━━━ CONTACT INFO CARDS ━━━━ */}
-        <section className="py-8 md:py-12">
-          <div className="max-w-6xl mx-auto px-6 md:px-12">
-            <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
-              {[
-                { icon: Mail, label: "Email", value: "ryxdevsolutions@gmail.com", gradient: "from-violet-500 to-purple-600", shadow: "shadow-violet-500/20" },
-                { icon: Phone, label: "Phone / WhatsApp", value: "+91 6374853277", gradient: "from-blue-500 to-cyan-500", shadow: "shadow-blue-500/20" },
-                { icon: Clock, label: "Hours", value: "Mon-Sat, 9am-6pm IST", gradient: "from-pink-500 to-rose-500", shadow: "shadow-pink-500/20" },
-                { icon: MapPin, label: "Location", value: "Coimbatore, Tamil Nadu, India", gradient: "from-emerald-500 to-teal-500", shadow: "shadow-emerald-500/20" },
-              ].map((item, i) => (
-                <motion.div
-                  key={item.label}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.5, delay: i * 0.1 }}
-                  className="bg-white rounded-2xl border border-gray-200/60 p-5 hover:shadow-lg hover:shadow-gray-200/50 transition-all duration-300"
-                >
-                  <div className={`w-10 h-10 bg-gradient-to-br ${item.gradient} rounded-xl flex items-center justify-center mb-3 shadow-lg ${item.shadow}`}>
-                    <item.icon className="w-4 h-4 text-white" />
-                  </div>
-                  <p className="text-xs text-gray-400 font-medium mb-0.5">{item.label}</p>
-                  <p className="text-sm font-semibold text-gray-900">{item.value}</p>
-                </motion.div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* ━━━━ FORM SECTION ━━━━ */}
-        <section className="py-16 md:py-24">
-          <div className="max-w-6xl mx-auto px-6 md:px-12">
+        {/* ── Form Section — white ── */}
+        <section className="ig-section-white py-16 sm:py-24">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="grid lg:grid-cols-5 gap-12 lg:gap-16">
               {/* Left Column - Info */}
               <div className="lg:col-span-2">
@@ -179,44 +175,42 @@ export default function ContactPage() {
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
-                  transition={{ duration: 0.5 }}
+                  transition={{ duration: 0.5, ease: EASE_STANDARD }}
                 >
-                  <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-4">
-                    Project Details
-                  </h2>
-                  <p className="text-gray-500 leading-relaxed mb-8">
+                  <h2 className="ig-heading-3 mb-4">Project Details</h2>
+                  <p className="text-neutral-500 leading-relaxed mb-8 text-sm">
                     Fill in the details below and our team will reach out with a tailored solution. The more information you provide, the better we can help.
                   </p>
 
                   {/* RAVEN callout */}
-                  <div className="bg-gray-950 rounded-2xl p-6 mb-8">
+                  <div className="ig-card-dark p-6 mb-8">
                     <div className="flex items-center gap-3 mb-3">
-                      <div className="w-9 h-9 bg-gradient-to-br from-violet-500 to-purple-600 rounded-xl flex items-center justify-center">
-                        <Zap className="w-4 h-4 text-white" />
+                      <div className="w-9 h-9 bg-ig-green/20 rounded-xl flex items-center justify-center">
+                        <Zap size={16} className="text-ig-green" />
                       </div>
                       <div>
                         <h3 className="text-sm font-bold text-white">RAVEN AI</h3>
-                        <p className="text-[11px] text-gray-400">Smart form assistant</p>
+                        <p className="text-[11px] text-ig-text-light-muted">Smart form assistant</p>
                       </div>
                     </div>
-                    <p className="text-sm text-gray-400 leading-relaxed">
+                    <p className="text-sm text-ig-text-light-muted leading-relaxed">
                       Don&apos;t want to fill forms? Chat with RAVEN — our AI assistant in the bottom right. Describe your project and RAVEN will fill this form for you.
                     </p>
                   </div>
 
                   {/* Process steps */}
                   <div className="space-y-4">
-                    <h3 className="text-sm font-semibold text-gray-900 uppercase tracking-wider">What happens next?</h3>
+                    <h3 className="text-xs font-semibold text-neutral-400 uppercase tracking-wider">What happens next?</h3>
                     {[
                       { step: "01", text: "We review your project requirements" },
                       { step: "02", text: "Schedule a free discovery call" },
                       { step: "03", text: "Deliver a detailed proposal & timeline" },
                     ].map((item) => (
                       <div key={item.step} className="flex items-center gap-4">
-                        <span className="text-xs font-bold text-violet-600 bg-violet-50 w-8 h-8 rounded-lg flex items-center justify-center border border-violet-100">
+                        <span className="text-xs font-bold text-white bg-black w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0">
                           {item.step}
                         </span>
-                        <p className="text-sm text-gray-600">{item.text}</p>
+                        <p className="text-sm text-neutral-600">{item.text}</p>
                       </div>
                     ))}
                   </div>
@@ -230,66 +224,66 @@ export default function ContactPage() {
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
-                  transition={{ duration: 0.5, delay: 0.1 }}
-                  className="bg-white rounded-2xl border border-gray-200/60 p-6 md:p-8 space-y-5"
+                  transition={{ duration: 0.5, delay: 0.1, ease: EASE_STANDARD }}
+                  className="ig-card-light p-6 sm:p-8 space-y-5"
                 >
                   {/* RAVEN fill indicator */}
                   {filledByRaven && (
                     <motion.div
                       initial={{ opacity: 0, y: -10 }}
                       animate={{ opacity: 1, y: 0 }}
-                      className="flex items-center gap-2 bg-violet-50 border border-violet-100 rounded-xl px-4 py-3"
+                      className="flex items-center gap-2 bg-ig-green/10 border border-ig-green/30 rounded-xl px-4 py-3"
                     >
-                      <Zap className="w-4 h-4 text-violet-600" />
-                      <p className="text-sm text-violet-700 font-medium">RAVEN filled your details. Review and submit!</p>
+                      <Zap size={14} className="text-ig-green" />
+                      <p className="text-sm text-ig-green font-medium">RAVEN filled your details. Review and submit!</p>
                     </motion.div>
                   )}
 
-                  {/* Name + Email row */}
+                  {/* Name + Email */}
                   <div className="grid md:grid-cols-2 gap-4">
                     <div>
-                      <label className="block text-sm font-medium text-gray-700 mb-1.5">Full Name *</label>
+                      <label className="block text-sm font-medium text-neutral-700 mb-1.5">Full Name *</label>
                       <input
                         type="text"
                         value={formData.name}
                         onChange={(e) => updateField("name", e.target.value)}
                         required
-                        className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl text-gray-900 text-sm placeholder-gray-400 focus:outline-none focus:border-violet-400 focus:ring-2 focus:ring-violet-100 transition-all"
-                        placeholder="John Doe"
+                        className="w-full px-4 py-3 bg-neutral-50 border border-neutral-200 rounded-xl text-neutral-900 text-sm placeholder-neutral-400 focus:outline-none focus:border-black focus:ring-1 focus:ring-black transition-all"
+                        placeholder="Your name"
                       />
                     </div>
                     <div>
-                      <label className="block text-sm font-medium text-gray-700 mb-1.5">Email *</label>
+                      <label className="block text-sm font-medium text-neutral-700 mb-1.5">Email *</label>
                       <input
                         type="email"
                         value={formData.email}
                         onChange={(e) => updateField("email", e.target.value)}
                         required
-                        className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl text-gray-900 text-sm placeholder-gray-400 focus:outline-none focus:border-violet-400 focus:ring-2 focus:ring-violet-100 transition-all"
-                        placeholder="john@company.com"
+                        className="w-full px-4 py-3 bg-neutral-50 border border-neutral-200 rounded-xl text-neutral-900 text-sm placeholder-neutral-400 focus:outline-none focus:border-black focus:ring-1 focus:ring-black transition-all"
+                        placeholder="you@company.com"
                       />
                     </div>
                   </div>
 
-                  {/* Phone + Company row */}
+                  {/* Phone + Company */}
                   <div className="grid md:grid-cols-2 gap-4">
                     <div>
-                      <label className="block text-sm font-medium text-gray-700 mb-1.5">Phone</label>
+                      <label className="block text-sm font-medium text-neutral-700 mb-1.5">Phone</label>
                       <input
                         type="tel"
                         value={formData.phone}
                         onChange={(e) => updateField("phone", e.target.value)}
-                        className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl text-gray-900 text-sm placeholder-gray-400 focus:outline-none focus:border-violet-400 focus:ring-2 focus:ring-violet-100 transition-all"
-                        placeholder="+1 (555) 000-0000"
+                        className="w-full px-4 py-3 bg-neutral-50 border border-neutral-200 rounded-xl text-neutral-900 text-sm placeholder-neutral-400 focus:outline-none focus:border-black focus:ring-1 focus:ring-black transition-all"
+                        placeholder="+91 XXXXXXXXXX"
                       />
                     </div>
                     <div>
-                      <label className="block text-sm font-medium text-gray-700 mb-1.5">Company</label>
+                      <label className="block text-sm font-medium text-neutral-700 mb-1.5">Company</label>
                       <input
                         type="text"
                         value={formData.company}
                         onChange={(e) => updateField("company", e.target.value)}
-                        className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl text-gray-900 text-sm placeholder-gray-400 focus:outline-none focus:border-violet-400 focus:ring-2 focus:ring-violet-100 transition-all"
+                        className="w-full px-4 py-3 bg-neutral-50 border border-neutral-200 rounded-xl text-neutral-900 text-sm placeholder-neutral-400 focus:outline-none focus:border-black focus:ring-1 focus:ring-black transition-all"
                         placeholder="Your company name"
                       />
                     </div>
@@ -297,7 +291,7 @@ export default function ContactPage() {
 
                   {/* Service Selection */}
                   <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-1.5">Service Needed *</label>
+                    <label className="block text-sm font-medium text-neutral-700 mb-1.5">Service Needed *</label>
                     <div className="flex flex-wrap gap-2">
                       {services.map((service) => (
                         <button
@@ -306,8 +300,8 @@ export default function ContactPage() {
                           onClick={() => updateField("service", formData.service === service ? "" : service)}
                           className={`text-xs font-medium px-3.5 py-2 rounded-full border transition-all duration-200 ${
                             formData.service === service
-                              ? "bg-gray-900 text-white border-gray-900"
-                              : "bg-white text-gray-600 border-gray-200 hover:border-gray-400"
+                              ? "bg-black text-white border-black"
+                              : "bg-white text-neutral-600 border-neutral-200 hover:border-black"
                           }`}
                         >
                           {service}
@@ -316,14 +310,14 @@ export default function ContactPage() {
                     </div>
                   </div>
 
-                  {/* Budget + Timeline row */}
+                  {/* Budget + Timeline */}
                   <div className="grid md:grid-cols-2 gap-4">
                     <div>
-                      <label className="block text-sm font-medium text-gray-700 mb-1.5">Budget Range</label>
+                      <label className="block text-sm font-medium text-neutral-700 mb-1.5">Budget Range</label>
                       <select
                         value={formData.budget}
                         onChange={(e) => updateField("budget", e.target.value)}
-                        className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl text-gray-900 text-sm focus:outline-none focus:border-violet-400 focus:ring-2 focus:ring-violet-100 transition-all appearance-none"
+                        className="w-full px-4 py-3 bg-neutral-50 border border-neutral-200 rounded-xl text-neutral-900 text-sm focus:outline-none focus:border-black focus:ring-1 focus:ring-black transition-all appearance-none cursor-pointer"
                       >
                         <option value="">Select budget</option>
                         {budgetRanges.map((range) => (
@@ -332,11 +326,11 @@ export default function ContactPage() {
                       </select>
                     </div>
                     <div>
-                      <label className="block text-sm font-medium text-gray-700 mb-1.5">Timeline</label>
+                      <label className="block text-sm font-medium text-neutral-700 mb-1.5">Timeline</label>
                       <select
                         value={formData.timeline}
                         onChange={(e) => updateField("timeline", e.target.value)}
-                        className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl text-gray-900 text-sm focus:outline-none focus:border-violet-400 focus:ring-2 focus:ring-violet-100 transition-all appearance-none"
+                        className="w-full px-4 py-3 bg-neutral-50 border border-neutral-200 rounded-xl text-neutral-900 text-sm focus:outline-none focus:border-black focus:ring-1 focus:ring-black transition-all appearance-none cursor-pointer"
                       >
                         <option value="">Select timeline</option>
                         {timelines.map((t) => (
@@ -348,13 +342,13 @@ export default function ContactPage() {
 
                   {/* Message */}
                   <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-1.5">Project Description *</label>
+                    <label className="block text-sm font-medium text-neutral-700 mb-1.5">Project Description *</label>
                     <textarea
                       value={formData.message}
                       onChange={(e) => updateField("message", e.target.value)}
                       required
                       rows={5}
-                      className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl text-gray-900 text-sm placeholder-gray-400 focus:outline-none focus:border-violet-400 focus:ring-2 focus:ring-violet-100 transition-all resize-none"
+                      className="w-full px-4 py-3 bg-neutral-50 border border-neutral-200 rounded-xl text-neutral-900 text-sm placeholder-neutral-400 focus:outline-none focus:border-black focus:ring-1 focus:ring-black transition-all resize-none"
                       placeholder="Tell us about your project — goals, features, target audience, tech preferences..."
                     />
                   </div>
@@ -363,17 +357,15 @@ export default function ContactPage() {
                   <motion.button
                     type="submit"
                     disabled={isSubmitting}
-                    className="w-full py-4 bg-gray-900 text-white font-semibold rounded-xl hover:bg-gray-800 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                    className="w-full py-4 bg-black text-white font-semibold rounded-xl hover:bg-neutral-800 transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
                     whileHover={{ scale: 1.01 }}
                     whileTap={{ scale: 0.99 }}
                   >
-                    {isSubmitting ? (
-                      "Sending..."
-                    ) : (
-                      <span className="flex items-center justify-center gap-2">
+                    {isSubmitting ? "Sending..." : (
+                      <>
                         Send Project Inquiry
-                        <Send className="w-4 h-4" />
-                      </span>
+                        <Send size={16} />
+                      </>
                     )}
                   </motion.button>
 
@@ -381,10 +373,10 @@ export default function ContactPage() {
                     <motion.div
                       initial={{ opacity: 0, y: 10 }}
                       animate={{ opacity: 1, y: 0 }}
-                      className="flex items-center gap-2 bg-emerald-50 border border-emerald-200 rounded-xl px-4 py-3"
+                      className="flex items-center gap-2 bg-ig-green/10 border border-ig-green/30 rounded-xl px-4 py-3"
                     >
-                      <MessageCircle className="w-4 h-4 text-emerald-600" />
-                      <p className="text-sm text-emerald-700 font-medium">Sent! We&apos;ll get back to you within 2 hours.</p>
+                      <MessageCircle size={14} className="text-ig-green" />
+                      <p className="text-sm text-ig-green font-medium">Sent! We&apos;ll get back to you within 2 hours.</p>
                     </motion.div>
                   )}
 
@@ -402,38 +394,64 @@ export default function ContactPage() {
             </div>
           </div>
         </section>
-      </main>
 
-      {/* ━━━━ CTA — behind page ━━━━ */}
-      <section className="sticky bottom-0 z-0 py-20 md:py-28 bg-gray-950 overflow-hidden">
-        <div className="absolute top-1/2 left-1/4 -translate-y-1/2 w-96 h-96 bg-violet-600/10 rounded-full blur-3xl" />
-        <div className="absolute top-1/2 right-1/4 -translate-y-1/2 w-80 h-80 bg-pink-600/10 rounded-full blur-3xl" />
-
-        <div className="relative max-w-3xl mx-auto px-6 md:px-12 text-center">
-          <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
-            Prefer a quick chat?
-          </h2>
-          <p className="text-gray-400 mb-6">
-            Reach us directly on WhatsApp or email. No ticket systems, no waiting.
-          </p>
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-            <a href="https://wa.me/916374853277" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 px-6 py-3 bg-green-500 text-white font-semibold rounded-xl hover:bg-green-600 transition-colors text-sm">
-              <MessageCircle className="w-4 h-4" />
-              Chat on WhatsApp
-            </a>
-            <a href="mailto:ryxdevsolutions@gmail.com" className="inline-flex items-center gap-2 px-6 py-3 bg-white text-gray-900 font-semibold rounded-xl hover:bg-gray-100 transition-colors text-sm">
-              <Mail className="w-4 h-4" />
-              Email Us
-            </a>
-            <a href="tel:+916374853277" className="inline-flex items-center gap-2 px-6 py-3 border border-gray-700 text-gray-300 font-semibold rounded-xl hover:border-gray-500 hover:text-white transition-colors text-sm">
-              <Phone className="w-4 h-4" />
-              Call Us
-            </a>
+        {/* ── Quick Contact — dark ── */}
+        <section className="ig-section-dark py-16 sm:py-20">
+          <div className="absolute inset-0 ig-texture-dark" />
+          <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <motion.h2
+              className="ig-heading-3 text-white mb-3"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, ease: EASE_STANDARD }}
+            >
+              Prefer a quick chat?
+            </motion.h2>
+            <motion.p
+              className="text-ig-text-light-muted mb-8 text-sm"
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 0.1 }}
+            >
+              Reach us directly — no ticket systems, no waiting 48 hours.
+            </motion.p>
+            <motion.div
+              className="flex flex-col sm:flex-row items-center justify-center gap-4"
+              initial={{ opacity: 0, y: 10 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 0.2, ease: EASE_STANDARD }}
+            >
+              <a
+                href={SITE_CONFIG.company.whatsapp}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 px-6 py-3 bg-ig-green text-black font-semibold rounded-full hover:opacity-90 transition-opacity text-sm"
+              >
+                <MessageCircle size={16} />
+                Chat on WhatsApp
+              </a>
+              <a
+                href={`mailto:${SITE_CONFIG.company.email}`}
+                className="inline-flex items-center gap-2 px-6 py-3 bg-white text-black font-semibold rounded-full hover:opacity-90 transition-opacity text-sm"
+              >
+                <Mail size={16} />
+                Email Us
+              </a>
+              <a
+                href={`tel:${SITE_CONFIG.company.phone.replace(/\s/g, "")}`}
+                className="inline-flex items-center gap-2 px-6 py-3 border border-ig-white-10 text-white font-semibold rounded-full hover:border-white/30 transition-colors text-sm"
+              >
+                <Phone size={16} />
+                Call Us
+              </a>
+            </motion.div>
           </div>
-        </div>
-      </section>
-
-      <FooterMinimal />
+        </section>
+      </main>
+      <Footer />
     </>
   )
 }

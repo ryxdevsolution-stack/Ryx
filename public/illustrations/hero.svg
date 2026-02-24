@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" fill="none">
+  <!-- Laptop base -->
+  <rect x="80" y="160" width="240" height="15" rx="4" fill="#2a2a3e"/>
+  <!-- Laptop screen -->
+  <rect x="100" y="60" width="200" height="130" rx="8" fill="#1a1a2e"/>
+  <rect x="108" y="68" width="184" height="114" rx="4" fill="#0d0d1a"/>
+  <!-- Code lines on screen -->
+  <rect x="118" y="80" width="80" height="6" rx="3" fill="#16DD47" opacity="0.8"/>
+  <rect x="118" y="94" width="60" height="6" rx="3" fill="#4a4a6a"/>
+  <rect x="130" y="108" width="100" height="6" rx="3" fill="#4a4a6a"/>
+  <rect x="130" y="122" width="70" height="6" rx="3" fill="#16DD47" opacity="0.5"/>
+  <rect x="118" y="136" width="90" height="6" rx="3" fill="#4a4a6a"/>
+  <rect x="118" y="150" width="50" height="6" rx="3" fill="#16DD47" opacity="0.3"/>
+  <!-- Floating card top-right -->
+  <rect x="280" y="40" width="100" height="60" rx="10" fill="#16DD47" opacity="0.15"/>
+  <rect x="290" y="52" width="40" height="6" rx="3" fill="#16DD47" opacity="0.7"/>
+  <rect x="290" y="64" width="60" height="6" rx="3" fill="#16DD47" opacity="0.4"/>
+  <rect x="290" y="76" width="50" height="6" rx="3" fill="#16DD47" opacity="0.4"/>
+  <!-- Floating dot indicators -->
+  <circle cx="340" cy="130" r="6" fill="#16DD47" opacity="0.6"/>
+  <circle cx="360" cy="150" r="4" fill="#16DD47" opacity="0.3"/>
+  <circle cx="330" cy="155" r="3" fill="#16DD47" opacity="0.4"/>
+  <!-- Person silhouette -->
+  <circle cx="200" cy="230" r="18" fill="#2a2a3e"/>
+  <rect x="170" y="248" width="60" height="30" rx="8" fill="#2a2a3e"/>
+  <!-- Keyboard hint -->
+  <rect x="110" y="178" width="180" height="8" rx="3" fill="#3a3a5e" opacity="0.6"/>
+</svg>

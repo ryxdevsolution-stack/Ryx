@@ -10,6 +10,11 @@ const ChatWidget = dynamic(
   () => import("@/components/ui/chat-widget").then((m) => ({ default: m.ChatWidget })),
   { loading: () => null }
 );
+
+const ScrollProgress = dynamic(
+  () => import("@/components/ignitex/scroll-progress").then((m) => ({ default: m.ScrollProgress })),
+  { loading: () => null }
+);
 import "./globals.css";
 
 const geist = Geist({
@@ -134,6 +139,7 @@ export default function RootLayout({
           enableSystem={true}
           disableTransitionOnChange={true}
         >
+          <ScrollProgress />
           {children}
           <ChatWidget />
           <Toaster richColors position="top-right" />

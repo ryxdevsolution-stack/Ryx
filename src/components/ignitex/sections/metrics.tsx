@@ -5,37 +5,21 @@ import { motion, useInView } from "framer-motion";
 import { SectionLabel } from "../section-label";
 import { ScriptText } from "../script-text";
 import { PillButton } from "../pill-button";
+import { SITE_CONFIG } from "@/lib/site-config";
 
-interface Metric {
-  value: number;
-  suffix: string;
-  description: string;
+// Parse "15+" → {value: 15, suffix: "+"}  |  "98%" → {value: 98, suffix: "%"}
+function parseStat(raw: string): { value: number; suffix: string } {
+  const match = raw.match(/^(\d+)(.*)$/);
+  if (!match) return { value: 0, suffix: raw };
+  return { value: parseInt(match[1], 10), suffix: match[2] };
 }
 
-const METRICS: Metric[] = [
-  {
-    value: 15,
-    suffix: "+",
-    description: "Projects delivered with bold strategy and sharp precision.",
-  },
-  {
-    value: 98,
-    suffix: "%",
-    description:
-      "Clients stay for our unmatched quality and proven results.",
-  },
-  {
-    value: 10,
-    suffix: "+",
-    description: "Building impactful brands that perform globally.",
-  },
-  {
-    value: 10,
-    suffix: "+",
-    description:
-      "Trusted by visionary brands who value design and results.",
-  },
-];
+const STAT_DESCRIPTIONS: Record<string, string> = {
+  "Projects Delivered": "Projects delivered with bold strategy and sharp precision.",
+  "Client Satisfaction": "Clients stay for our unmatched quality and proven results.",
+  "Core Team Members": "Dedicated experts who own every project from start to launch.",
+  "Founded": "Building impactful software since our founding year.",
+};
 
 function AnimatedCounter({
   value,
@@ -72,7 +56,10 @@ function AnimatedCounter({
   }, [isInView, value]);
 
   return (
-    <div ref={ref} className="text-5xl sm:text-6xl md:text-7xl font-bold tracking-tight">
+    <div
+      ref={ref}
+      className="text-5xl sm:text-6xl md:text-7xl font-bold tracking-tight"
+    >
       {count}
       <span className="text-3xl sm:text-4xl font-normal text-ig-text-muted">
         {suffix}
@@ -90,7 +77,11 @@ export function MetricsSection() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16">
           {/* Left - heading */}
           <div>
-            <SectionLabel text="Our track record" variant="light" className="mb-6" />
+            <SectionLabel
+              text="Our track record"
+              variant="light"
+              className="mb-6"
+            />
             <motion.h2
               className="ig-heading-1 mb-8"
               initial={{ opacity: 0, y: 20 }}
@@ -112,24 +103,26 @@ export function MetricsSection() {
 
           {/* Right - metric grid */}
           <div className="grid grid-cols-1 gap-8">
-            {METRICS.map((metric, i) => (
-              <motion.div
-                key={`${metric.value}-${metric.suffix}`}
-                className="flex items-start gap-6 pb-8 border-b border-ig-border-light last:border-0"
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: i * 0.1 }}
-              >
-                <AnimatedCounter
-                  value={metric.value}
-                  suffix={metric.suffix}
-                />
-                <p className="text-ig-text-muted text-sm sm:text-base leading-relaxed pt-2 max-w-xs">
-                  {metric.description}
-                </p>
-              </motion.div>
-            ))}
+            {SITE_CONFIG.stats.map((stat, i) => {
+              const { value, suffix } = parseStat(stat.value);
+              const description =
+                STAT_DESCRIPTIONS[stat.label] ?? `${stat.label} — measured by real results.`;
+              return (
+                <motion.div
+                  key={`${stat.value}-${stat.label}`}
+                  className="flex items-start gap-6 pb-8 border-b border-ig-border-light last:border-0"
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5, delay: i * 0.1 }}
+                >
+                  <AnimatedCounter value={value} suffix={suffix} />
+                  <p className="text-ig-text-muted text-sm sm:text-base leading-relaxed pt-2 max-w-xs">
+                    {description}
+                  </p>
+                </motion.div>
+              );
+            })}
           </div>
         </div>
       </div>

@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" fill="none">
+  <!-- Person -->
+  <circle cx="150" cy="130" r="30" fill="#2a2a3e"/>
+  <rect x="110" y="160" width="80" height="70" rx="12" fill="#2a2a3e"/>
+  <!-- Arms reaching toward phone -->
+  <rect x="80" y="175" width="32" height="12" rx="6" fill="#2a2a3e" transform="rotate(-15 80 175)"/>
+  <rect x="188" y="175" width="32" height="12" rx="6" fill="#2a2a3e" transform="rotate(15 188 175)"/>
+  <!-- Chat bubble large -->
+  <rect x="210" y="60" width="150" height="100" rx="14" fill="#16DD47" opacity="0.15"/>
+  <rect x="226" y="78" width="90" height="8" rx="4" fill="#16DD47" opacity="0.7"/>
+  <rect x="226" y="94" width="110" height="8" rx="4" fill="#16DD47" opacity="0.4"/>
+  <rect x="226" y="110" width="70" height="8" rx="4" fill="#16DD47" opacity="0.4"/>
+  <polygon points="225,160 215,175 240,160" fill="#16DD47" opacity="0.15"/>
+  <!-- Small response bubble -->
+  <rect x="60" y="80" width="100" height="60" rx="10" fill="#2a2a3e" opacity="0.8"/>
+  <rect x="74" y="95" width="60" height="6" rx="3" fill="#4a4a6a"/>
+  <rect x="74" y="109" width="72" height="6" rx="3" fill="#4a4a6a"/>
+  <polygon points="100,140 90,152 115,140" fill="#2a2a3e" opacity="0.8"/>
+  <!-- Email icon floating -->
+  <rect x="310" y="180" width="60" height="44" rx="8" fill="#16DD47" opacity="0.2"/>
+  <polyline points="310,180 340,205 370,180" stroke="#16DD47" stroke-width="2" opacity="0.6" fill="none"/>
+</svg>

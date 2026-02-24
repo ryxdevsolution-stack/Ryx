@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" fill="none">
+  <!-- Browser window -->
+  <rect x="40" y="40" width="320" height="220" rx="12" fill="#1a1a2e"/>
+  <!-- Browser chrome -->
+  <rect x="40" y="40" width="320" height="36" rx="12" fill="#2a2a3e"/>
+  <rect x="40" y="64" width="320" height="12" fill="#2a2a3e"/>
+  <circle cx="68" cy="58" r="6" fill="#4a4a6a"/>
+  <circle cx="90" cy="58" r="6" fill="#4a4a6a"/>
+  <circle cx="112" cy="58" r="6" fill="#16DD47" opacity="0.6"/>
+  <!-- URL bar -->
+  <rect x="130" y="51" width="170" height="14" rx="7" fill="#1a1a2e"/>
+  <!-- Dashboard content -->
+  <!-- Bar chart -->
+  <rect x="60" y="180" width="20" height="60" rx="3" fill="#16DD47" opacity="0.4"/>
+  <rect x="88" y="150" width="20" height="90" rx="3" fill="#16DD47" opacity="0.6"/>
+  <rect x="116" y="165" width="20" height="75" rx="3" fill="#16DD47" opacity="0.5"/>
+  <rect x="144" y="135" width="20" height="105" rx="3" fill="#16DD47" opacity="0.8"/>
+  <rect x="172" y="155" width="20" height="85" rx="3" fill="#16DD47" opacity="0.5"/>
+  <!-- Stats cards right -->
+  <rect x="220" y="100" width="110" height="50" rx="8" fill="#16DD47" opacity="0.1"/>
+  <rect x="232" y="112" width="40" height="8" rx="3" fill="#16DD47" opacity="0.7"/>
+  <rect x="232" y="126" width="60" height="6" rx="3" fill="#4a4a6a"/>
+  <rect x="220" y="160" width="110" height="50" rx="8" fill="#16DD47" opacity="0.08"/>
+  <rect x="232" y="172" width="50" height="8" rx="3" fill="#16DD47" opacity="0.5"/>
+  <rect x="232" y="186" width="40" height="6" rx="3" fill="#4a4a6a"/>
+  <!-- Chart baseline -->
+  <line x1="56" y1="240" x2="202" y2="240" stroke="#4a4a6a" stroke-width="2"/>
+</svg>
