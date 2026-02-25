@@ -2,15 +2,9 @@
 
 import Link from "next/link"
 import { motion } from "framer-motion"
-import dynamic from "next/dynamic"
 import {
-  Mail, Phone, MessageCircle,
+  Mail, MessageCircle,
 } from "lucide-react"
-
-const Hexocet = dynamic(
-  () => import("@/components/canvas/hexocet").then((mod) => ({ default: mod.Hexocet })),
-  { ssr: false }
-)
 
 const footerLinks = {
   services: [
@@ -33,11 +27,6 @@ const footerLinks = {
 export function FooterMinimal() {
   return (
     <footer className="relative bg-gradient-to-b from-purple-50 via-pink-50 to-blue-50 text-gray-900 overflow-hidden">
-      {/* Hexocet particle background */}
-      <div className="absolute inset-0 pointer-events-none">
-        <Hexocet className="opacity-50" />
-      </div>
-
       <div className="relative z-10">
         {/* Main Footer Content */}
         <div className="container mx-auto px-4 sm:px-6 md:px-12 py-12 md:py-16">
@@ -67,18 +56,6 @@ export function FooterMinimal() {
                 <a href="mailto:ryxdevsolutions@gmail.com" className="flex items-center gap-2 text-gray-600 hover:text-violet-600 transition-colors text-sm">
                   <Mail className="w-4 h-4" />
                   <span>ryxdevsolutions@gmail.com</span>
-                </a>
-                <a href="tel:+916374853277" className="flex items-center gap-2 text-gray-600 hover:text-violet-600 transition-colors text-sm">
-                  <Phone className="w-4 h-4" />
-                  <span>+91 63748 53277</span>
-                </a>
-                <a href="tel:+918667258008" className="flex items-center gap-2 text-gray-600 hover:text-violet-600 transition-colors text-sm">
-                  <Phone className="w-4 h-4" />
-                  <span>+91 86672 58008</span>
-                </a>
-                <a href="tel:+919003523067" className="flex items-center gap-2 text-gray-600 hover:text-violet-600 transition-colors text-sm">
-                  <Phone className="w-4 h-4" />
-                  <span>+91 90035 23067</span>
                 </a>
               </div>
             </motion.div>

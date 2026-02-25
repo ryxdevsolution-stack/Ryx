@@ -1,18 +1,18 @@
 "use client"
 
 import dynamic from "next/dynamic"
-import { Navbar } from "@/components/ignitex/navbar"
-import { SectionLabel } from "@/components/ignitex/section-label"
-import { ScriptText } from "@/components/ignitex/script-text"
+import { Navbar } from "@/components/ryx/navbar"
+import { SectionLabel } from "@/components/ryx/section-label"
+import { ScriptText } from "@/components/ryx/script-text"
 import { SITE_CONFIG } from "@/lib/site-config"
-import { EASE_STANDARD } from "@/components/ignitex/motion"
+import { EASE_STANDARD } from "@/components/ryx/motion"
 import { motion } from "framer-motion"
-import { Mail, Phone, MapPin, Send, Clock, MessageCircle, Zap } from "lucide-react"
+import { Mail, MapPin, Send, Clock, MessageCircle, Zap } from "lucide-react"
 import { useState, useEffect } from "react"
 import { RAVEN_EVENTS } from "@/components/ui/chat-widget"
 
 const Footer = dynamic(
-  () => import("@/components/ignitex/sections/footer").then((m) => ({ default: m.Footer })),
+  () => import("@/components/ryx/sections/footer").then((m) => ({ default: m.Footer })),
   { loading: () => <div className="min-h-[40vh] bg-ig-dark" /> }
 )
 
@@ -45,7 +45,6 @@ const timelines = [
 
 const INFO_CARDS = [
   { icon: Mail, label: "Email", value: SITE_CONFIG.company.email },
-  { icon: Phone, label: "Phone / WhatsApp", value: SITE_CONFIG.company.phone },
   { icon: Clock, label: "Hours", value: "Mon–Sat, 9am–6pm IST" },
   { icon: MapPin, label: "Location", value: SITE_CONFIG.company.location },
 ]
@@ -123,7 +122,7 @@ export default function ContactPage() {
       <Navbar />
       <main>
         {/* ── Hero — dark ── */}
-        <section className="ig-section-dark relative overflow-hidden pt-32 pb-16 sm:pt-40 sm:pb-24">
+        <section className="ig-section-dark relative overflow-hidden pt-32 pb-16 sm:pt-40 sm:pb-24" data-no-ribbon>
           <div className="absolute inset-0 ig-texture-dark" />
           <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <SectionLabel text="Get in touch" variant="dark" />
@@ -439,13 +438,6 @@ export default function ContactPage() {
               >
                 <Mail size={16} />
                 Email Us
-              </a>
-              <a
-                href={`tel:${SITE_CONFIG.company.phone.replace(/\s/g, "")}`}
-                className="inline-flex items-center gap-2 px-6 py-3 border border-ig-white-10 text-white font-semibold rounded-full hover:border-white/30 transition-colors text-sm"
-              >
-                <Phone size={16} />
-                Call Us
               </a>
             </motion.div>
           </div>

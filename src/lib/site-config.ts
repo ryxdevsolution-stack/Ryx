@@ -3,7 +3,6 @@ export const SITE_CONFIG = {
     name: "RYX Dev Solutions",
     shortName: "RYX",
     email: "ryxdevsolutions@gmail.com",
-    phone: "+91 6374853277",
     whatsapp: "https://wa.me/918667258008",
     city: "Coimbatore",
     state: "Tamil Nadu",
@@ -24,7 +23,7 @@ export const SITE_CONFIG = {
     linkedin: "https://linkedin.com/company/ryxdev",
     twitter: "https://x.com/ryxdev",
     instagram: "https://instagram.com/ryxdev",
-    github: "https://github.com/ryxdev",
+    github: "https://github.com/ryxdevsolution-stack",
   },
   team: [
     {

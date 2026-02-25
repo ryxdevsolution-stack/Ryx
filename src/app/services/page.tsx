@@ -1,7 +1,6 @@
 "use client";
 
 import dynamic from "next/dynamic";
-import Image from "next/image";
 import { motion } from "framer-motion";
 import {
   Code,
@@ -17,18 +16,19 @@ import {
   CheckCircle,
 } from "lucide-react";
 
-import { Navbar } from "@/components/ignitex/navbar";
-import { SectionLabel } from "@/components/ignitex/section-label";
-import { ScriptText } from "@/components/ignitex/script-text";
-import { EASE_STANDARD } from "@/components/ignitex/motion";
+import { Navbar } from "@/components/ryx/navbar";
+import { SectionLabel } from "@/components/ryx/section-label";
+import { ScriptText } from "@/components/ryx/script-text";
+import { EASE_STANDARD } from "@/components/ryx/motion";
 import { SITE_CONFIG } from "@/lib/site-config";
+import { MagneticFieldBackground } from "@/components/ui/magnetic-field-background";
 
 const ContactCTASection = dynamic(
-  () => import("@/components/ignitex/sections/contact-cta").then((m) => ({ default: m.ContactCTASection })),
+  () => import("@/components/ryx/sections/contact-cta").then((m) => ({ default: m.ContactCTASection })),
   { loading: () => <div className="min-h-[50vh] bg-ig-dark" /> }
 );
 const Footer = dynamic(
-  () => import("@/components/ignitex/sections/footer").then((m) => ({ default: m.Footer })),
+  () => import("@/components/ryx/sections/footer").then((m) => ({ default: m.Footer })),
   { loading: () => <div className="min-h-[40vh] bg-ig-dark" /> }
 );
 
@@ -119,45 +119,47 @@ export default function ServicesPage() {
       <Navbar />
       <main>
         {/* ── Hero — ig-section-dark ── */}
-        <section className="ig-section-dark relative overflow-hidden pt-32 pb-20 sm:pt-40 sm:pb-28">
-          <div className="absolute inset-0 ig-texture-dark" />
-          <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-              <div>
-                <SectionLabel text="What we build" variant="dark" />
-                <motion.h1
-                  className="ig-heading-1 text-white mt-5 mb-6"
-                  initial={{ opacity: 0, y: 40 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.8, delay: 0.1, ease: EASE_STANDARD }}
-                >
-                  Solutions that <ScriptText>Transform</ScriptText> Business
-                </motion.h1>
-                <motion.p
-                  className="text-white/70 text-base sm:text-lg max-w-xl leading-relaxed"
-                  initial={{ opacity: 0, y: 40 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.7, delay: 0.25, ease: EASE_STANDARD }}
-                >
-                  From GST-compliant billing software to custom CRMs — we build tools that run your business smoother, day after day.
-                </motion.p>
-              </div>
-
-              <motion.div
-                className="hidden lg:flex justify-center"
-                initial={{ opacity: 0, scale: 0.95 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.7, delay: 0.35, ease: EASE_STANDARD }}
+        <section className="ig-section-dark relative overflow-hidden min-h-screen flex items-center" data-no-ribbon>
+          <MagneticFieldBackground
+            particleCount={1600}
+            poleCount={5}
+            particleColor="rgba(200, 210, 255, 0.9)"
+            lineLength={16}
+            lineWidth={1.3}
+            showFieldLines={false}
+            cursorStrength={4}
+          />
+          <div className="relative w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-32 pb-24 pointer-events-none">
+            <div className="max-w-3xl">
+              <SectionLabel text="What we build" variant="dark" />
+              <motion.h1
+                className="ig-heading-1 text-white mt-6 mb-6"
+                initial={{ opacity: 0, y: 40 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.1, ease: EASE_STANDARD }}
               >
-                <Image
-                  src="/illustrations/services.svg"
-                  alt=""
-                  width={480}
-                  height={400}
-                  priority
-                  className="w-full max-w-md h-auto"
-                  aria-hidden
-                />
+                Solutions that <ScriptText>Transform</ScriptText> Business
+              </motion.h1>
+              <motion.p
+                className="text-white/70 text-lg sm:text-xl max-w-2xl leading-relaxed mb-12"
+                initial={{ opacity: 0, y: 40 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.7, delay: 0.25, ease: EASE_STANDARD }}
+              >
+                From GST-compliant billing software to custom CRMs — we build tools that run your business smoother, day after day.
+              </motion.p>
+              {/* Service highlights */}
+              <motion.div
+                className="grid grid-cols-2 sm:grid-cols-3 gap-4"
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.7, delay: 0.4, ease: EASE_STANDARD }}
+              >
+                {["Billing Software", "Web Apps", "Mobile Apps", "Custom CRM", "UI/UX Design", "SEO & Analytics"].map((tag) => (
+                  <div key={tag} className="border border-white/10 rounded-xl px-4 py-3 text-sm text-white/60 bg-white/5 backdrop-blur-sm">
+                    {tag}
+                  </div>
+                ))}
               </motion.div>
             </div>
           </div>

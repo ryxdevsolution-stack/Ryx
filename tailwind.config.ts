@@ -47,7 +47,7 @@ const config: Config = {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
-        // Ignitex-inspired palette
+        // RYX design palette
         ig: {
           dark: "#05080C",
           "dark-card": "#0d1117",

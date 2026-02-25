@@ -4,15 +4,16 @@ import dynamic from "next/dynamic";
 import { motion } from "framer-motion";
 import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
-import { Navbar } from "@/components/ignitex/navbar";
-import { SectionLabel } from "@/components/ignitex/section-label";
-import { ScriptText } from "@/components/ignitex/script-text";
-import { PillButton } from "@/components/ignitex/pill-button";
-import { EASE_STANDARD } from "@/components/ignitex/motion";
+import { Navbar } from "@/components/ryx/navbar";
+import { SectionLabel } from "@/components/ryx/section-label";
+import { ScriptText } from "@/components/ryx/script-text";
+import { PillButton } from "@/components/ryx/pill-button";
+import { EASE_STANDARD } from "@/components/ryx/motion";
+import { Particles } from "@/components/ui/particles";
 
 const ContactCTASection = dynamic(
   () =>
-    import("@/components/ignitex/sections/contact-cta").then((m) => ({
+    import("@/components/ryx/sections/contact-cta").then((m) => ({
       default: m.ContactCTASection,
     })),
   { loading: () => <div className="min-h-[50vh] bg-ig-dark" /> }
@@ -20,7 +21,7 @@ const ContactCTASection = dynamic(
 
 const Footer = dynamic(
   () =>
-    import("@/components/ignitex/sections/footer").then((m) => ({
+    import("@/components/ryx/sections/footer").then((m) => ({
       default: m.Footer,
     })),
   { loading: () => <div className="min-h-[40vh] bg-ig-dark" /> }
@@ -77,14 +78,22 @@ export default function PortfolioPage() {
       <Navbar />
       <main>
         {/* ── Section 1: Hero ───────────────────────────────────────────── */}
-        <section className="ig-section-dark relative overflow-hidden pt-32 pb-20 sm:pt-40 sm:pb-28">
-          <div className="absolute inset-0 ig-texture-dark" />
+        <section className="ig-section-dark relative overflow-hidden min-h-screen flex items-center" data-no-ribbon>
+          <Particles
+            quantity={400}
+            staticity={20}
+            ease={50}
+            size={0.6}
+            color="#ffffff"
+            vx={0}
+            vy={0}
+          />
 
-          <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="relative w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-32 pb-24 pointer-events-none">
             <SectionLabel text="Our work" variant="dark" />
 
             <motion.h1
-              className="ig-heading-1 mt-6 max-w-3xl"
+              className="ig-heading-1 mt-6 max-w-4xl"
               initial={{ opacity: 0, y: 40 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7, ease: EASE_STANDARD }}
@@ -94,28 +103,28 @@ export default function PortfolioPage() {
             </motion.h1>
 
             <motion.p
-              className="mt-5 max-w-xl text-base sm:text-lg text-white/70 leading-relaxed"
+              className="mt-6 max-w-2xl text-lg sm:text-xl text-white/70 leading-relaxed"
               initial={{ opacity: 0, y: 40 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7, delay: 0.2, ease: EASE_STANDARD }}
             >
               Projects we&apos;ve actually built and shipped — no stock images,
-              no fake metrics.
+              no fake metrics. Every project is in production and actively used.
             </motion.p>
 
             {/* Stats row */}
             <motion.div
-              className="flex flex-wrap gap-8 mt-10"
+              className="flex flex-wrap gap-10 mt-14"
               initial={{ opacity: 0, y: 40 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7, delay: 0.35, ease: EASE_STANDARD }}
             >
               {HERO_STATS.map((stat) => (
-                <div key={stat.label} className="flex items-baseline gap-2">
-                  <span className="text-3xl font-bold text-white">
+                <div key={stat.label} className="flex flex-col gap-1">
+                  <span className="text-5xl font-bold text-white leading-none">
                     {stat.value}
                   </span>
-                  <span className="text-sm text-ig-text-light-muted">
+                  <span className="text-sm text-ig-text-light-muted uppercase tracking-wider">
                     {stat.label}
                   </span>
                 </div>

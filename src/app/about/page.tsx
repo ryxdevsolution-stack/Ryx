@@ -3,20 +3,20 @@
 import dynamic from "next/dynamic"
 import { motion } from "framer-motion"
 import { Target, Heart, Rocket, Users, MessageSquare, Shield, Zap } from "lucide-react"
-import Image from "next/image"
-import { Navbar } from "@/components/ignitex/navbar"
-import { SectionLabel } from "@/components/ignitex/section-label"
-import { ScriptText } from "@/components/ignitex/script-text"
-import { PillButton } from "@/components/ignitex/pill-button"
+import { Navbar } from "@/components/ryx/navbar"
+import { SectionLabel } from "@/components/ryx/section-label"
+import { ScriptText } from "@/components/ryx/script-text"
+import { PillButton } from "@/components/ryx/pill-button"
 import { SITE_CONFIG } from "@/lib/site-config"
-import { EASE_STANDARD } from "@/components/ignitex/motion"
+import { EASE_STANDARD } from "@/components/ryx/motion"
+import { HexagonBackground } from "@/components/ui/hexagon-background"
 
 const ContactCTASection = dynamic(
-  () => import("@/components/ignitex/sections/contact-cta").then((m) => ({ default: m.ContactCTASection })),
+  () => import("@/components/ryx/sections/contact-cta").then((m) => ({ default: m.ContactCTASection })),
   { loading: () => <div className="min-h-[50vh] bg-ig-dark" /> }
 )
 const Footer = dynamic(
-  () => import("@/components/ignitex/sections/footer").then((m) => ({ default: m.Footer })),
+  () => import("@/components/ryx/sections/footer").then((m) => ({ default: m.Footer })),
   { loading: () => <div className="min-h-[40vh] bg-ig-dark" /> }
 )
 
@@ -73,9 +73,13 @@ export default function AboutPage() {
       <Navbar />
       <main>
         {/* ── Hero — ig-section-dark ── */}
-        <section className="ig-section-dark relative overflow-hidden">
-          <div className="absolute inset-0 ig-texture-dark" />
-          <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-32 sm:pt-40 pb-20 sm:pb-28">
+        <section className="ig-section-dark relative overflow-hidden min-h-screen flex items-center" data-no-ribbon>
+          <HexagonBackground
+            hexagonSize={52}
+            glowColor="rgba(34, 211, 238, 0.5)"
+            borderColor="rgba(255,255,255,0.06)"
+          />
+          <div className="relative w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-32 pb-24 pointer-events-none">
             <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-16">
               <div className="flex-1 max-w-2xl">
                 <SectionLabel text="Our story" variant="dark" className="mb-6" />
@@ -98,6 +102,7 @@ export default function AboutPage() {
                   websites, mobile apps, and custom CRMs for businesses locally and globally.
                 </motion.p>
                 <motion.div
+                  className="pointer-events-auto"
                   initial={{ opacity: 0, y: 40 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.7, delay: 0.3, ease: EASE_STANDARD }}
@@ -106,16 +111,6 @@ export default function AboutPage() {
                 </motion.div>
               </div>
 
-              <div className="hidden lg:flex flex-1 items-center justify-center">
-                <Image
-                  src="/illustrations/about.svg"
-                  alt=""
-                  width={400}
-                  height={300}
-                  className="w-full h-auto opacity-80"
-                  aria-hidden
-                />
-              </div>
             </div>
           </div>
         </section>

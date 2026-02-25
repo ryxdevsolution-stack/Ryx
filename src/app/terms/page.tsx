@@ -2,14 +2,14 @@
 
 import dynamic from "next/dynamic";
 import { motion } from "framer-motion";
-import { Navbar } from "@/components/ignitex/navbar";
-import { SectionLabel } from "@/components/ignitex/section-label";
-import { ScriptText } from "@/components/ignitex/script-text";
+import { Navbar } from "@/components/ryx/navbar";
+import { SectionLabel } from "@/components/ryx/section-label";
+import { ScriptText } from "@/components/ryx/script-text";
 import { SITE_CONFIG } from "@/lib/site-config";
-import { EASE_STANDARD } from "@/components/ignitex/motion";
+import { EASE_STANDARD } from "@/components/ryx/motion";
 
 const Footer = dynamic(
-  () => import("@/components/ignitex/sections/footer").then((m) => ({ default: m.Footer })),
+  () => import("@/components/ryx/sections/footer").then((m) => ({ default: m.Footer })),
   { loading: () => <div className="min-h-[40vh] bg-ig-dark" /> }
 );
 
@@ -118,7 +118,7 @@ export default function TermsPage() {
                 <a href={`mailto:${SITE_CONFIG.company.email}`} className="text-black underline underline-offset-2">
                   {SITE_CONFIG.company.email}
                 </a>{" "}
-                or call {SITE_CONFIG.company.phone}.
+.
               </p>
 
               {/* ─── PRIVACY POLICY ─── */}
