@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Code2, Smartphone, Palette, Receipt } from "lucide-react";
+import { Code2, Globe, Palette, Receipt } from "lucide-react";
 import { ParallaxBanner, ParallaxBannerLayer } from "react-scroll-parallax";
 import { SectionLabel } from "../section-label";
 import { PillButton } from "../pill-button";
@@ -12,25 +12,25 @@ import { SectionReveal } from "../section-reveal";
 const SERVICES = [
   {
     icon: Receipt,
-    title: "Billing & CRM Software",
-    desc: "GST-compliant Valoryx billing — works offline, syncs to cloud.",
+    title: "Billing & Inventory Software",
+    desc: "Valoryx — offline-first billing with GST, multi-branch inventory, thermal printing, and Razorpay payments.",
   },
   {
     icon: Code2,
     title: "Web Applications",
-    desc: "Next.js & React apps. Fast, SEO-optimized, production-ready.",
+    desc: "Full-stack platforms with React, Flask, and PostgreSQL. Admin dashboards, analytics, and role-based access.",
   },
   {
-    icon: Smartphone,
-    title: "Mobile Apps",
-    desc: "React Native for Android & iOS. One codebase, two platforms.",
+    icon: Globe,
+    title: "Business Websites",
+    desc: "SEO-optimized landing pages and lead-gen sites. WhatsApp integration, responsive design, fast load times.",
   },
   {
     icon: Palette,
     title: "UI/UX Design",
-    desc: "Figma-first design. Clean interfaces that convert visitors.",
+    desc: "Clean, modern interfaces designed in-house — from Valoryx dashboards to Boutique's luxury aesthetic.",
   },
-];
+] as const;
 
 const headerParent = makeStaggerParent(0.1, 0);
 const cardParent = makeStaggerParent(0.1, 0.2);

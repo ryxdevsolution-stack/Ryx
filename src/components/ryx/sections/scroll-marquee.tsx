@@ -5,17 +5,19 @@ import { motion, useAnimationFrame, useMotionValue } from "framer-motion";
 
 const CLIENTS = [
   "Valoryx",
-  "MJ Billing",
+  "BigTeam",
+  "Chendur & Co",
+  "Boutique",
   "Next.js",
+  "React",
+  "Python",
+  "Flask",
+  "PostgreSQL",
   "Supabase",
-  "React Native",
-  "Figma",
   "Tailwind CSS",
-  "TypeScript",
-  "Node.js",
-  "Vercel",
-  "Framer Motion",
-  "Radix UI",
+  "Electron",
+  "SQLite",
+  "Highcharts",
 ];
 
 /** A single infinite-scroll track driven by useAnimationFrame for buttery-smooth 60 fps. */
@@ -76,7 +78,7 @@ export function ScrollMarqueeSection() {
 
       {/* Label */}
       <p className="text-center text-xs text-white/30 mt-8 tracking-widest uppercase">
-        Technologies &amp; clients we work with
+        Our clients &amp; technologies
       </p>
     </section>
   );

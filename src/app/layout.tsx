@@ -42,39 +42,40 @@ const greatVibes = localFont({
 // Top-tier SEO metadata
 export const metadata: Metadata = {
   title: {
-    default: "RYX — Build & Scale",
-    template: "%s | RYX",
+    default: "RYX Dev Solutions — Software Company in Coimbatore",
+    template: "%s | RYX Dev Solutions",
   },
   description:
-    "RYX Dev Solutions — Coimbatore-based software company building Valoryx (GST billing), websites, mobile apps & custom CRMs for Indian & global businesses. Fast delivery, direct developer access.",
+    "RYX Dev Solutions — Coimbatore-based software company. We built Valoryx (offline-first GST billing), BigTeam (community platform), and business websites. Direct developer access, WhatsApp support.",
   keywords: [
     // Product
     "billing software india", "GST billing software", "GST invoicing app", "offline billing software",
     "Valoryx billing", "invoice software coimbatore", "billing app tamil nadu",
     // Services
     "web development coimbatore", "website design coimbatore", "custom software development india",
-    "mobile app development coimbatore", "react native app development india",
-    "custom CRM development", "CRM software india", "next.js development company india",
+    "full-stack web applications", "business website coimbatore", "landing page design india",
+    "flask python web development", "react developer coimbatore",
+    "next.js development company india",
     "supabase developer india", "UI UX design coimbatore",
     // Geo
     "software company coimbatore", "IT company coimbatore", "tech startup coimbatore",
     "web developer coimbatore", "app developer tamil nadu", "software development tamil nadu",
   ],
-  authors: [{ name: "RYX Dev Solutions", url: "https://ryx.dev" }],
+  authors: [{ name: "RYX Dev Solutions", url: "https://ryxtech.in" }],
   creator: "RYX Dev Solutions",
   publisher: "RYX Dev Solutions",
-  metadataBase: new URL("https://ryx.dev"),
+  metadataBase: new URL("https://ryxtech.in"),
   alternates: {
-    canonical: "https://ryx.dev",
+    canonical: "https://ryxtech.in",
   },
   openGraph: {
     type: "website",
     locale: "en_IN",
-    url: "https://ryx.dev",
+    url: "https://ryxtech.in",
     siteName: "RYX Dev Solutions",
-    title: "RYX — Build & Scale",
+    title: "RYX Dev Solutions — Software Company in Coimbatore",
     description:
-      "Coimbatore-based software company. We build Valoryx (GST billing), websites, mobile apps & custom CRMs. Direct developer access. Serving India & worldwide.",
+      "Coimbatore-based software company. We build Valoryx (GST billing), full-stack web apps, and business websites. Direct developer access. India & worldwide.",
     images: [
       {
         url: "/og-image.jpg",
@@ -88,9 +89,9 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     site: "@ryxdev",
     creator: "@ryxdev",
-    title: "RYX — Build & Scale",
+    title: "RYX Dev Solutions — Software Company in Coimbatore",
     description:
-      "Coimbatore software company. GST billing, websites, apps & CRMs. Direct developer access. India & worldwide.",
+      "Coimbatore software company. GST billing, web apps, websites. Direct developer access. India & worldwide.",
     images: ["/og-image.jpg"],
   },
   icons: {
@@ -134,18 +135,18 @@ export default function RootLayout({
     {
       "@context": "https://schema.org",
       "@type": ["LocalBusiness", "ProfessionalService"],
-      "@id": "https://ryx.dev/#business",
+      "@id": "https://ryxtech.in/#business",
       "name": "RYX Dev Solutions",
       "alternateName": "RYX",
-      "url": "https://ryx.dev",
+      "url": "https://ryxtech.in",
       "logo": {
         "@type": "ImageObject",
-        "url": "https://ryx.dev/RYX_Logo.png",
+        "url": "https://ryxtech.in/RYX_Logo.png",
         "width": 1024,
         "height": 1024,
       },
-      "image": "https://ryx.dev/og-image.jpg",
-      "description": "RYX Dev Solutions is a software company based in Coimbatore, India. We build Valoryx (GST-compliant billing software), custom websites, mobile apps, and CRM systems for businesses in India and worldwide.",
+      "image": "https://ryxtech.in/og-image.jpg",
+      "description": "RYX Dev Solutions builds billing software, full-stack web applications, and business websites for companies in Coimbatore, India and worldwide.",
       "foundingDate": "2023",
       "address": {
         "@type": "PostalAddress",
@@ -191,10 +192,9 @@ export default function RootLayout({
         "@type": "OfferCatalog",
         "name": "RYX Services",
         "itemListElement": [
-          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "GST Billing Software (Valoryx)", "description": "Offline & online GST-compliant billing, invoicing and inventory management." } },
-          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Web Development", "description": "Next.js and React-based websites and web applications." } },
-          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Mobile App Development", "description": "React Native cross-platform mobile apps for iOS and Android." } },
-          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Custom CRM Development", "description": "Tailored CRM systems built for specific business workflows." } },
+          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Billing & Inventory Software (Valoryx)", "description": "Offline-first GST-compliant billing, invoicing, inventory management with multi-branch support and thermal printing." } },
+          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Full-Stack Web Applications", "description": "React and Flask-based web platforms with admin dashboards, analytics, role-based access, and payment integration." } },
+          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Business Websites & Landing Pages", "description": "SEO-optimized, responsive websites with WhatsApp integration and lead generation for small businesses." } },
           { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "UI/UX Design", "description": "User interface and experience design using Figma." } },
         ],
       },

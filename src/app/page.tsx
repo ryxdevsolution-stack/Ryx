@@ -1,5 +1,15 @@
+import type { Metadata } from "next";
 import dynamic from "next/dynamic";
 import { Navbar } from "@/components/ryx/navbar";
+
+export const metadata: Metadata = {
+  title: "RYX Dev Solutions — Software Company in Coimbatore",
+  description:
+    "RYX Dev Solutions — Coimbatore-based software company. We built Valoryx (offline-first GST billing), BigTeam (community platform), and business websites. Direct developer access, WhatsApp support.",
+  alternates: {
+    canonical: "https://ryxtech.in",
+  },
+};
 import { HeroSection } from "@/components/ryx/sections/hero";
 
 // Below-the-fold sections — lazy loaded to reduce initial JS bundle
@@ -52,20 +62,6 @@ const TechBadgesSection = dynamic(
     })),
   { loading: () => <div className="min-h-[20vh]" /> }
 );
-const BlogTeaserSection = dynamic(
-  () =>
-    import("@/components/ryx/sections/blog-teaser").then((m) => ({
-      default: m.BlogTeaserSection,
-    })),
-  { loading: () => <div className="min-h-[60vh]" /> }
-);
-const TestimonialsSection = dynamic(
-  () =>
-    import("@/components/ryx/sections/testimonials").then((m) => ({
-      default: m.TestimonialsSection,
-    })),
-  { loading: () => <div className="min-h-[60vh]" /> }
-);
 const ContactCTASection = dynamic(
   () =>
     import("@/components/ryx/sections/contact-cta").then((m) => ({
@@ -109,12 +105,6 @@ export default function Home() {
 
         {/* White — Tech stack badges */}
         <TechBadgesSection />
-
-        {/* White — Blog teaser: 3 articles, link to /blog */}
-        <BlogTeaserSection />
-
-        {/* Dark — Testimonials (social proof) */}
-        <TestimonialsSection />
 
         {/* Dark — Contact CTA with form */}
         <ContactCTASection />

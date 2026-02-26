@@ -6,10 +6,10 @@ import { PillButton } from "../pill-button";
 
 const SERVICES = [
   { num: "01", label: "Custom software development" },
-  { num: "02", label: "Web & mobile applications" },
-  { num: "03", label: "UI/UX strategy" },
-  { num: "04", label: "Billing & CRM solutions" },
-];
+  { num: "02", label: "Full-stack web applications" },
+  { num: "03", label: "Business websites & landing pages" },
+  { num: "04", label: "Billing & inventory solutions" },
+] as const;
 
 export function HeroSection() {
   return (

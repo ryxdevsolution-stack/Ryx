@@ -10,9 +10,9 @@ import { makeStaggerParent, FADE_UP_CHILD, SLIDE_UP_CHILD, POP_CHILD } from "../
 
 
 const HIGHLIGHT_STATS = [
-  { value: "15+", label: "Projects shipped" },
-  { value: "98%", label: "Satisfied clients" },
-  { value: "3×", label: "Faster delivery" },
+  { value: "4", label: "Projects shipped" },
+  { value: "4", label: "Industries served" },
+  { value: "2+", label: "Years building" },
 ];
 
 const headerParent = makeStaggerParent(0.1, 0);
@@ -116,7 +116,7 @@ export function WhyUsSection() {
                 <p className="text-xs text-neutral-400 font-mono mb-2">/ best tools</p>
                 <h3 className="text-lg font-semibold text-black leading-snug">Modern stack, no legacy baggage.</h3>
                 <p className="text-sm text-neutral-500 leading-relaxed mt-2">
-                  Next.js, Supabase, Tailwind — the same tools powering the fastest-growing products today.
+                  Next.js, Flask, PostgreSQL, Supabase, Electron — the same tools powering production-grade products today.
                 </p>
               </div>
             </motion.div>

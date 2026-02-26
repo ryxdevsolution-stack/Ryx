@@ -14,7 +14,7 @@ import { SectionReveal } from "../section-reveal";
 
 const CONNECT_POINTS = [
   "We reply within 24 hours",
-  "Direct access to our team — no bots.",
+  "Direct access to our team — reach us on WhatsApp.",
   "We ask smart questions fast.",
 ];
 

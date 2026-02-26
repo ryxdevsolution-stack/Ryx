@@ -14,22 +14,36 @@ const PROJECTS = [
   {
     title: "Valoryx",
     category: "Billing SaaS",
-    description:
-      "GST-compliant billing software for Indian retailers. Offline + cloud sync. Thermal printer support. Built with Next.js and Supabase.",
-    tags: ["Next.js", "Supabase", "SQLite", "TypeScript"],
+    description: "Offline-first billing & inventory system for Indian retailers. GST billing, multi-branch stock management, thermal printing, Electron desktop app with automatic cloud sync.",
+    tags: ["Next.js", "Flask", "SQLite", "PostgreSQL", "Electron", "Razorpay"],
     href: "https://mj-billing.vercel.app/landing",
     external: true,
   },
   {
-    title: "RYX Website",
-    category: "Web Development",
-    description:
-      "Company landing page with scroll animations, AI chatbot (RAVEN), and full SEO setup. Designed and built in-house.",
-    tags: ["Next.js", "Framer Motion", "Three.js", "Tailwind CSS"],
+    title: "BigTeam",
+    category: "Community Platform",
+    description: "Full-stack engagement platform with team management, commission tracking, content feeds, Zoom meeting scheduling, ad management, and admin dashboard with analytics.",
+    tags: ["React", "Flask", "PostgreSQL", "Supabase", "Redux", "Highcharts"],
     href: "/portfolio",
     external: false,
   },
-];
+  {
+    title: "Chendur & Co",
+    category: "Tax Consultancy Website",
+    description: "Lead generation website for a tax consulting firm. WhatsApp-integrated contact forms, local business SEO, animated UI, and multi-contact quick actions.",
+    tags: ["HTML5", "Tailwind CSS", "JavaScript", "AOS"],
+    href: "/portfolio",
+    external: false,
+  },
+  {
+    title: "Boutique",
+    category: "Fashion Landing Page",
+    description: "Luxury fashion showcase with product catalog, event listings, customer testimonials, and brand storytelling. Responsive mobile-first design.",
+    tags: ["HTML5", "Tailwind CSS", "JavaScript"],
+    href: "/portfolio",
+    external: false,
+  },
+] as const;
 
 const headerParent = makeStaggerParent(0.1, 0);
 const cardParent = makeStaggerParent(0.15, 0.2);

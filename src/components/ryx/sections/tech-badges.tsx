@@ -46,7 +46,7 @@ export function TechBadgesSection() {
             </SectionReveal>
 
             <motion.p variants={FADE_UP_CHILD} className="text-sm text-neutral-400 text-center max-w-xs">
-              Production-grade tools trusted by teams worldwide
+              Every tool here is used in our shipped projects
             </motion.p>
           </SectionReveal>
 

@@ -17,8 +17,8 @@ function parseStat(raw: string): { value: number; suffix: string } {
 }
 
 const STAT_DESCRIPTIONS: Record<string, string> = {
-  "Projects Delivered": "Projects delivered with bold strategy and sharp precision.",
-  "Client Satisfaction": "Clients stay for our unmatched quality and proven results.",
+  "Projects Delivered": "Each project built with real business requirements and shipped to production.",
+  "Industries Served": "Retail billing, community platforms, tax consulting, and fashion — diverse domains, consistent quality.",
   "Core Team Members": "Dedicated experts who own every project from start to launch.",
   "Founded": "Building impactful software since our founding year.",
 };
