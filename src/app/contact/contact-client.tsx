@@ -157,7 +157,7 @@ export default function ContactClient() {
                 >
                   <card.icon size={16} className="text-ig-green" />
                   <p className="text-xs text-ig-text-light-muted">{card.label}</p>
-                  <p className="text-sm font-medium text-white">{card.value}</p>
+                  <p className="text-sm font-medium text-white break-all">{card.value}</p>
                 </div>
               ))}
             </motion.div>

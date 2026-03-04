@@ -5,17 +5,19 @@ import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
 import Image from "next/image";
 import { X } from "lucide-react";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { SITE_CONFIG } from "@/lib/site-config";
 
 export function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
+  const [pendingHref, setPendingHref] = useState<string | null>(null);
   const pathname = usePathname();
+  const router = useRouter();
 
   return (
     <>
       {/* Top Banner Bar */}
-      <header className="fixed top-0 left-0 right-0 z-50">
+      <header data-no-ribbon className="fixed top-0 left-0 right-0 z-50">
         <div className="bg-ig-dark/80 backdrop-blur-md border-b border-ig-white-10">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="flex items-center justify-between h-12 sm:h-14">
@@ -26,6 +28,7 @@ export function Navbar() {
                     src="/RYX_Logo.png"
                     alt="RYX"
                     fill
+                    sizes="36px"
                     className="object-cover scale-[1.18]"
                     priority
                   />
@@ -38,7 +41,7 @@ export function Navbar() {
               {/* Center - Location */}
               <div className="hidden sm:flex items-center gap-2 text-xs sm:text-sm text-white/70">
                 <span className="text-white/40">Based in:</span>
-                <span className="text-white font-medium">Coimbatore, India</span>
+                <span className="text-white font-medium">{SITE_CONFIG.company.location}</span>
               </div>
 
               {/* Hamburger Menu Button */}
@@ -56,14 +59,19 @@ export function Navbar() {
       </header>
 
       {/* Full-Screen Menu Overlay */}
-      <AnimatePresence>
+      <AnimatePresence onExitComplete={() => {
+        if (pendingHref) {
+          router.push(pendingHref);
+          setPendingHref(null);
+        }
+      }}>
         {isOpen && (
           <motion.div
             className="fixed inset-0 z-[100] bg-ig-dark flex flex-col"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            transition={{ duration: 0.3 }}
+            transition={{ duration: 0.15 }}
           >
             {/* Close button */}
             <div className="flex justify-end p-4 sm:p-6 lg:p-8">
@@ -83,21 +91,21 @@ export function Navbar() {
                   key={link.href}
                   initial={{ opacity: 0, y: 30 }}
                   animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -20 }}
                   transition={{
                     duration: 0.4,
                     delay: i * 0.07,
                     ease: [0.4, 0, 0.2, 1],
                   }}
                 >
-                  <Link
-                    href={link.href}
-                    prefetch={true}
-                    onClick={() => setIsOpen(false)}
-                    className={`block text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-medium transition-colors duration-300 py-2 ${pathname === link.href ? "text-white" : "text-white/40 hover:text-white"}`}
+                  <button
+                    onClick={() => {
+                      setPendingHref(link.href);
+                      setIsOpen(false);
+                    }}
+                    className={`block text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-medium transition-colors duration-300 py-2 cursor-pointer ${pathname === link.href ? "text-white" : "text-white/40 hover:text-white"}`}
                   >
                     {link.label}
-                  </Link>
+                  </button>
                 </motion.div>
               ))}
             </nav>

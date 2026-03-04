@@ -157,7 +157,7 @@ export function ContactCTASection() {
               </div>
               <div className="ig-card-dark p-5 flex items-center gap-4">
                 <div className="w-12 h-12 rounded-full bg-ig-white-10 overflow-hidden flex-shrink-0">
-                  <Image src="/images/avatar-lead.jpg" alt="Team Lead" width={48} height={48} className="w-full h-full object-cover" />
+                  <Image src="/images/avatar-lead.jpg" alt="Team Lead" width={48} height={48} sizes="48px" className="w-full h-full object-cover" />
                 </div>
                 <div>
                   <p className="text-sm font-medium">Team Leader</p>

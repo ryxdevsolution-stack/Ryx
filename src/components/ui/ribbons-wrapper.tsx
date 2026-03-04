@@ -11,11 +11,13 @@ export function RibbonsWrapper() {
   return (
     <Ribbons
       colors={["#999999"]}
-      baseThickness={30}
+      baseThickness={22}
       baseSpring={0.04}
       baseFriction={0.9}
-      pointCount={30}
-      speedMultiplier={0.4}
+      offsetFactor={0}
+      pointCount={70}
+      maxAge={600}
+      speedMultiplier={0.35}
       enableFade={true}
       backgroundColor={[0, 0, 0, 0]}
     />

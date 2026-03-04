@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" fill="none"
+     stroke="currentColor" stroke-width="9" stroke-linecap="square"
+     role="img" aria-labelledby="ryx-mark-title">
+  <title id="ryx-mark-title">RYX logo mark</title>
+  <!-- R left vertical -->
+  <line x1="22" y1="10" x2="22" y2="90"/>
+  <!-- R bowl top horizontal -->
+  <line x1="22" y1="10" x2="58" y2="10"/>
+  <!-- R bowl middle horizontal -->
+  <line x1="22" y1="50" x2="58" y2="50"/>
+  <!-- R bowl right vertical -->
+  <line x1="58" y1="10" x2="58" y2="50"/>
+  <!-- R leg / X top-left diagonal (shared stroke — the merge point) -->
+  <line x1="22" y1="50" x2="78" y2="90"/>
+  <!-- X top-right to bottom-left diagonal -->
+  <line x1="78" y1="10" x2="22" y2="90"/>
+</svg>

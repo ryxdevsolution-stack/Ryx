@@ -1,7 +1,7 @@
 "use client";
 
 import { useRef } from "react";
-import { motion, useAnimationFrame, useMotionValue } from "framer-motion";
+import { motion, useAnimationFrame, useMotionValue, useInView } from "framer-motion";
 
 const CLIENTS = [
   "Valoryx",
@@ -32,8 +32,11 @@ function MarqueeTrack({
 }) {
   const x = useMotionValue(0);
   const trackRef = useRef<HTMLDivElement>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
+  const isInView = useInView(containerRef, { margin: "200px" });
 
   useAnimationFrame((_, delta) => {
+    if (!isInView) return; // pause when scrolled out of view
     const px = (delta / 1000) * speed * (reverse ? 1 : -1);
     const current = x.get();
     const trackWidth = trackRef.current ? trackRef.current.scrollWidth / 2 : 1;
@@ -46,7 +49,7 @@ function MarqueeTrack({
   const doubled = [...items, ...items];
 
   return (
-    <div className="overflow-hidden">
+    <div ref={containerRef} className="overflow-hidden">
       <motion.div ref={trackRef} style={{ x }} className="flex gap-4 w-max">
         {doubled.map((item, i) => (
           <span

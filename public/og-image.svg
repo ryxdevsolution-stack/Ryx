@@ -1,0 +1,80 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" fill="none">
+  <!-- Background -->
+  <rect width="1200" height="630" fill="#0a0a0a"/>
+
+  <!-- Subtle grid texture -->
+  <defs>
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#ffffff" stroke-width="0.3" opacity="0.07"/>
+    </pattern>
+    <radialGradient id="glow" cx="50%" cy="50%" r="60%">
+      <stop offset="0%" stop-color="#1a6b3a" stop-opacity="0.18"/>
+      <stop offset="100%" stop-color="#0a0a0a" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="tagline-fade" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#4ade80"/>
+      <stop offset="100%" stop-color="#22d3ee"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1200" height="630" fill="url(#grid)"/>
+  <rect width="1200" height="630" fill="url(#glow)"/>
+
+  <!-- Top-left accent bar -->
+  <rect x="80" y="80" width="3" height="60" fill="#4ade80"/>
+
+  <!-- RYX mark — top left, large watermark style -->
+  <g transform="translate(830, 80) scale(4.2)" opacity="0.07" stroke="#ffffff" stroke-width="9" stroke-linecap="square">
+    <line x1="22" y1="10" x2="22" y2="90"/>
+    <line x1="22" y1="10" x2="58" y2="10"/>
+    <line x1="22" y1="50" x2="58" y2="50"/>
+    <line x1="58" y1="10" x2="58" y2="50"/>
+    <line x1="22" y1="50" x2="78" y2="90"/>
+    <line x1="78" y1="10" x2="22" y2="90"/>
+  </g>
+
+  <!-- RYX mark — centered left, main -->
+  <g transform="translate(80, 110) scale(2.0)" stroke="#4ade80" stroke-width="9" stroke-linecap="square">
+    <line x1="22" y1="10" x2="22" y2="90"/>
+    <line x1="22" y1="10" x2="58" y2="10"/>
+    <line x1="22" y1="50" x2="58" y2="50"/>
+    <line x1="58" y1="10" x2="58" y2="50"/>
+    <line x1="22" y1="50" x2="78" y2="90"/>
+    <line x1="78" y1="10" x2="22" y2="90"/>
+  </g>
+
+  <!-- Company name -->
+  <text x="80" y="360" font-family="'Inter', 'Helvetica Neue', Arial, sans-serif" font-size="88" font-weight="800" fill="#ffffff" letter-spacing="-3">RYX Tech</text>
+
+  <!-- Tagline with gradient -->
+  <text x="80" y="430" font-family="'Inter', 'Helvetica Neue', Arial, sans-serif" font-size="32" font-weight="400" fill="url(#tagline-fade)" letter-spacing="0.5">Build &amp; Scale</text>
+
+  <!-- Divider line -->
+  <rect x="80" y="468" width="480" height="1.5" fill="#ffffff" opacity="0.12"/>
+
+  <!-- Description -->
+  <text x="80" y="510" font-family="'Inter', 'Helvetica Neue', Arial, sans-serif" font-size="22" fill="#ffffff" opacity="0.45">Custom software · GST billing · Web apps · Coimbatore</text>
+
+  <!-- URL -->
+  <text x="80" y="558" font-family="'Inter', 'Helvetica Neue', Arial, sans-serif" font-size="20" fill="#4ade80" opacity="0.7" letter-spacing="0.5">ryxtech.in</text>
+
+  <!-- Bottom right dot grid decoration -->
+  <g opacity="0.12">
+    <circle cx="1050" cy="480" r="3" fill="#4ade80"/>
+    <circle cx="1080" cy="480" r="3" fill="#4ade80"/>
+    <circle cx="1110" cy="480" r="3" fill="#4ade80"/>
+    <circle cx="1140" cy="480" r="3" fill="#4ade80"/>
+    <circle cx="1050" cy="510" r="3" fill="#4ade80"/>
+    <circle cx="1080" cy="510" r="3" fill="#4ade80"/>
+    <circle cx="1110" cy="510" r="3" fill="#4ade80"/>
+    <circle cx="1140" cy="510" r="3" fill="#4ade80"/>
+    <circle cx="1050" cy="540" r="3" fill="#4ade80"/>
+    <circle cx="1080" cy="540" r="3" fill="#4ade80"/>
+    <circle cx="1110" cy="540" r="3" fill="#4ade80"/>
+    <circle cx="1140" cy="540" r="3" fill="#4ade80"/>
+  </g>
+
+  <!-- Top right pill — "Software Company · India" -->
+  <rect x="940" y="80" width="180" height="36" rx="18" fill="#ffffff" opacity="0.06"/>
+  <text x="1030" y="104" font-family="'Inter', 'Helvetica Neue', Arial, sans-serif" font-size="14" fill="#ffffff" opacity="0.5" text-anchor="middle">Coimbatore · India</text>
+</svg>

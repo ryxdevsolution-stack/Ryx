@@ -1,15 +1,15 @@
 export const SITE_CONFIG = {
   company: {
-    name: "RYX Dev Solutions",
+    name: "RYX Tech",
     shortName: "RYX",
     siteUrl: "https://ryxtech.in",
-    email: "ryxdevsolutions@gmail.com",
+    email: "ryxtechie@gmail.com",
     whatsapp: "https://wa.me/918667258008",
     city: "Coimbatore",
     state: "Tamil Nadu",
     country: "India",
     location: "Coimbatore, India",
-    founded: "2023",
+    founded: "2025",
     tagline: "Build & Scale",
   },
   nav: [
@@ -17,13 +17,14 @@ export const SITE_CONFIG = {
     { label: "About us", href: "/about" },
     { label: "Services", href: "/services" },
     { label: "Portfolio", href: "/portfolio" },
+    { label: "Blog", href: "/blog" },
     { label: "Contact", href: "/contact" },
   ],
   social: {
-    facebook: "https://facebook.com/ryxdev",
-    linkedin: "https://linkedin.com/company/ryxdev",
+    facebook: "https://www.linkedin.com/company/ryx-tech/",
+    linkedin: "https://www.linkedin.com/company/ryx-tech/",
     twitter: "https://x.com/ryxdev",
-    instagram: "https://instagram.com/ryxdev",
+    instagram: "https://www.instagram.com/ryx_tech/",
     github: "https://github.com/ryxdevsolution-stack",
   },
   team: [
@@ -50,7 +51,7 @@ export const SITE_CONFIG = {
     { value: "4", label: "Projects Delivered" },
     { value: "4", label: "Industries Served" },
     { value: "3", label: "Core Team Members" },
-    { value: "2023", label: "Founded" },
+    { value: "2025", label: "Founded" },
   ],
   technologies: [
     "Next.js",

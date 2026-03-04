@@ -98,7 +98,7 @@ export default function AboutClient() {
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.7, delay: 0.15, ease: EASE_STANDARD }}
                 >
-                  Founded in 2023, Coimbatore, India. We build billing software,
+                  Founded in 2025, Coimbatore, India. We build billing software,
                   websites, full-stack web applications, and business websites for companies locally and globally.
                 </motion.p>
                 <motion.div

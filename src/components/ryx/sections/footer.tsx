@@ -43,6 +43,7 @@ const SOCIAL_ENTRIES = (Object.keys(SITE_CONFIG.social) as SocialKey[]).map(
     name: SOCIAL_LABELS[key],
     icon: SOCIAL_ICONS[key],
     href: SITE_CONFIG.social[key],
+    disabled: key === "twitter",
   })
 );
 
@@ -103,31 +104,51 @@ export function Footer() {
           viewport={{ once: true }}
           transition={{ duration: 0.5, delay: 0.1 }}
         >
-          {SOCIAL_ENTRIES.map((social, idx) => (
-            <a
-              key={social.name}
-              href={social.href}
-              target="_blank"
-              rel="noopener noreferrer"
-              className={`flex items-center justify-between gap-3 px-5 py-4 group transition-colors hover:bg-ig-white-5 ${
-                idx < SOCIAL_ENTRIES.length - 1
-                  ? "lg:border-r border-b lg:border-b-0 border-ig-white-10"
-                  : "border-b lg:border-b-0"
-              }`}
-            >
-              <div className="flex items-center gap-3">
-                <social.icon
-                  size={16}
-                  className="text-white/40 group-hover:text-white transition-colors"
+          {SOCIAL_ENTRIES.map((social, idx) => {
+            const borderClass = idx < SOCIAL_ENTRIES.length - 1
+              ? "lg:border-r border-b lg:border-b-0 border-ig-white-10"
+              : "border-b lg:border-b-0";
+
+            if (social.disabled) {
+              return (
+                <div
+                  key={social.name}
+                  title="Coming soon"
+                  className={`relative flex items-center justify-between gap-3 px-5 py-4 group cursor-not-allowed opacity-40 ${borderClass}`}
+                >
+                  <div className="flex items-center gap-3">
+                    <social.icon size={16} className="text-white/40" />
+                    <span className="text-sm font-medium">{social.name}</span>
+                  </div>
+                  <span className="text-[10px] text-white/50 border border-white/20 rounded-full px-2 py-0.5 leading-none">
+                    soon
+                  </span>
+                </div>
+              );
+            }
+
+            return (
+              <a
+                key={social.name}
+                href={social.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={`flex items-center justify-between gap-3 px-5 py-4 group transition-colors hover:bg-ig-white-5 ${borderClass}`}
+              >
+                <div className="flex items-center gap-3">
+                  <social.icon
+                    size={16}
+                    className="text-white/40 group-hover:text-white transition-colors"
+                  />
+                  <span className="text-sm font-medium">{social.name}</span>
+                </div>
+                <ArrowUpRight
+                  size={14}
+                  className="text-white/30 group-hover:text-white transition-colors group-hover:-translate-y-0.5 group-hover:translate-x-0.5 duration-300"
                 />
-                <span className="text-sm font-medium">{social.name}</span>
-              </div>
-              <ArrowUpRight
-                size={14}
-                className="text-white/30 group-hover:text-white transition-colors group-hover:-translate-y-0.5 group-hover:translate-x-0.5 duration-300"
-              />
-            </a>
-          ))}
+              </a>
+            );
+          })}
         </motion.div>
 
         {/* Newsletter + links grid */}
@@ -274,7 +295,7 @@ export function Footer() {
           </p>
           <div className="flex items-center gap-4 text-xs text-ig-text-light-muted">
             <span>
-              &copy; {new Date().getFullYear()} RYX. All rights reserved
+              &copy; 2026 RYX. All rights reserved
             </span>
             <Link
               href="/terms"

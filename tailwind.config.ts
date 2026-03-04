@@ -1,4 +1,5 @@
 import type { Config } from "tailwindcss";
+import typography from "@tailwindcss/typography";
 
 const config: Config = {
   darkMode: ["class"],
@@ -107,6 +108,14 @@ const config: Config = {
           "0%": { opacity: "0", transform: "translateY(20px)" },
           "100%": { opacity: "1", transform: "translateY(0)" },
         },
+        "accordion-down": {
+          from: { height: "0" },
+          to: { height: "var(--radix-accordion-content-height)" },
+        },
+        "accordion-up": {
+          from: { height: "var(--radix-accordion-content-height)" },
+          to: { height: "0" },
+        },
       },
       animation: {
         float: "float 6s ease-in-out infinite",
@@ -117,10 +126,12 @@ const config: Config = {
         "marquee-right": "marquee-right 30s linear infinite",
         "fade-in-up": "fade-in-up 0.6s ease-out forwards",
         "counter-up": "counter-up 0.4s ease-out forwards",
+        "accordion-down": "accordion-down 0.2s ease-out",
+        "accordion-up": "accordion-up 0.2s ease-out",
       },
     },
   },
-  plugins: [],
+  plugins: [typography],
 };
 
 export default config;

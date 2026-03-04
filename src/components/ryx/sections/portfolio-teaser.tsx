@@ -1,14 +1,15 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ArrowUpRight } from "lucide-react";
-import Link from "next/link";
 import { ParallaxBanner, ParallaxBannerLayer } from "react-scroll-parallax";
 import { SectionLabel } from "../section-label";
 import { PillButton } from "../pill-button";
 import { makeStaggerParent, FADE_UP_CHILD, SLIDE_UP_CHILD } from "../motion";
 import { CinematicHeading } from "../cinematic-heading";
 import { SectionReveal } from "../section-reveal";
+import { CodeCard } from "@/components/ryx/cards/code-card";
+import { DashboardCard } from "@/components/ryx/cards/dashboard-card";
+import type { ProjectCard } from "@/lib/github";
 
 const PROJECTS = [
   {
@@ -18,6 +19,7 @@ const PROJECTS = [
     tags: ["Next.js", "Flask", "SQLite", "PostgreSQL", "Electron", "Razorpay"],
     href: "https://mj-billing.vercel.app/landing",
     external: true,
+    cardStyle: 'dashboard' as const,
   },
   {
     title: "BigTeam",
@@ -26,6 +28,7 @@ const PROJECTS = [
     tags: ["React", "Flask", "PostgreSQL", "Supabase", "Redux", "Highcharts"],
     href: "/portfolio",
     external: false,
+    cardStyle: 'dashboard' as const,
   },
   {
     title: "Chendur & Co",
@@ -34,6 +37,7 @@ const PROJECTS = [
     tags: ["HTML5", "Tailwind CSS", "JavaScript", "AOS"],
     href: "/portfolio",
     external: false,
+    cardStyle: 'code' as const,
   },
   {
     title: "Boutique",
@@ -42,8 +46,9 @@ const PROJECTS = [
     tags: ["HTML5", "Tailwind CSS", "JavaScript"],
     href: "/portfolio",
     external: false,
+    cardStyle: 'code' as const,
   },
-] as const;
+];
 
 const headerParent = makeStaggerParent(0.1, 0);
 const cardParent = makeStaggerParent(0.15, 0.2);
@@ -85,49 +90,33 @@ export function PortfolioTeaserSection() {
 
           <SectionReveal
             variants={cardParent}
-            className="grid grid-cols-1 md:grid-cols-2 gap-5"
+            className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8"
             amount={0.1}
           >
-            {PROJECTS.map((p) => (
-              <motion.div
-                key={p.title}
-                variants={SLIDE_UP_CHILD}
-                className="ig-card-dark overflow-hidden group"
-                whileHover={{ y: -5, transition: { duration: 0.2 } }}
-              >
-                <div className="h-1 w-full bg-ig-green" />
-                <div className="p-7">
-                  <div className="flex items-start justify-between gap-4 mb-4">
-                    <div>
-                      <p className="text-xs text-ig-text-light-muted mb-1">{p.category}</p>
-                      <h3 className="text-2xl font-semibold text-white">{p.title}</h3>
-                    </div>
-                    <Link
-                      href={p.href}
-                      target={p.external ? "_blank" : undefined}
-                      rel={p.external ? "noopener noreferrer" : undefined}
-                      className="w-9 h-9 rounded-full bg-ig-white-10 hover:bg-white hover:text-black flex items-center justify-center text-white transition-colors duration-300 flex-shrink-0"
-                      aria-label={`Open ${p.title}`}
-                    >
-                      <ArrowUpRight size={16} />
-                    </Link>
-                  </div>
-                  <p className="text-sm text-ig-text-light-muted leading-relaxed mb-5">
-                    {p.description}
-                  </p>
-                  <div className="flex flex-wrap gap-2">
-                    {p.tags.map((tag) => (
-                      <span
-                        key={tag}
-                        className="text-xs px-3 py-1 rounded-full border border-ig-white-10 text-ig-text-light-muted"
-                      >
-                        {tag}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-              </motion.div>
-            ))}
+            {PROJECTS.map((p, i) => {
+              const asCard: ProjectCard = {
+                id: i,
+                name: p.title,
+                category: p.category,
+                description: p.description,
+                githubUrl: p.href,
+                liveUrl: p.external ? p.href : null,
+                topics: [...p.tags],
+                stars: 0,
+                forks: 0,
+                updatedAt: '',
+                cardStyle: p.cardStyle,
+              };
+              return (
+                <motion.div key={p.title} variants={SLIDE_UP_CHILD} className={i % 2 === 1 ? 'md:mt-16' : ''}>
+                  {p.cardStyle === 'dashboard' ? (
+                    <DashboardCard project={asCard} onClick={() => {}} />
+                  ) : (
+                    <CodeCard project={asCard} onClick={() => {}} />
+                  )}
+                </motion.div>
+              );
+            })}
           </SectionReveal>
 
         </div>

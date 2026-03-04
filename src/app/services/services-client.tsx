@@ -23,6 +23,10 @@ import { EASE_STANDARD } from "@/components/ryx/motion";
 import { SITE_CONFIG } from "@/lib/site-config";
 import { MagneticFieldBackground } from "@/components/ui/magnetic-field-background";
 
+const FaqSection = dynamic(
+  () => import("@/components/ryx/sections/faq").then((m) => ({ default: m.FaqSection })),
+  { loading: () => <div className="min-h-[60vh]" /> }
+);
 const ContactCTASection = dynamic(
   () => import("@/components/ryx/sections/contact-cta").then((m) => ({ default: m.ContactCTASection })),
   { loading: () => <div className="min-h-[50vh] bg-ig-dark" /> }
@@ -141,7 +145,7 @@ export default function ServicesClient() {
                 Solutions that <ScriptText>Transform</ScriptText> Business
               </motion.h1>
               <motion.p
-                className="text-white/70 text-lg sm:text-xl max-w-2xl leading-relaxed mb-12"
+                className="text-white/90 text-lg sm:text-xl max-w-2xl leading-relaxed mb-12"
                 initial={{ opacity: 0, y: 40 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.7, delay: 0.25, ease: EASE_STANDARD }}
@@ -156,7 +160,7 @@ export default function ServicesClient() {
                 transition={{ duration: 0.7, delay: 0.4, ease: EASE_STANDARD }}
               >
                 {["Billing Software", "Web Apps", "Mobile Apps", "Custom CRM", "UI/UX Design", "SEO & Analytics"].map((tag) => (
-                  <div key={tag} className="border border-white/10 rounded-xl px-4 py-3 text-sm text-white/60 bg-white/5 backdrop-blur-sm">
+                  <div key={tag} className="border border-white/50 rounded-xl px-4 py-3 text-sm font-medium text-white bg-white/15 backdrop-blur-sm hover:bg-white/25 hover:border-white/70 transition-colors duration-200">
                     {tag}
                   </div>
                 ))}
@@ -272,6 +276,8 @@ export default function ServicesClient() {
             </div>
           </div>
         </section>
+
+        <FaqSection />
 
         <ContactCTASection />
       </main>

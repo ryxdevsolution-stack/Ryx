@@ -1,7 +1,7 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
-import { motion, useInView } from "framer-motion";
+import { useEffect, useRef } from "react";
+import { motion, useInView, useMotionValue, useTransform, animate } from "framer-motion";
 import { ParallaxBanner, ParallaxBannerLayer } from "react-scroll-parallax";
 import { SectionLabel } from "../section-label";
 import { PillButton } from "../pill-button";
@@ -26,27 +26,18 @@ const STAT_DESCRIPTIONS: Record<string, string> = {
 function AnimatedCounter({ value, suffix }: { value: number; suffix: string }) {
   const ref = useRef<HTMLDivElement>(null);
   const isInView = useInView(ref, { once: true, amount: 0.1 });
-  const [count, setCount] = useState(0);
+  const motionValue = useMotionValue(0);
+  const rounded = useTransform(motionValue, (v) => Math.floor(v));
 
   useEffect(() => {
     if (!isInView) return;
-    const duration = 1500;
-    const startTime = performance.now();
-    let frameId: number;
-    const animate = (currentTime: number) => {
-      const elapsed = currentTime - startTime;
-      const progress = Math.min(elapsed / duration, 1);
-      const eased = 1 - Math.pow(1 - progress, 3);
-      setCount(Math.floor(eased * value));
-      if (progress < 1) frameId = requestAnimationFrame(animate);
-    };
-    frameId = requestAnimationFrame(animate);
-    return () => cancelAnimationFrame(frameId);
-  }, [isInView, value]);
+    const controls = animate(motionValue, value, { duration: 1.5, ease: [0, 0.9, 0.57, 1] });
+    return () => controls.stop();
+  }, [isInView, value, motionValue]);
 
   return (
     <div ref={ref} className="text-5xl sm:text-6xl md:text-7xl font-bold tracking-tight">
-      {count}
+      <motion.span>{rounded}</motion.span>
       <span className="text-3xl sm:text-4xl font-normal text-ig-text-muted">{suffix}</span>
     </div>
   );

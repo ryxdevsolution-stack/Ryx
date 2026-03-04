@@ -3,6 +3,9 @@
 import { motion } from "framer-motion";
 import { ScriptText } from "../script-text";
 import { PillButton } from "../pill-button";
+import dynamic from "next/dynamic";
+
+const Galaxy = dynamic(() => import("../galaxy"), { ssr: false, loading: () => null });
 
 const SERVICES = [
   { num: "01", label: "Custom software development" },
@@ -14,23 +17,28 @@ const SERVICES = [
 export function HeroSection() {
   return (
     <section className="relative min-h-screen bg-ig-dark overflow-hidden" data-no-ribbon>
-      {/* MP4 video background */}
-      <video
-        className="absolute inset-0 w-full h-full object-cover"
-        src="/hero.mp4"
-        autoPlay
-        muted
-        loop
-        playsInline
+      {/* Galaxy WebGL background */}
+      <Galaxy
+        className="absolute inset-0"
+        transparent={true}
+        mouseRepulsion
+        mouseInteraction
+        density={1}
+        glowIntensity={0.5}
+        saturation={0}
+        hueShift={140}
+        twinkleIntensity={0.4}
+        rotationSpeed={0.05}
+        repulsionStrength={2}
+        autoCenterRepulsion={0}
+        starSpeed={0.5}
+        speed={1}
       />
 
-      {/* Dark overlay for text readability */}
-      <div className="absolute inset-0 bg-black/55" />
-
       {/* Diagonal texture overlay */}
-      <div className="absolute inset-0 ig-texture opacity-30" />
+      <div className="absolute inset-0 ig-texture opacity-30 pointer-events-none" />
 
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-28 sm:pt-32 pb-16 min-h-screen flex flex-col justify-between">
+      <div data-no-ribbon className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-28 sm:pt-32 pb-16 min-h-screen flex flex-col justify-between">
         {/* Main heading */}
         <div className="flex-1 flex flex-col justify-center">
           <div className="space-y-0">
@@ -83,7 +91,7 @@ export function HeroSection() {
               Let&apos;s bring your vision to life.
             </p>
             <p className="text-xs text-white/40">
-              &copy; {new Date().getFullYear()} RYX Dev Solutions
+              ryxtech.in
             </p>
           </motion.div>
 

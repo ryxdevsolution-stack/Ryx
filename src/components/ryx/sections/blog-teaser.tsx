@@ -9,41 +9,16 @@ import { PillButton } from "../pill-button";
 import { CinematicHeading } from "../cinematic-heading";
 import { SectionReveal } from "../section-reveal";
 import { makeStaggerParent, FADE_UP_CHILD, SLIDE_UP_CHILD } from "../motion";
+import type { BlogPostMeta } from "@/lib/blog";
 
-const POSTS = [
-  {
-    date: "Jan 2025",
-    readTime: "5 min read",
-    tag: "Web Dev",
-    title: "Why Next.js App Router is the future of React",
-    excerpt:
-      "Server components, streaming, and nested layouts — here's why the App Router model changes how we think about performance.",
-    href: "/blog",
-  },
-  {
-    date: "Dec 2024",
-    readTime: "4 min read",
-    tag: "Design",
-    title: "Designing for clarity: lessons from 15+ client projects",
-    excerpt:
-      "After shipping dozens of products, these are the UX principles that actually move the needle — no fluff, just patterns that convert.",
-    href: "/blog",
-  },
-  {
-    date: "Nov 2024",
-    readTime: "6 min read",
-    tag: "Business",
-    title: "The real cost of a bad website for your small business",
-    excerpt:
-      "First impressions happen in 50ms. We break down exactly how a low-quality web presence is hurting your bottom line.",
-    href: "/blog",
-  },
-];
+interface BlogTeaserSectionProps {
+  posts: BlogPostMeta[];
+}
 
 const headerParent = makeStaggerParent(0.1, 0);
 const cardsParent = makeStaggerParent(0.12, 0.2);
 
-export function BlogTeaserSection() {
+export function BlogTeaserSection({ posts }: BlogTeaserSectionProps) {
   return (
     <ParallaxBanner className="ig-section-white">
       {/* Background texture */}
@@ -85,9 +60,9 @@ export function BlogTeaserSection() {
             className="grid grid-cols-1 md:grid-cols-3 gap-5"
             amount={0.1}
           >
-            {POSTS.map((post, i) => (
+            {posts.map((post, i) => (
               <motion.article
-                key={post.title}
+                key={post.slug}
                 variants={SLIDE_UP_CHILD}
                 className="group flex flex-col border border-neutral-200 rounded-2xl overflow-hidden bg-white hover:border-neutral-400 transition-colors duration-300"
                 whileHover={{ y: -4, transition: { duration: 0.2 } }}
@@ -104,7 +79,7 @@ export function BlogTeaserSection() {
                   {/* Meta */}
                   <div className="flex items-center gap-3">
                     <span className="text-xs px-3 py-1 rounded-full bg-neutral-100 text-neutral-500 font-medium">
-                      {post.tag}
+                      {post.category}
                     </span>
                     <span className="text-xs text-neutral-400">{post.date}</span>
                     <span className="text-neutral-200">·</span>
@@ -123,7 +98,7 @@ export function BlogTeaserSection() {
 
                   {/* CTA */}
                   <Link
-                    href={post.href}
+                    href={`/blog/${post.slug}`}
                     className="inline-flex items-center gap-1.5 text-sm font-medium text-black hover:gap-2.5 transition-all duration-200"
                     aria-label={`Read ${post.title}`}
                   >

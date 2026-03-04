@@ -185,26 +185,6 @@
      PRESERVED - Original Utility Classes
      ======================================== */
 
-  /* Legacy heading classes */
-  .heading-1 {
-    @apply text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-light tracking-tight leading-none;
-  }
-
-  .heading-2 {
-    @apply text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-light tracking-tight leading-tight;
-  }
-
-  .heading-3 {
-    @apply text-xl sm:text-2xl md:text-3xl font-light leading-tight;
-  }
-
-  .heading-4 {
-    @apply text-lg sm:text-xl md:text-2xl font-normal;
-  }
-
-  .body-text {
-    @apply text-sm sm:text-base md:text-lg font-light leading-relaxed text-muted-foreground;
-  }
 
   /* Minimal scrollbar */
   ::-webkit-scrollbar {

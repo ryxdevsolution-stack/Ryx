@@ -1,16 +1,30 @@
 import type { Metadata } from "next";
 import dynamic from "next/dynamic";
 import { Navbar } from "@/components/ryx/navbar";
+import { HeroSection } from "@/components/ryx/sections/hero";
 
 export const metadata: Metadata = {
-  title: "RYX Dev Solutions — Software Company in Coimbatore",
+  title: "RYX Tech — Software Company in Coimbatore | Custom Web Apps & Billing Software",
   description:
-    "RYX Dev Solutions — Coimbatore-based software company. We built Valoryx (offline-first GST billing), BigTeam (community platform), and business websites. Direct developer access, WhatsApp support.",
-  alternates: {
-    canonical: "https://ryxtech.in",
+    "RYX Tech builds custom software for Indian businesses — GST billing systems, full-stack web apps, and professional websites. Based in Coimbatore, Tamil Nadu. Direct developer access, WhatsApp support.",
+  keywords: [
+    "software company Coimbatore",
+    "web development Coimbatore",
+    "custom software India",
+    "GST billing software",
+    "website design Coimbatore",
+    "web app development Tamil Nadu",
+  ],
+  alternates: { canonical: "https://ryxtech.in" },
+  openGraph: {
+    title: "RYX Tech — Software Company in Coimbatore",
+    description:
+      "Custom web apps, billing software, and business websites. Direct developer access.",
+    url: "https://ryxtech.in",
+    siteName: "RYX Tech",
+    type: "website",
   },
 };
-import { HeroSection } from "@/components/ryx/sections/hero";
 
 // Below-the-fold sections — lazy loaded to reduce initial JS bundle
 const ServicesTeaserSection = dynamic(
@@ -34,6 +48,13 @@ const WhyUsSection = dynamic(
     })),
   { loading: () => <div className="min-h-[60vh]" /> }
 );
+const TestimonialsSection = dynamic(
+  () =>
+    import("@/components/ryx/sections/testimonials").then((m) => ({
+      default: m.TestimonialsSection,
+    })),
+  { loading: () => <div className="min-h-[60vh] bg-ig-dark" /> }
+);
 const ScrollMarqueeSection = dynamic(
   () =>
     import("@/components/ryx/sections/scroll-marquee").then((m) => ({
@@ -41,10 +62,10 @@ const ScrollMarqueeSection = dynamic(
     })),
   { loading: () => <div className="min-h-[12vh] bg-ig-dark" /> }
 );
-const PortfolioTeaserSection = dynamic(
+const ManifestoSection = dynamic(
   () =>
-    import("@/components/ryx/sections/portfolio-teaser").then((m) => ({
-      default: m.PortfolioTeaserSection,
+    import("@/components/ryx/sections/manifesto").then((m) => ({
+      default: m.ManifestoSection,
     })),
   { loading: () => <div className="min-h-[60vh] bg-ig-dark" /> }
 );
@@ -62,6 +83,7 @@ const TechBadgesSection = dynamic(
     })),
   { loading: () => <div className="min-h-[20vh]" /> }
 );
+import { BlogTeaserServer } from "@/components/ryx/sections/blog-teaser-server";
 const ContactCTASection = dynamic(
   () =>
     import("@/components/ryx/sections/contact-cta").then((m) => ({
@@ -94,17 +116,23 @@ export default function Home() {
         {/* White — Why choose RYX: asymmetric bento grid */}
         <WhyUsSection />
 
+        {/* Dark — Client testimonials: avatar carousel */}
+        <TestimonialsSection />
+
         {/* Dark — Infinite scrolling marquee: technologies & clients */}
         <ScrollMarqueeSection />
 
-        {/* Dark — Portfolio teaser: 2 real projects, link to /portfolio */}
-        <PortfolioTeaserSection />
+        {/* Dark — Manifesto: founding story, quote, narrative stats */}
+        <ManifestoSection />
 
         {/* White — Animated metrics from SITE_CONFIG */}
         <MetricsSection />
 
         {/* White — Tech stack badges */}
         <TechBadgesSection />
+
+        {/* White — Blog preview: 3 latest articles */}
+        <BlogTeaserServer />
 
         {/* Dark — Contact CTA with form */}
         <ContactCTASection />

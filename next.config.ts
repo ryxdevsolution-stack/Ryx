@@ -3,13 +3,14 @@ import type { NextConfig } from "next";
 const nextConfig: NextConfig = {
   // Performance optimizations for Lighthouse 95+
   experimental: {
-    optimizePackageImports: ['lucide-react', 'framer-motion', '@radix-ui/react-accordion', '@radix-ui/react-dialog'],
+    optimizePackageImports: ['lucide-react', 'framer-motion', '@radix-ui/react-accordion', '@radix-ui/react-dialog', 'react-scroll-parallax', 'ogl'],
     webpackBuildWorker: true,
     staleTimes: {
-      dynamic: 0,
-      static: 180,
+      dynamic: 30,   // cache navigations for 30s — reduces repeat-visit latency
+      static: 300,
     },
   },
+
 
   // Compiler optimizations
   compiler: {
@@ -47,32 +48,39 @@ const nextConfig: NextConfig = {
   compress: true,
   poweredByHeader: false,
   
-  // SEO and metadata
-  generateEtags: false,
+  // SEO and metadata — keep ETags enabled for proper conditional caching
+  generateEtags: true,
   
   // Build optimizations - swcMinify is enabled by default in Next.js 15
   
   // Security headers
   async headers() {
     return [
+      // Immutable cache for hashed static assets
+      {
+        source: '/_next/static/(.*)',
+        headers: [
+          { key: 'Cache-Control', value: 'public, max-age=31536000, immutable' },
+        ],
+      },
+      // Security headers for all pages
       {
         source: '/(.*)',
         headers: [
-          {
-            key: 'X-Frame-Options',
-            value: 'DENY',
-          },
-          {
-            key: 'X-Content-Type-Options',
-            value: 'nosniff',
-          },
-          {
-            key: 'Referrer-Policy',
-            value: 'strict-origin-when-cross-origin',
-          },
+          { key: 'X-Frame-Options', value: 'DENY' },
+          { key: 'X-Content-Type-Options', value: 'nosniff' },
+          { key: 'Referrer-Policy', value: 'strict-origin-when-cross-origin' },
         ],
       },
     ];
+  },
+
+  webpack(config: any) {
+    config.module.rules.push({
+      test: /\.glb$/,
+      type: 'asset/resource',
+    });
+    return config;
   },
 };
 

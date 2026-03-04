@@ -45,7 +45,7 @@ const Ribbons = ({
       const el = container!;
       const { Renderer, Transform, Vec3, Color, Polyline } = await import('ogl');
 
-      const renderer = new Renderer({ dpr: window.devicePixelRatio || 2, alpha: true });
+      const renderer = new Renderer({ dpr: 1, alpha: true });
       const gl = renderer.gl;
       gl.clearColor(backgroundColor[0], backgroundColor[1], backgroundColor[2], backgroundColor[3]);
 
@@ -105,9 +105,13 @@ const Ribbons = ({
         uniform float uEnableFade;
         varying vec2 vUV;
         void main() {
-          float fadeFactor = 1.0;
-          if(uEnableFade > 0.5) fadeFactor = 1.0 - smoothstep(0.0, 1.0, vUV.y);
-          gl_FragColor = vec4(uColor, uOpacity * fadeFactor);
+          // Centered fade: bright in the middle, transparent at both edges
+          float edge = 1.0 - abs(vUV.x * 2.0 - 1.0);
+          edge = smoothstep(0.0, 0.5, edge);
+          // Trail fade: fades out along the length of the ribbon
+          float trail = 1.0;
+          if(uEnableFade > 0.5) trail = 1.0 - smoothstep(0.0, 1.0, vUV.y);
+          gl_FragColor = vec4(uColor, uOpacity * edge * trail);
         }
       `;
 
@@ -174,8 +178,9 @@ const Ribbons = ({
       let lastTime = performance.now();
       function update() {
         frameId = requestAnimationFrame(update);
+        if (document.hidden) return; // pause when tab is not visible
         const now = performance.now();
-        const dt = now - lastTime;
+        const dt = Math.min(now - lastTime, 32); // clamp to ~30fps max delta to prevent snap on tab blur
         lastTime = now;
 
         lines.forEach(line => {
@@ -184,7 +189,7 @@ const Ribbons = ({
           line.points[0].add(line.mouseVelocity);
 
           for (let i = 1; i < line.points.length; i++) {
-            const alpha = maxAge > 0 ? Math.min(1, (dt * speedMultiplier) / (maxAge / (line.points.length - 1))) : 0.9;
+            const alpha = maxAge > 0 ? Math.min(0.6, (dt * speedMultiplier) / (maxAge / (line.points.length - 1))) : 0.9;
             line.points[i].lerp(line.points[i - 1], alpha);
           }
           if (line.polyline.mesh.program.uniforms.uTime) line.polyline.mesh.program.uniforms.uTime.value = now * 0.001;
@@ -205,10 +210,22 @@ const Ribbons = ({
       };
     }
 
+    let cancelled = false;
     let cleanup: (() => void) | undefined;
-    init().then(fn => { cleanup = fn; });
+    init().then(fn => {
+      if (cancelled) {
+        // Strict Mode fired cleanup before init resolved — run cleanup immediately
+        fn?.();
+      } else {
+        cleanup = fn;
+      }
+    });
 
-    return () => { cleanup?.(); cancelAnimationFrame(frameId); };
+    return () => {
+      cancelled = true;
+      cleanup?.();
+      cancelAnimationFrame(frameId);
+    };
   }, [colors, baseSpring, baseFriction, baseThickness, offsetFactor, maxAge, pointCount, speedMultiplier, enableFade, enableShaderEffect, effectAmplitude, backgroundColor]);
 
   return <div ref={containerRef} className={cn("fixed inset-0 pointer-events-none z-40", className)} />;

@@ -1,0 +1,42 @@
+---
+title: "How We Built Valoryx: An Offline-First GST Billing App"
+excerpt: "A technical deep-dive into building desktop billing software that works without internet — and syncs seamlessly when connected."
+date: "2025-01-20"
+readTime: "6 min read"
+category: "Case Study"
+author: "RYX Tech"
+---
+
+## The Problem
+
+A trading business in Coimbatore came to us with a simple ask: they needed GST-compliant billing software that worked during power cuts and connectivity outages — which happen daily in their warehouse.
+
+Every SaaS billing tool they tried either required constant internet or lost data when it dropped. Excel was becoming unmanageable.
+
+## The Architecture Decision: Offline-First
+
+We built Valoryx as a desktop application using Electron, with SQLite as the local database. Here's why:
+
+- SQLite: zero-config, embedded, file-based. No database server to manage. Works completely offline.
+- Electron: ship a full Node.js + Chromium app as a native .exe / .dmg. Users install it like any desktop app.
+- Supabase: when internet is available, changes sync to the cloud. Postgres on the backend, real-time subscriptions for multi-device access.
+
+## The Sync Strategy
+
+The trickiest part: what happens when two users edit the same record offline?
+
+We used a last-write-wins strategy with timestamps, plus a conflict queue that shows the user when a merge conflict needs manual resolution. Simple, transparent, reliable.
+
+## Tech Stack
+
+- Frontend: React + TypeScript (inside Electron)
+- Local DB: SQLite via better-sqlite3
+- Cloud sync: Supabase (Postgres + Realtime)
+- Auth: Supabase Auth (email/password per business)
+- Build: Electron Forge for packaging
+
+## The Result
+
+Valoryx now handles GST invoice generation, inventory management, customer ledgers, GSTR-1 export, and multi-device sync. The client went from 2 hours of daily manual billing to 20 minutes.
+
+[See Valoryx in our portfolio](/portfolio) or [contact us](/contact) if you need something similar.

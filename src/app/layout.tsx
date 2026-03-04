@@ -42,11 +42,11 @@ const greatVibes = localFont({
 // Top-tier SEO metadata
 export const metadata: Metadata = {
   title: {
-    default: "RYX Dev Solutions — Software Company in Coimbatore",
-    template: "%s | RYX Dev Solutions",
+    default: "RYX Tech — Software Company in Coimbatore",
+    template: "%s | RYX Tech",
   },
   description:
-    "RYX Dev Solutions — Coimbatore-based software company. We built Valoryx (offline-first GST billing), BigTeam (community platform), and business websites. Direct developer access, WhatsApp support.",
+    "RYX Tech — Coimbatore-based software company. We built Valoryx (offline-first GST billing), BigTeam (community platform), and business websites. Direct developer access, WhatsApp support.",
   keywords: [
     // Product
     "billing software india", "GST billing software", "GST invoicing app", "offline billing software",
@@ -61,9 +61,9 @@ export const metadata: Metadata = {
     "software company coimbatore", "IT company coimbatore", "tech startup coimbatore",
     "web developer coimbatore", "app developer tamil nadu", "software development tamil nadu",
   ],
-  authors: [{ name: "RYX Dev Solutions", url: "https://ryxtech.in" }],
-  creator: "RYX Dev Solutions",
-  publisher: "RYX Dev Solutions",
+  authors: [{ name: "RYX Tech", url: "https://ryxtech.in" }],
+  creator: "RYX Tech",
+  publisher: "RYX Tech",
   metadataBase: new URL("https://ryxtech.in"),
   alternates: {
     canonical: "https://ryxtech.in",
@@ -72,8 +72,8 @@ export const metadata: Metadata = {
     type: "website",
     locale: "en_IN",
     url: "https://ryxtech.in",
-    siteName: "RYX Dev Solutions",
-    title: "RYX Dev Solutions — Software Company in Coimbatore",
+    siteName: "RYX Tech",
+    title: "RYX Tech — Software Company in Coimbatore",
     description:
       "Coimbatore-based software company. We build Valoryx (GST billing), full-stack web apps, and business websites. Direct developer access. India & worldwide.",
     images: [
@@ -81,7 +81,7 @@ export const metadata: Metadata = {
         url: "/og-image.jpg",
         width: 1200,
         height: 630,
-        alt: "RYX Dev Solutions — Build & Scale",
+        alt: "RYX Tech — Build & Scale",
       },
     ],
   },
@@ -89,7 +89,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     site: "@ryxdev",
     creator: "@ryxdev",
-    title: "RYX Dev Solutions — Software Company in Coimbatore",
+    title: "RYX Tech — Software Company in Coimbatore",
     description:
       "Coimbatore software company. GST billing, web apps, websites. Direct developer access. India & worldwide.",
     images: ["/og-image.jpg"],
@@ -120,7 +120,6 @@ export const metadata: Metadata = {
     "geo.position": "11.0168;76.9558",
     "ICBM": "11.0168, 76.9558",
     "language": "English",
-    "revisit-after": "7 days",
     "rating": "general",
   },
 };
@@ -130,13 +129,13 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  // Structured data — LocalBusiness for geo SEO + Organization for brand
+  // Structured data — LocalBusiness + Organization + WebSite for full schema graph
   const structuredData = [
     {
       "@context": "https://schema.org",
       "@type": ["LocalBusiness", "ProfessionalService"],
       "@id": "https://ryxtech.in/#business",
-      "name": "RYX Dev Solutions",
+      "name": "RYX Tech",
       "alternateName": "RYX",
       "url": "https://ryxtech.in",
       "logo": {
@@ -146,8 +145,8 @@ export default function RootLayout({
         "height": 1024,
       },
       "image": "https://ryxtech.in/og-image.jpg",
-      "description": "RYX Dev Solutions builds billing software, full-stack web applications, and business websites for companies in Coimbatore, India and worldwide.",
-      "foundingDate": "2023",
+      "description": "RYX Tech builds billing software, full-stack web applications, and business websites for companies in Coimbatore, India and worldwide.",
+      "foundingDate": "2025",
       "address": {
         "@type": "PostalAddress",
         "streetAddress": "Coimbatore",
@@ -165,7 +164,7 @@ export default function RootLayout({
         {
           "@type": "ContactPoint",
           "contactType": "Customer Service",
-          "email": "ryxdevsolutions@gmail.com",
+          "email": "ryxtechie@gmail.com",
           "availableLanguage": ["English", "Tamil"],
           "areaServed": ["IN", "Worldwide"],
         },
@@ -201,10 +200,52 @@ export default function RootLayout({
       "numberOfEmployees": { "@type": "QuantitativeValue", "value": 3 },
       "priceRange": "₹₹",
     },
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "@id": "https://ryxtech.in/#organization",
+      "name": "RYX Tech",
+      "url": "https://ryxtech.in",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://ryxtech.in/RYX_Logo.png",
+        "width": 1024,
+        "height": 1024,
+      },
+      "sameAs": [
+        "https://github.com/ryxdevsolution-stack",
+        "https://instagram.com/ryx_tech",
+        "https://linkedin.com/company/ryx-tech",
+        "https://x.com/ryxdev",
+      ],
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "contactType": "customer support",
+        "email": "ryxtechie@gmail.com",
+        "availableLanguage": ["English", "Tamil"],
+      },
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "@id": "https://ryxtech.in/#website",
+      "url": "https://ryxtech.in",
+      "name": "RYX Tech",
+      "description": "Custom software company in Coimbatore — web apps, GST billing, and business websites.",
+      "publisher": { "@id": "https://ryxtech.in/#organization" },
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": {
+          "@type": "EntryPoint",
+          "urlTemplate": "https://ryxtech.in/blog?q={search_term_string}",
+        },
+        "query-input": "required name=search_term_string",
+      },
+    },
   ];
 
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="en-IN" suppressHydrationWarning>
       <head>
         {/* Safe: JSON-LD is our own hardcoded structured data, no user input */}
         {structuredData.map((schema, i) => (
