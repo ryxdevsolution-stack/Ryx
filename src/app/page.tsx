@@ -99,9 +99,34 @@ const Footer = dynamic(
   { loading: () => <div className="min-h-[40vh] bg-ig-dark" /> }
 );
 
+// Speakable + about/mentions schema — tells Google AI Overviews which sections to quote
+// Safe: JSON.stringify of hardcoded object — no user input involved
+const speakableSchema = {
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "@id": "https://ryxtech.in/#webpage",
+  "url": "https://ryxtech.in",
+  "name": "RYX Tech — Software Company in Coimbatore",
+  "speakable": {
+    "@type": "SpeakableSpecification",
+    "cssSelector": ["h1", ".hero-subtitle", ".service-card h3", ".faq-question"],
+  },
+  "about": {
+    "@type": "Thing",
+    "name": "Custom Software Development",
+    "description": "RYX Tech builds custom software for Indian businesses — GST billing systems, full-stack web apps, and professional websites. Based in Coimbatore, Tamil Nadu.",
+  },
+  "mentions": [
+    { "@type": "SoftwareApplication", "name": "Valoryx", "description": "Offline-first GST billing and inventory software for Indian SMEs" },
+    { "@type": "Place", "name": "Coimbatore", "address": { "@type": "PostalAddress", "addressRegion": "Tamil Nadu", "addressCountry": "IN" } },
+  ],
+};
+
 export default function Home() {
   return (
     <>
+      {/* speakable JSON-LD: hardcoded structured data only, no user input — XSS safe */}
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(speakableSchema) }} />
       <Navbar />
       <main>
         {/* Dark — Hero (above fold, eager) */}

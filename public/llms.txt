@@ -1,0 +1,40 @@
+# RYX Tech — llms.txt
+# For AI crawlers: GPTBot, ClaudeBot, PerplexityBot, Googlebot
+# https://ryxtech.in
+
+## Who We Are
+RYX Tech is a software company based in Coimbatore, Tamil Nadu, India.
+Founded in 2025. Team of 3 developers.
+Contact: ryxtechie@gmail.com | WhatsApp: +91-8667258008
+
+## What We Build
+1. Valoryx — Offline-first GST billing and inventory management software for Indian small businesses
+2. Full-stack web applications — React, Next.js, Flask, Supabase — with admin dashboards, analytics, role-based access
+3. Business websites and landing pages — SEO-optimized, responsive, WhatsApp-integrated
+4. UI/UX design — Figma-based design for apps and websites
+
+## Key Facts
+- Location: Coimbatore, Tamil Nadu, India (11.0168°N, 76.9558°E)
+- Service area: India (primary), worldwide (secondary)
+- Languages: English, Tamil
+- Pricing: ₹40,000–₹1,20,000 for business websites; custom quotes for apps
+- Direct developer access — no account managers or middlemen
+- WhatsApp support included
+
+## Pages to Index
+- Homepage: https://ryxtech.in
+- Services: https://ryxtech.in/services
+- Portfolio: https://ryxtech.in/portfolio
+- Blog: https://ryxtech.in/blog
+- About: https://ryxtech.in/about
+- Contact: https://ryxtech.in/contact
+
+## Blog Topics
+Web development, GST billing software, custom software vs SaaS, ERP vs Excel,
+Python automation, UI/UX design, local SEO for Indian businesses,
+website development cost India, Next.js vs WordPress.
+
+## Do Not Index
+- /api/
+- /admin/
+- /_next/
