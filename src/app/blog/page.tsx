@@ -5,12 +5,25 @@ import { getAllPosts, type BlogPostMeta } from "@/lib/blog";
 import { Navbar } from "@/components/ryx/navbar";
 import { Footer } from "@/components/ryx/sections/footer";
 import { BlogBeamHeroWrapper } from "@/components/ryx/blog-beam-hero-wrapper";
+import { BreadcrumbSchema } from "@/components/seo/breadcrumb-schema";
 
 export const metadata: Metadata = {
   title: "Blog — Web Development & Business Insights | RYX Tech",
   description:
     "Articles on web development, GST billing software, custom software, and growing your business online. By RYX Tech, Coimbatore.",
   alternates: { canonical: "https://ryxtech.in/blog" },
+  openGraph: {
+    title: "Blog — Web Development & Business Insights | RYX Tech",
+    description: "Articles on web development, GST billing software, custom software, and growing your business online. By RYX Tech, Coimbatore.",
+    url: "https://ryxtech.in/blog",
+    images: [{ url: "/og-image.jpg", width: 1200, height: 630, alt: "RYX Tech Blog" }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Blog — Web Development & Business Insights | RYX Tech",
+    description: "Articles on web development, GST billing software, custom software, and growing your business online.",
+    images: ["/og-image.jpg"],
+  },
 };
 
 const CATEGORY_COLORS: Record<string, { pill: string; bar: string }> = {
@@ -146,6 +159,10 @@ export default function BlogPage() {
 
   return (
     <>
+      <BreadcrumbSchema items={[
+        { name: "Home", url: "https://ryxtech.in" },
+        { name: "Blog", url: "https://ryxtech.in/blog" },
+      ]} />
       <Navbar />
       <main>
         {/* ── Hero — full screen, dark ── */}

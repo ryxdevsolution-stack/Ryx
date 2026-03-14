@@ -34,8 +34,16 @@ export function ChatWidget() {
   const [input, setInput] = useState("")
   const [isLoading, setIsLoading] = useState(false)
   const [showPulse, setShowPulse] = useState(true)
+  const [isMobile, setIsMobile] = useState(() => window.innerWidth < 640)
   const messagesEndRef = useRef<HTMLDivElement>(null)
   const inputRef = useRef<HTMLInputElement>(null)
+
+  // Track viewport changes
+  useEffect(() => {
+    const check = () => setIsMobile(window.innerWidth < 640)
+    window.addEventListener("resize", check)
+    return () => window.removeEventListener("resize", check)
+  }, [])
 
   const scrollToBottom = useCallback(() => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" })
@@ -183,20 +191,52 @@ export function ChatWidget() {
     }, 50)
   }
 
+  // Inline styles computed by JS — no Tailwind specificity issues
+  const panelStyle: React.CSSProperties = isMobile
+    ? {
+        position: "fixed",
+        top: 0,
+        left: 0,
+        right: 0,
+        bottom: 0,
+        width: "100%",
+        height: "100dvh",
+        zIndex: 9999,
+        display: "flex",
+        flexDirection: "column",
+        backgroundColor: "#ffffff",
+        overflow: "hidden",
+      }
+    : {
+        position: "fixed",
+        bottom: "6rem",
+        right: "1.5rem",
+        width: "380px",
+        maxHeight: "560px",
+        zIndex: 9999,
+        display: "flex",
+        flexDirection: "column",
+        backgroundColor: "#ffffff",
+        borderRadius: "1rem",
+        boxShadow: "0 25px 50px -12px rgba(0,0,0,0.15)",
+        border: "1px solid rgba(229,231,235,0.6)",
+        overflow: "hidden",
+      }
+
   return (
-    <div className="fixed bottom-6 right-6 z-50">
+    <>
       {/* Chat Panel */}
       <AnimatePresence>
         {isOpen && (
           <motion.div
-            initial={{ opacity: 0, y: 20, scale: 0.95 }}
-            animate={{ opacity: 1, y: 0, scale: 1 }}
-            exit={{ opacity: 0, y: 20, scale: 0.95 }}
-            transition={{ duration: 0.2, ease: "easeOut" }}
-            className="absolute bottom-[4.5rem] right-0 w-[380px] max-h-[560px] bg-white rounded-2xl shadow-2xl shadow-gray-900/15 border border-gray-200/60 flex flex-col overflow-hidden"
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: 30 }}
+            transition={{ duration: 0.25, ease: "easeOut" }}
+            style={panelStyle}
           >
             {/* Header */}
-            <div className="flex items-center justify-between px-5 py-4 bg-gray-950">
+            <div className="flex items-center justify-between px-5 py-4 bg-gray-950 safe-top shrink-0">
               <div className="flex items-center gap-3">
                 <div className="w-9 h-9 rounded-xl overflow-hidden shadow-lg shadow-violet-500/30">
                   <Image src="/RYX_Logo.png" alt="RYX" width={36} height={36} className="w-full h-full object-cover" />
@@ -219,7 +259,7 @@ export function ChatWidget() {
             </div>
 
             {/* Messages */}
-            <div className="flex-1 overflow-y-auto px-4 py-4 space-y-3 min-h-[300px] max-h-[380px] bg-gray-50/50">
+            <div className="flex-1 overflow-y-auto px-4 py-4 space-y-3 bg-gray-50/50">
               {messages.map((msg, i) => (
                 <div
                   key={i}
@@ -285,7 +325,7 @@ export function ChatWidget() {
             </div>
 
             {/* Input */}
-            <div className="px-4 py-3 bg-white border-t border-gray-100">
+            <div className="px-4 py-3 bg-white border-t border-gray-100 safe-bottom shrink-0">
               <div className="flex items-center gap-2">
                 <input
                   ref={inputRef}
@@ -301,7 +341,7 @@ export function ChatWidget() {
                   onClick={sendMessage}
                   disabled={!input.trim() || isLoading}
                   aria-label="Send message"
-                  className="w-10 h-10 bg-gray-900 rounded-xl flex items-center justify-center text-white hover:bg-gray-800 transition-colors disabled:opacity-30 disabled:cursor-not-allowed"
+                  className="w-10 h-10 bg-gray-900 rounded-xl flex items-center justify-center text-white hover:bg-gray-800 transition-colors disabled:opacity-30 disabled:cursor-not-allowed shrink-0"
                 >
                   <Send className="w-4 h-4" />
                 </button>
@@ -314,45 +354,48 @@ export function ChatWidget() {
         )}
       </AnimatePresence>
 
-      {/* Floating Button */}
-      <div className="relative">
-        {/* Pulse ring */}
-        {showPulse && (
-          <span className="absolute inset-0 rounded-full bg-violet-500/20 animate-ping" />
-        )}
-        <motion.button
-          onClick={() => setIsOpen(!isOpen)}
-          aria-label={isOpen ? "Close RAVEN" : "Open RAVEN"}
-          whileHover={{ scale: 1.05 }}
-          whileTap={{ scale: 0.95 }}
-          className="relative w-14 h-14 bg-gray-950 rounded-full flex items-center justify-center text-white shadow-xl shadow-gray-900/20 hover:shadow-2xl hover:shadow-gray-900/30 transition-shadow"
-        >
-          <AnimatePresence mode="wait">
-            {isOpen ? (
-              <motion.div
-                key="close"
-                initial={{ rotate: -90, opacity: 0 }}
-                animate={{ rotate: 0, opacity: 1 }}
-                exit={{ rotate: 90, opacity: 0 }}
-                transition={{ duration: 0.15 }}
-              >
-                <X className="w-5 h-5" />
-              </motion.div>
-            ) : (
-              <motion.div
-                key="open"
-                initial={{ scale: 0.5, opacity: 0 }}
-                animate={{ scale: 1, opacity: 1 }}
-                exit={{ scale: 0.5, opacity: 0 }}
-                transition={{ duration: 0.15 }}
-                className="flex items-center justify-center w-8 h-8 rounded-full overflow-hidden"
-              >
-                <Image src="/chatbot.png" alt="RAVEN" width={32} height={32} className="w-full h-full object-cover" />
-              </motion.div>
+      {/* Floating Button — hidden on mobile when chat is open */}
+      {!(isOpen && isMobile) && (
+        <div className="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-50">
+          <div className="relative">
+            {showPulse && (
+              <span className="absolute inset-0 rounded-full bg-violet-500/20 animate-ping" />
             )}
-          </AnimatePresence>
-        </motion.button>
-      </div>
-    </div>
+            <motion.button
+              onClick={() => setIsOpen(!isOpen)}
+              aria-label={isOpen ? "Close RAVEN" : "Open RAVEN"}
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className="relative w-14 h-14 bg-gray-950 rounded-full flex items-center justify-center text-white shadow-xl shadow-gray-900/20 hover:shadow-2xl hover:shadow-gray-900/30 transition-shadow"
+            >
+              <AnimatePresence mode="wait">
+                {isOpen ? (
+                  <motion.div
+                    key="close"
+                    initial={{ rotate: -90, opacity: 0 }}
+                    animate={{ rotate: 0, opacity: 1 }}
+                    exit={{ rotate: 90, opacity: 0 }}
+                    transition={{ duration: 0.15 }}
+                  >
+                    <X className="w-5 h-5" />
+                  </motion.div>
+                ) : (
+                  <motion.div
+                    key="open"
+                    initial={{ scale: 0.5, opacity: 0 }}
+                    animate={{ scale: 1, opacity: 1 }}
+                    exit={{ scale: 0.5, opacity: 0 }}
+                    transition={{ duration: 0.15 }}
+                    className="flex items-center justify-center w-8 h-8 rounded-full overflow-hidden"
+                  >
+                    <Image src="/chatbot.png" alt="RAVEN" width={32} height={32} className="w-full h-full object-cover" />
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </motion.button>
+          </div>
+        </div>
+      )}
+    </>
   )
 }

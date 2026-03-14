@@ -1,16 +1,23 @@
 import type { Metadata } from "next";
 import ServicesClient from "./services-client";
+import { BreadcrumbSchema } from "@/components/seo/breadcrumb-schema";
 
 export const metadata: Metadata = {
-  title: "Services — Web Apps, Billing Software & Websites | RYX Tech Coimbatore",
+  title: "Services — Web Apps, Billing Software, Digital Marketing | RYX Tech Coimbatore",
   description:
-    "Custom software development by RYX Tech, Coimbatore. GST billing systems, full-stack web applications, business websites, UI/UX design. Direct developer access, WhatsApp support.",
+    "RYX Tech, Coimbatore — GST billing systems, full-stack web apps, mobile apps, UI/UX design, and digital marketing. Google Ads, Meta Ads, social media management. Direct developer access, WhatsApp support.",
   alternates: { canonical: "https://ryxtech.in/services" },
   openGraph: {
-    title: "Services — Web Apps, Billing Software & Websites | RYX Tech",
-    description: "Custom software development by RYX Tech, Coimbatore. GST billing, full-stack web apps, business websites.",
+    title: "Services — Web Apps, Billing Software, Digital Marketing | RYX Tech",
+    description: "Custom software + digital marketing by RYX Tech, Coimbatore. GST billing, web apps, Google Ads, Meta Ads, social media management.",
     url: "https://ryxtech.in/services",
     images: [{ url: "/og-image.jpg", width: 1200, height: 630, alt: "RYX Tech Services" }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Services — Web Apps, Billing Software, Digital Marketing | RYX Tech",
+    description: "Custom software + digital marketing by RYX Tech, Coimbatore. GST billing, web apps, Google Ads, Meta Ads, social media.",
+    images: ["/og-image.jpg"],
   },
 };
 
@@ -64,6 +71,11 @@ const FAQ_SCHEMA = {
 export default function ServicesPage() {
   return (
     <>
+      <BreadcrumbSchema items={[
+        { name: "Home", url: "https://ryxtech.in" },
+        { name: "Services", url: "https://ryxtech.in/services" },
+      ]} />
+      {/* Safe: FAQ_SCHEMA is hardcoded structured data, no user input */}
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(FAQ_SCHEMA) }}

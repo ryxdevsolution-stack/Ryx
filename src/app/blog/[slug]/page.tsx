@@ -5,6 +5,7 @@ import { ArrowLeft, Clock, Calendar, User } from "lucide-react";
 import { getAllPostSlugs, getPost } from "@/lib/blog";
 import { Navbar } from "@/components/ryx/navbar";
 import { Footer } from "@/components/ryx/sections/footer";
+import { BreadcrumbSchema } from "@/components/seo/breadcrumb-schema";
 
 interface PageProps {
   params: Promise<{ slug: string }>;
@@ -30,7 +31,13 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       modifiedTime: post.date,
       authors: ["RYX Tech"],
       url: `https://ryxtech.in/blog/${slug}`,
-      images: [{ url: "/og-image.jpg", width: 1200, height: 630, alt: post.title }],
+      images: [{ url: `/api/og?title=${encodeURIComponent(post.title)}`, width: 1200, height: 630, alt: post.title }],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: post.title,
+      description: post.excerpt,
+      images: [`/api/og?title=${encodeURIComponent(post.title)}`],
     },
   };
 }
@@ -91,7 +98,12 @@ export default async function BlogPostPage({ params }: PageProps) {
 
   return (
     <>
-      {/* Static JSON-LD schema — no user input, safe */}
+      <BreadcrumbSchema items={[
+        { name: "Home", url: "https://ryxtech.in" },
+        { name: "Blog", url: "https://ryxtech.in/blog" },
+        { name: post.title, url: `https://ryxtech.in/blog/${slug}` },
+      ]} />
+      {/* Safe: jsonLd is hardcoded structured data from blog content files, no user input */}
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}

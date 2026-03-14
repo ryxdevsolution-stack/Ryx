@@ -14,6 +14,7 @@ import {
   Shield,
   Rocket,
   CheckCircle,
+  TrendingUp,
 } from "lucide-react";
 
 import { Navbar } from "@/components/ryx/navbar";
@@ -103,6 +104,17 @@ const SERVICES = [
       "Structured data / Schema markup",
     ],
   },
+  {
+    icon: TrendingUp,
+    title: "Digital Marketing",
+    description: "End-to-end digital marketing to grow your brand, generate leads, and convert traffic into customers.",
+    features: [
+      "Social media management (Instagram, LinkedIn, Facebook)",
+      "Google Ads & Meta Ads campaign management",
+      "Content marketing & blog strategy",
+      "Email marketing & WhatsApp campaigns",
+    ],
+  },
 ] as const;
 
 const PROCESS = [
@@ -159,7 +171,7 @@ export default function ServicesClient() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.7, delay: 0.4, ease: EASE_STANDARD }}
               >
-                {["Billing Software", "Web Apps", "Mobile Apps", "Custom CRM", "UI/UX Design", "SEO & Analytics"].map((tag) => (
+                {["Billing Software", "Web Apps", "Mobile Apps", "Custom CRM", "UI/UX Design", "Digital Marketing"].map((tag) => (
                   <div key={tag} className="border border-white/50 rounded-xl px-4 py-3 text-sm font-medium text-white bg-white/15 backdrop-blur-sm hover:bg-white/25 hover:border-white/70 transition-colors duration-200">
                     {tag}
                   </div>

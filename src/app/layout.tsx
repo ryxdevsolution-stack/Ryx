@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Geist } from "next/font/google";
 import localFont from "next/font/local";
 import { ThemeProvider } from "next-themes";
@@ -6,11 +6,9 @@ import { Analytics } from "@vercel/analytics/react";
 import { Toaster } from "sonner";
 import dynamic from "next/dynamic";
 import { ParallaxProvider } from "@/components/ryx/parallax-provider";
+import { GoogleAnalytics } from "@/components/analytics/google-analytics";
 
-const ChatWidget = dynamic(
-  () => import("@/components/ui/chat-widget").then((m) => ({ default: m.ChatWidget })),
-  { loading: () => null }
-);
+import { ChatWidgetLoader } from "@/components/ui/chat-widget-loader";
 
 const ScrollProgress = dynamic(
   () => import("@/components/ryx/scroll-progress").then((m) => ({ default: m.ScrollProgress })),
@@ -39,6 +37,12 @@ const greatVibes = localFont({
   display: "swap",
 });
 
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  viewportFit: "cover",
+}
+
 // Top-tier SEO metadata
 export const metadata: Metadata = {
   title: {
@@ -57,6 +61,11 @@ export const metadata: Metadata = {
     "flask python web development", "react developer coimbatore",
     "next.js development company india",
     "supabase developer india", "UI UX design coimbatore",
+    // Digital Marketing
+    "digital marketing coimbatore", "social media marketing coimbatore",
+    "google ads coimbatore", "meta ads india", "facebook ads coimbatore",
+    "instagram marketing coimbatore", "digital marketing agency coimbatore",
+    "seo services coimbatore", "content marketing india",
     // Geo
     "software company coimbatore", "IT company coimbatore", "tech startup coimbatore",
     "web developer coimbatore", "app developer tamil nadu", "software development tamil nadu",
@@ -268,10 +277,11 @@ export default function RootLayout({
           <ParallaxProvider>
             {children}
           </ParallaxProvider>
-          <ChatWidget />
+          <ChatWidgetLoader />
           <Toaster richColors position="top-right" />
         </ThemeProvider>
         <Analytics />
+        <GoogleAnalytics />
       </body>
     </html>
   );

@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Code2, Globe, Palette, Receipt } from "lucide-react";
+import { Code2, Globe, Palette, Receipt, TrendingUp } from "lucide-react";
 import { ParallaxBanner, ParallaxBannerLayer } from "react-scroll-parallax";
 import { SectionLabel } from "../section-label";
 import { PillButton } from "../pill-button";
@@ -29,6 +29,11 @@ const SERVICES = [
     icon: Palette,
     title: "UI/UX Design",
     desc: "Clean, modern interfaces designed in-house — from Valoryx dashboards to Boutique's luxury aesthetic.",
+  },
+  {
+    icon: TrendingUp,
+    title: "Digital Marketing",
+    desc: "Social media, Google Ads, Meta Ads, and content strategy — we grow your brand and generate leads online.",
   },
 ] as const;
 
@@ -72,7 +77,7 @@ export function ServicesTeaserSection() {
 
           <SectionReveal
             variants={cardParent}
-            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4"
+            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-4"
             amount={0.1}
           >
             {SERVICES.map((s) => (
