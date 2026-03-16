@@ -141,6 +141,25 @@ export default function Home() {
         {/* White — Why choose RYX: asymmetric bento grid */}
         <WhyUsSection />
 
+        {/* White — Mid-page CTA: after social proof */}
+        <section className="bg-white py-14 sm:py-16 border-t border-neutral-100">
+          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <p className="text-xs font-semibold tracking-[0.18em] uppercase text-neutral-400 mb-4">Ready to build?</p>
+            <h2 className="text-2xl sm:text-3xl font-bold text-black mb-4 leading-tight">
+              Got a project in mind?<br className="hidden sm:block" /> Let&apos;s talk.
+            </h2>
+            <p className="text-base text-neutral-500 mb-8 max-w-md mx-auto">
+              From GST billing to full-stack web apps — we scope, build, and ship fast.
+            </p>
+            <a
+              href="/contact"
+              className="inline-flex items-center gap-2 bg-black text-white text-sm font-semibold px-6 py-3 rounded-full hover:bg-neutral-800 transition-colors duration-200"
+            >
+              Start a project →
+            </a>
+          </div>
+        </section>
+
         {/* Dark — Client testimonials: avatar carousel */}
         <TestimonialsSection />
 

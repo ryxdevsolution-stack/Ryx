@@ -52,7 +52,7 @@ export function PortfolioGridSection({ projects, onSelectProject }: PortfolioGri
 
         {/* Coming soon strip */}
         <motion.div
-          className="mt-14 border-2 border-dashed border-neutral-200 rounded-2xl py-8 flex items-center justify-between px-8"
+          className="mt-14 border-2 border-dashed border-neutral-200 rounded-2xl py-8 flex flex-col sm:flex-row items-center justify-between gap-4 px-6 sm:px-8 text-center sm:text-left"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: '-40px' }}

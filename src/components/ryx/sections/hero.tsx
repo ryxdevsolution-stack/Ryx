@@ -41,17 +41,17 @@ export function HeroSection() {
       <div data-no-ribbon className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-28 sm:pt-32 pb-16 min-h-screen flex flex-col justify-between">
         {/* Main heading */}
         <div className="flex-1 flex flex-col justify-center">
-          <div className="space-y-0">
-            <motion.h1
-              className="text-[clamp(3rem,12vw,12rem)] font-medium leading-[0.85] tracking-tight text-white"
+          <h1 className="space-y-0">
+            <motion.span
+              className="block text-[clamp(3rem,12vw,12rem)] font-medium leading-[0.85] tracking-tight text-white"
               initial={{ opacity: 0, y: 50 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, ease: [0.4, 0, 0.2, 1] }}
             >
               Build
-            </motion.h1>
-            <motion.div
-              className="text-[clamp(3rem,12vw,12rem)] font-medium leading-[0.85] tracking-tight"
+            </motion.span>
+            <motion.span
+              className="block text-[clamp(3rem,12vw,12rem)] font-medium leading-[0.85] tracking-tight"
               initial={{ opacity: 0, y: 50 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{
@@ -61,9 +61,9 @@ export function HeroSection() {
               }}
             >
               <ScriptText className="text-white/50">&</ScriptText>
-            </motion.div>
-            <motion.h1
-              className="text-[clamp(3rem,12vw,12rem)] font-medium leading-[0.85] tracking-tight text-white"
+            </motion.span>
+            <motion.span
+              className="block text-[clamp(3rem,12vw,12rem)] font-medium leading-[0.85] tracking-tight text-white"
               initial={{ opacity: 0, y: 50 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{
@@ -73,8 +73,8 @@ export function HeroSection() {
               }}
             >
               Scale
-            </motion.h1>
-          </div>
+            </motion.span>
+          </h1>
         </div>
 
         {/* Bottom row - description + services */}

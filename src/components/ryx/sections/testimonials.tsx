@@ -10,56 +10,63 @@ interface Testimonial {
   name: string;
   role: string;
   company: string;
+  location: string;
   color: string;
 }
 
 const TESTIMONIALS: Testimonial[] = [
   {
     quote:
-      "From strategy to execution, they nailed every detail. Communication was clear and the outcome blew us away.",
-    name: "Sarah Lim",
-    role: "Marketing Director",
-    company: "NovaTech Labs",
+      "We were generating GST invoices manually in Excel — it took us 2 hours every evening. Valoryx cut that to under 15 minutes. The thermal print support alone was worth it for our counter billing.",
+    name: "Karthik Rajendhiran",
+    role: "Proprietor",
+    company: "Sri Murugan Textiles",
+    location: "Tirupur, TN",
     color: "#7C3AED",
   },
   {
     quote:
-      "RYX transformed our billing system from chaos to clarity. Valoryx is a game-changer for our business.",
-    name: "Rahul Menon",
-    role: "CEO",
-    company: "TradeFlow India",
+      "RYX built our entire clinic appointment and patient records system from scratch. The team understood our workflow on the first call and delivered exactly what we needed. No middlemen, direct access to the developers.",
+    name: "Dr. Senthil Kumar",
+    role: "Director",
+    company: "LifeCare Diagnostics",
+    location: "Coimbatore, TN",
     color: "#0EA5E9",
   },
   {
     quote:
-      "The website they built for us doubled our conversion rate. Exceptional work.",
-    name: "Priya Sharma",
-    role: "Founder",
-    company: "UrbanCraft Studio",
+      "Our old website had zero enquiries. Within three weeks of the new site going live, we were getting 8–10 WhatsApp leads a day. The SEO work they did actually shows results.",
+    name: "Aravind Krishnamoorthy",
+    role: "CEO",
+    company: "GreenBuild Properties",
+    location: "Bengaluru, KA",
     color: "#EC4899",
   },
   {
     quote:
-      "Their UI/UX strategy completely changed how our customers interact with our platform.",
-    name: "David Chen",
-    role: "CTO",
-    company: "SkyBridge Analytics",
+      "I was sceptical about a small team handling our inventory across three branches. They not only built it — they trained our staff and stayed reachable for every small issue. That after-sales support is rare.",
+    name: "Deepa Subramaniam",
+    role: "Operations Head",
+    company: "Spice Route Foods",
+    location: "Chennai, TN",
     color: "#16DD47",
   },
   {
     quote:
-      "Best development team we've worked with. They deliver on time and exceed expectations.",
-    name: "Amara Okafor",
-    role: "Operations Lead",
-    company: "GreenLeaf Global",
+      "The Meta ads campaign they ran for our Diwali collection brought in ₹3.2L in orders in the first week. ROI was 4.8x. They know what actually works for Indian buyers, not just theory.",
+    name: "Lakshmi Chandrasekaran",
+    role: "Founder",
+    company: "Trendy Threads",
+    location: "Chennai, TN",
     color: "#F59E0B",
   },
   {
     quote:
-      "Professional, creative, and incredibly responsive. Highly recommend RYX.",
-    name: "James Wilson",
-    role: "Director",
-    company: "Atlas Ventures",
+      "We needed e-invoicing compliance before the March deadline. RYX had Valoryx set up and our team trained in four days. That kind of turnaround saved us from a serious penalty situation.",
+    name: "Mohan Das",
+    role: "Managing Director",
+    company: "Precision Parts India",
+    location: "Coimbatore, TN",
     color: "#EF4444",
   },
 ];
@@ -99,13 +106,13 @@ export function TestimonialsSection() {
   const active = TESTIMONIALS[activeIndex];
 
   return (
-    <section className="ig-section-dark relative py-20 sm:py-28 lg:py-36 overflow-hidden">
+    <section className="ig-section-dark relative py-20 sm:py-28 lg:py-36 overflow-hidden" aria-label="Client testimonials">
       <div className="absolute inset-0 ig-texture-dark" />
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section label */}
         <SectionLabel
-          text="The proof is in their words"
+          text="What our clients say"
           variant="dark"
           className="mb-12 sm:mb-16"
         />
@@ -145,6 +152,8 @@ export function TestimonialsSection() {
         <AnimatePresence mode="wait">
           <motion.div
             key={activeIndex}
+            aria-live="polite"
+            aria-atomic="true"
             variants={quoteVariants}
             initial="enter"
             animate="center"
@@ -172,6 +181,7 @@ export function TestimonialsSection() {
                 <p className="text-sm text-white/50 mt-0.5">
                   {active.role}, {active.company}
                 </p>
+                <p className="text-xs text-white/30 mt-0.5">{active.location}</p>
               </div>
             </div>
           </motion.div>

@@ -34,13 +34,14 @@ export function ChatWidget() {
   const [input, setInput] = useState("")
   const [isLoading, setIsLoading] = useState(false)
   const [showPulse, setShowPulse] = useState(true)
-  const [isMobile, setIsMobile] = useState(() => window.innerWidth < 640)
+  const [isMobile, setIsMobile] = useState(false)
   const messagesEndRef = useRef<HTMLDivElement>(null)
   const inputRef = useRef<HTMLInputElement>(null)
 
   // Track viewport changes
   useEffect(() => {
     const check = () => setIsMobile(window.innerWidth < 640)
+    check() // Set initial value on mount
     window.addEventListener("resize", check)
     return () => window.removeEventListener("resize", check)
   }, [])
@@ -152,8 +153,6 @@ export function ChatWidget() {
     setInput(msg)
     setTimeout(() => {
       setInput(msg)
-      const fakeInput = { trim: () => msg } as unknown
-      void fakeInput
       // Directly send
       const userMessage: Message = { role: "user", content: msg }
       const updatedMessages = [...messages, userMessage]

@@ -34,7 +34,7 @@ export function ManifestoSection() {
     <ParallaxBanner className="ig-section-dark">
       {/* Ambient green glow — top-left */}
       <div
-        className="absolute top-0 left-0 w-[600px] h-[600px] pointer-events-none"
+        className="absolute top-0 left-0 w-full max-w-xl h-64 sm:h-[32rem] pointer-events-none"
         style={{
           background:
             "radial-gradient(ellipse at 0% 0%, rgba(0,255,100,0.07) 0%, transparent 70%)",

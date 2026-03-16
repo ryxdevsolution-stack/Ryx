@@ -1,0 +1,524 @@
+- generic [active] [ref=e1]:
+  - banner [ref=e2]:
+    - generic [ref=e5]:
+      - link "RYX RYX" [ref=e6] [cursor=pointer]:
+        - /url: /
+        - img "RYX" [ref=e8]
+        - generic [ref=e9]: RYX
+      - button "Open navigation menu" [ref=e13] [cursor=pointer]
+  - main [ref=e16]:
+    - generic [ref=e18]:
+      - generic [ref=e20]:
+        - heading "Build" [level=1] [ref=e21]
+        - generic [ref=e22]: "&"
+        - heading "Scale" [level=1] [ref=e23]
+      - generic [ref=e24]:
+        - generic [ref=e25]:
+          - paragraph [ref=e26]: We turn bold ideas into standout products and scalable software. Let's bring your vision to life.
+          - paragraph [ref=e27]: ryxtech.in
+        - generic [ref=e28]:
+          - generic [ref=e29]:
+            - generic [ref=e30]:
+              - generic [ref=e31]: (01)
+              - generic [ref=e32]: Custom software development
+            - generic [ref=e33]:
+              - generic [ref=e34]: (02)
+              - generic [ref=e35]: Full-stack web applications
+            - generic [ref=e36]:
+              - generic [ref=e37]: (03)
+              - generic [ref=e38]: Business websites & landing pages
+            - generic [ref=e39]:
+              - generic [ref=e40]: (04)
+              - generic [ref=e41]: Billing & inventory solutions
+          - link "Let's work together" [ref=e42] [cursor=pointer]:
+            - /url: /contact
+            - generic [ref=e43]:
+              - generic [ref=e44]:
+                - generic [ref=e45]: Let's work together
+                - generic [ref=e46]: Let's work together
+              - img [ref=e48]
+    - generic [ref=e386]:
+      - generic [ref=e387]:
+        - generic [ref=e388]:
+          - generic [ref=e394]: What we do
+          - heading "Services that Scale" [level=2] [ref=e396]:
+            - generic [ref=e397]: Services
+            - generic [ref=e398]: that
+            - generic [ref=e399]: Scale
+        - link "See all services" [ref=e401] [cursor=pointer]:
+          - /url: /services
+          - generic [ref=e402]:
+            - generic [ref=e403]:
+              - generic [ref=e404]: See all services
+              - generic [ref=e405]: See all services
+            - img [ref=e407]
+      - generic [ref=e409]:
+        - generic [ref=e410]:
+          - img [ref=e412]
+          - heading "Billing & Inventory Software" [level=3] [ref=e415]
+          - paragraph [ref=e416]: Valoryx — offline-first billing with GST, multi-branch inventory, thermal printing, and Razorpay payments.
+        - generic [ref=e417]:
+          - img [ref=e419]
+          - heading "Web Applications" [level=3] [ref=e423]
+          - paragraph [ref=e424]: Full-stack platforms with React, Flask, and PostgreSQL. Admin dashboards, analytics, and role-based access.
+        - generic [ref=e425]:
+          - img [ref=e427]
+          - heading "Business Websites" [level=3] [ref=e430]
+          - paragraph [ref=e431]: SEO-optimized landing pages and lead-gen sites. WhatsApp integration, responsive design, fast load times.
+        - generic [ref=e432]:
+          - img [ref=e434]
+          - heading "UI/UX Design" [level=3] [ref=e440]
+          - paragraph [ref=e441]: Clean, modern interfaces designed in-house — from Valoryx dashboards to Boutique's luxury aesthetic.
+        - generic [ref=e442]:
+          - img [ref=e444]
+          - heading "Digital Marketing" [level=3] [ref=e447]
+          - paragraph [ref=e448]: Social media, Google Ads, Meta Ads, and content strategy — we grow your brand and generate leads online.
+    - generic [ref=e452]:
+      - generic [ref=e454]:
+        - generic [ref=e460]: From concept to launch
+        - heading "Your ideas into Reality" [level=2] [ref=e462]:
+          - generic [ref=e463]: Your
+          - generic [ref=e464]: ideas
+          - generic [ref=e465]: into
+          - generic [ref=e466]: Reality
+      - generic [ref=e467]:
+        - generic [ref=e468]:
+          - generic: "01"
+          - generic [ref=e469]:
+            - img [ref=e471]
+            - img [ref=e475]
+            - img [ref=e480]
+          - generic [ref=e485]:
+            - paragraph [ref=e486]: (01)
+            - heading "Discover & Define" [level=3] [ref=e487]
+            - paragraph [ref=e488]: We dive deep into your goals, audience, and market to uncover insights and define a clear direction for your project.
+        - generic [ref=e490]:
+          - generic: "02"
+          - generic [ref=e491]:
+            - img [ref=e493]
+            - img [ref=e498]
+            - img [ref=e502]
+          - generic [ref=e507]:
+            - paragraph [ref=e508]: (02)
+            - heading "Design & Build" [level=3] [ref=e509]
+            - paragraph [ref=e510]: With strategy in place, we craft stunning visuals and high-performing digital solutions tailored precisely to your needs.
+        - generic [ref=e512]:
+          - generic: "03"
+          - generic [ref=e513]:
+            - img [ref=e515]
+            - img [ref=e521]
+            - img [ref=e526]
+          - generic [ref=e529]:
+            - paragraph [ref=e530]: (03)
+            - heading "Launch & Grow" [level=3] [ref=e531]
+            - paragraph [ref=e532]: We bring your vision to life, optimise for performance, and support your ongoing success every step post-launch.
+    - generic [ref=e537]:
+      - generic [ref=e539]:
+        - generic [ref=e545]: Why teams choose RYX
+        - heading "Your brand Deserves better" [level=2] [ref=e547]:
+          - generic [ref=e548]: Your
+          - generic [ref=e549]: brand
+          - generic [ref=e550]: Deserves
+          - generic [ref=e551]: better
+      - generic [ref=e552]:
+        - generic [ref=e555]:
+          - img [ref=e557]
+          - paragraph [ref=e559]: / cost-effective
+          - heading "Premium quality without the agency price tag." [level=3] [ref=e560]:
+            - text: Premium quality without
+            - text: the agency price tag.
+          - paragraph [ref=e561]: We keep our team lean and our processes tight so every rupee you invest goes into your product — not overhead.
+        - generic [ref=e563]:
+          - img [ref=e565]
+          - generic [ref=e568]:
+            - paragraph [ref=e569]: / always-on
+            - heading "We're in your timezone." [level=3] [ref=e570]
+            - paragraph [ref=e571]: Real humans, fast replies. No ticketing queues or 48-hour SLAs.
+        - generic [ref=e572]:
+          - img [ref=e574]
+          - generic [ref=e576]:
+            - paragraph [ref=e577]: / best tools
+            - heading "Modern stack, no legacy baggage." [level=3] [ref=e578]
+            - paragraph [ref=e579]: Next.js, Flask, PostgreSQL, Supabase, Electron — the same tools powering production-grade products today.
+        - generic [ref=e580]:
+          - img [ref=e582]
+          - generic [ref=e586]:
+            - paragraph [ref=e587]: / strategy-first
+            - heading "We think before we build." [level=3] [ref=e588]
+            - paragraph [ref=e589]: Discovery → wireframe → build. We validate your idea before writing a single line of production code.
+      - generic [ref=e590]:
+        - generic [ref=e591]:
+          - paragraph [ref=e592]: "4"
+          - paragraph [ref=e593]: Projects shipped
+        - generic [ref=e594]:
+          - paragraph [ref=e595]: "4"
+          - paragraph [ref=e596]: Industries served
+        - generic [ref=e597]:
+          - paragraph [ref=e598]: 2+
+          - paragraph [ref=e599]: Years building
+    - generic [ref=e52]:
+      - generic [ref=e57]: The proof is in their words
+      - generic [ref=e58]:
+        - button "View testimonial from Sarah Lim" [ref=e59] [cursor=pointer]:
+          - generic [ref=e61]: SL
+        - button "View testimonial from Rahul Menon" [ref=e63] [cursor=pointer]:
+          - generic [ref=e65]: RM
+        - button "View testimonial from Priya Sharma" [ref=e66] [cursor=pointer]:
+          - generic [ref=e68]: PS
+        - button "View testimonial from David Chen" [ref=e69] [cursor=pointer]:
+          - generic [ref=e71]: DC
+        - button "View testimonial from Amara Okafor" [ref=e72] [cursor=pointer]:
+          - generic [ref=e74]: AO
+        - button "View testimonial from James Wilson" [ref=e75] [cursor=pointer]:
+          - generic [ref=e77]: JW
+      - generic [ref=e78]:
+        - generic [ref=e79]:
+          - img [ref=e80]
+          - img [ref=e82]
+          - img [ref=e84]
+          - img [ref=e86]
+          - img [ref=e88]
+        - blockquote [ref=e90]: “From strategy to execution, they nailed every detail. Communication was clear and the outcome blew us away.”
+        - generic [ref=e91]:
+          - generic [ref=e92]: SL
+          - generic [ref=e93]:
+            - paragraph [ref=e94]: Sarah Lim
+            - paragraph [ref=e95]: Marketing Director, NovaTech Labs
+    - generic [ref=e96]:
+      - generic [ref=e98]:
+        - generic [ref=e100]:
+          - generic [ref=e101]: Valoryx
+          - generic [ref=e103]: BigTeam
+          - generic [ref=e105]: Chendur & Co
+          - generic [ref=e107]: Boutique
+          - generic [ref=e109]: Next.js
+          - generic [ref=e111]: React
+          - generic [ref=e113]: Python
+          - generic [ref=e115]: Flask
+          - generic [ref=e117]: PostgreSQL
+          - generic [ref=e119]: Supabase
+          - generic [ref=e121]: Tailwind CSS
+          - generic [ref=e123]: Electron
+          - generic [ref=e125]: SQLite
+          - generic [ref=e127]: Highcharts
+          - generic [ref=e129]: Valoryx
+          - generic [ref=e131]: BigTeam
+          - generic [ref=e133]: Chendur & Co
+          - generic [ref=e135]: Boutique
+          - generic [ref=e137]: Next.js
+          - generic [ref=e139]: React
+          - generic [ref=e141]: Python
+          - generic [ref=e143]: Flask
+          - generic [ref=e145]: PostgreSQL
+          - generic [ref=e147]: Supabase
+          - generic [ref=e149]: Tailwind CSS
+          - generic [ref=e151]: Electron
+          - generic [ref=e153]: SQLite
+          - generic [ref=e155]: Highcharts
+        - generic [ref=e158]:
+          - generic [ref=e159]: Highcharts
+          - generic [ref=e161]: SQLite
+          - generic [ref=e163]: Electron
+          - generic [ref=e165]: Tailwind CSS
+          - generic [ref=e167]: Supabase
+          - generic [ref=e169]: PostgreSQL
+          - generic [ref=e171]: Flask
+          - generic [ref=e173]: Python
+          - generic [ref=e175]: React
+          - generic [ref=e177]: Next.js
+          - generic [ref=e179]: Boutique
+          - generic [ref=e181]: Chendur & Co
+          - generic [ref=e183]: BigTeam
+          - generic [ref=e185]: Valoryx
+          - generic [ref=e187]: Highcharts
+          - generic [ref=e189]: SQLite
+          - generic [ref=e191]: Electron
+          - generic [ref=e193]: Tailwind CSS
+          - generic [ref=e195]: Supabase
+          - generic [ref=e197]: PostgreSQL
+          - generic [ref=e199]: Flask
+          - generic [ref=e201]: Python
+          - generic [ref=e203]: React
+          - generic [ref=e205]: Next.js
+          - generic [ref=e207]: Boutique
+          - generic [ref=e209]: Chendur & Co
+          - generic [ref=e211]: BigTeam
+          - generic [ref=e213]: Valoryx
+      - paragraph [ref=e215]: Our clients & technologies
+    - generic [ref=e604]:
+      - generic [ref=e605]:
+        - generic [ref=e611]: Our story
+        - heading "We started small. We're building something that lasts." [level=2] [ref=e614]:
+          - generic [ref=e615]: We
+          - generic [ref=e616]: started
+          - generic [ref=e617]: small.
+          - generic [ref=e618]: We're
+          - generic [ref=e619]: building
+          - generic [ref=e620]: something
+          - generic [ref=e621]: that
+          - generic [ref=e622]: lasts.
+        - paragraph [ref=e623]: Three developers. One obsession. Build products that actually work.
+        - link "Our story" [ref=e625] [cursor=pointer]:
+          - /url: /about
+          - generic [ref=e626]:
+            - generic [ref=e627]:
+              - generic [ref=e628]: Our story
+              - generic [ref=e629]: Our story
+            - img [ref=e631]
+      - generic [ref=e633]:
+        - generic [ref=e634]:
+          - generic [ref=e635]: "2025"
+          - paragraph [ref=e637]: The year we stopped waiting and started building
+        - generic [ref=e638]:
+          - generic [ref=e639]: 4 Products
+          - paragraph [ref=e641]: Each one harder and more ambitious than the last
+        - generic [ref=e642]:
+          - generic [ref=e643]: ∞
+          - paragraph [ref=e645]: What we're aiming for — products used by millions
+    - generic [ref=e650]:
+      - generic [ref=e651]:
+        - generic [ref=e657]: Our track record
+        - heading "Metrics that Prove value" [level=2] [ref=e659]:
+          - generic [ref=e660]: Metrics
+          - generic [ref=e661]: that
+          - generic [ref=e662]: Prove
+          - generic [ref=e663]: value
+        - link "Know more about us" [ref=e665] [cursor=pointer]:
+          - /url: /about
+          - generic [ref=e666]:
+            - generic [ref=e667]:
+              - generic [ref=e668]: Know more about us
+              - generic [ref=e669]: Know more about us
+            - img [ref=e671]
+      - generic [ref=e673]:
+        - generic [ref=e674]:
+          - generic [ref=e675]: "0"
+          - paragraph [ref=e676]: Each project built with real business requirements and shipped to production.
+        - generic [ref=e677]:
+          - generic [ref=e678]: "0"
+          - paragraph [ref=e679]: Retail billing, community platforms, tax consulting, and fashion — diverse domains, consistent quality.
+        - generic [ref=e680]:
+          - generic [ref=e681]: "0"
+          - paragraph [ref=e682]: Dedicated experts who own every project from start to launch.
+        - generic [ref=e683]:
+          - generic [ref=e684]: "0"
+          - paragraph [ref=e685]: Building impactful software since our founding year.
+    - generic [ref=e690]:
+      - generic [ref=e696]: Technologies we build with
+      - generic [ref=e697]:
+        - generic [ref=e698]: Next.js
+        - generic [ref=e699]: React
+        - generic [ref=e700]: TypeScript
+        - generic [ref=e701]: Python
+        - generic [ref=e702]: Flask
+        - generic [ref=e703]: PostgreSQL
+        - generic [ref=e704]: Supabase
+        - generic [ref=e705]: Tailwind CSS
+        - generic [ref=e706]: Electron
+        - generic [ref=e707]: SQLite
+      - paragraph [ref=e708]: Every tool here is used in our shipped projects
+    - generic [ref=e219]:
+      - generic [ref=e220]:
+        - generic [ref=e221]:
+          - generic [ref=e227]: Insights & articles
+          - heading "Ideas worth Reading" [level=2] [ref=e229]:
+            - generic [ref=e230]: Ideas
+            - generic [ref=e231]: worth
+            - generic [ref=e232]: Reading
+        - link "View all articles" [ref=e234] [cursor=pointer]:
+          - /url: /blog
+          - generic [ref=e235]:
+            - generic [ref=e236]:
+              - generic [ref=e237]: View all articles
+              - generic [ref=e238]: View all articles
+            - img [ref=e240]
+      - generic [ref=e242]:
+        - article [ref=e243]:
+          - generic [ref=e245]:
+            - generic [ref=e246]:
+              - generic [ref=e247]: AI
+              - generic [ref=e248]: 2026-02-20
+              - generic [ref=e249]: ·
+              - generic [ref=e250]: 6 min read
+            - heading "Best AI Tools for Small Businesses in India (2025)" [level=3] [ref=e251]
+            - paragraph [ref=e252]: From ChatGPT to Gemini — how Indian small businesses are using AI to cut costs, automate tasks, and grow faster without hiring more staff.
+            - link "Read Best AI Tools for Small Businesses in India (2025)" [ref=e253] [cursor=pointer]:
+              - /url: /blog/ai-tools-for-small-business-india-2025
+              - text: Read article
+              - img [ref=e254]
+        - article [ref=e257]:
+          - generic [ref=e259]:
+            - generic [ref=e260]:
+              - generic [ref=e261]: Python
+              - generic [ref=e262]: 2026-02-10
+              - generic [ref=e263]: ·
+              - generic [ref=e264]: 5 min read
+            - heading "How Python Automation Is Saving Indian Businesses 20+ Hours a Week" [level=3] [ref=e265]
+            - paragraph [ref=e266]: You don't need to be a developer to benefit from Python automation. Here's what it can do for your business — and what it actually costs to implement.
+            - link "Read How Python Automation Is Saving Indian Businesses 20+ Hours a Week" [ref=e267] [cursor=pointer]:
+              - /url: /blog/python-automation-for-business-2025
+              - text: Read article
+              - img [ref=e268]
+        - article [ref=e271]:
+          - generic [ref=e273]:
+            - generic [ref=e274]:
+              - generic [ref=e275]: ERP & CRM
+              - generic [ref=e276]: 2026-02-01
+              - generic [ref=e277]: ·
+              - generic [ref=e278]: 6 min read
+            - 'heading "ERP vs Excel: When Indian SMEs Need to Make the Switch" [level=3] [ref=e279]'
+            - paragraph [ref=e280]: Most Indian businesses outgrow Excel long before they realise it. Here are the clear signs it's time for an ERP — and how to choose the right one.
+            - 'link "Read ERP vs Excel: When Indian SMEs Need to Make the Switch" [ref=e281] [cursor=pointer]':
+              - /url: /blog/erp-vs-excel-for-indian-sme
+              - text: Read article
+              - img [ref=e282]
+    - generic [ref=e712]:
+      - generic [ref=e713]:
+        - generic [ref=e719]: Start the conversation today
+        - heading "Start your Project today" [level=2] [ref=e721]:
+          - generic [ref=e722]: Start
+          - generic [ref=e723]: your
+          - generic [ref=e724]: Project
+          - generic [ref=e725]: today
+      - generic [ref=e726]:
+        - generic [ref=e727]:
+          - generic [ref=e728]:
+            - generic [ref=e729]:
+              - generic [ref=e730]: Full name *
+              - textbox "Full name *" [ref=e731]:
+                - /placeholder: John Doe
+            - generic [ref=e732]:
+              - generic [ref=e733]: Email address *
+              - textbox "Email address *" [ref=e734]:
+                - /placeholder: john@company.com
+            - generic [ref=e735]:
+              - generic [ref=e736]: Message
+              - textbox "Message" [ref=e737]:
+                - /placeholder: Tell us about your project...
+            - button "Submit" [ref=e738] [cursor=pointer]:
+              - generic [ref=e739]: Submit
+              - img [ref=e740]
+          - generic [ref=e743]:
+            - img [ref=e745]
+            - generic [ref=e748]:
+              - paragraph [ref=e749]: Do you prefer email?
+              - button "ryxtechie@gmail.com" [ref=e750] [cursor=pointer]:
+                - generic [ref=e751]: ryxtechie@gmail.com
+                - img [ref=e752]
+        - generic [ref=e755]:
+          - generic [ref=e756]:
+            - heading "How do we connect?" [level=3] [ref=e757]
+            - list [ref=e758]:
+              - listitem [ref=e759]:
+                - generic [ref=e761]: We reply within 24 hours
+              - listitem [ref=e762]:
+                - generic [ref=e764]: Direct access to our team — reach us on WhatsApp.
+              - listitem [ref=e765]:
+                - generic [ref=e767]: We ask smart questions fast.
+          - generic [ref=e768]:
+            - img "Team Lead" [ref=e770]
+            - generic [ref=e771]:
+              - paragraph [ref=e772]: Team Leader
+              - paragraph [ref=e773]: Project Lead
+          - link "Book a discovery call" [ref=e775] [cursor=pointer]:
+            - /url: /contact
+            - generic [ref=e776]:
+              - generic [ref=e777]:
+                - generic [ref=e778]: Book a discovery call
+                - generic [ref=e779]: Book a discovery call
+              - img [ref=e781]
+  - contentinfo "Site footer" [ref=e285]:
+    - generic [ref=e287]:
+      - generic [ref=e289]: RYX
+      - generic [ref=e290]:
+        - link "Facebook" [ref=e291] [cursor=pointer]:
+          - /url: https://www.linkedin.com/company/ryx-tech/
+          - generic [ref=e292]:
+            - img [ref=e293]
+            - generic [ref=e295]: Facebook
+          - img [ref=e296]
+        - link "LinkedIn" [ref=e299] [cursor=pointer]:
+          - /url: https://www.linkedin.com/company/ryx-tech/
+          - generic [ref=e300]:
+            - img [ref=e301]
+            - generic [ref=e305]: LinkedIn
+          - img [ref=e306]
+        - generic "Coming soon" [ref=e309]:
+          - generic [ref=e310]:
+            - img [ref=e311]
+            - generic [ref=e313]: Twitter / X
+          - generic [ref=e314]: soon
+        - link "Instagram" [ref=e315] [cursor=pointer]:
+          - /url: https://www.instagram.com/ryx_tech/
+          - generic [ref=e316]:
+            - img [ref=e317]
+            - generic [ref=e320]: Instagram
+          - img [ref=e321]
+        - link "GitHub" [ref=e324] [cursor=pointer]:
+          - /url: https://github.com/ryxdevsolution-stack
+          - generic [ref=e325]:
+            - img [ref=e326]
+            - generic [ref=e329]: GitHub
+          - img [ref=e330]
+      - generic [ref=e333]:
+        - generic [ref=e334]:
+          - heading "Stay connected" [level=3] [ref=e335]
+          - paragraph [ref=e336]: Get updates on our latest projects, insights, and announcements delivered straight to your inbox.
+          - generic [ref=e337]:
+            - textbox "Email address for newsletter" [ref=e338]:
+              - /placeholder: Your email address
+            - button "Subscribe" [ref=e339] [cursor=pointer]:
+              - img [ref=e340]
+        - generic [ref=e343]:
+          - heading "Main links" [level=4] [ref=e344]
+          - list [ref=e345]:
+            - listitem [ref=e346]:
+              - link "Home" [ref=e347] [cursor=pointer]:
+                - /url: /
+            - listitem [ref=e348]:
+              - link "About us" [ref=e349] [cursor=pointer]:
+                - /url: /about
+            - listitem [ref=e350]:
+              - link "Services" [ref=e351] [cursor=pointer]:
+                - /url: /services
+            - listitem [ref=e352]:
+              - link "Portfolio" [ref=e353] [cursor=pointer]:
+                - /url: /portfolio
+            - listitem [ref=e354]:
+              - link "Blog" [ref=e355] [cursor=pointer]:
+                - /url: /blog
+            - listitem [ref=e356]:
+              - link "Contact" [ref=e357] [cursor=pointer]:
+                - /url: /contact
+            - listitem [ref=e358]:
+              - link "Terms & Privacy" [ref=e359] [cursor=pointer]:
+                - /url: /terms
+        - generic [ref=e360]:
+          - heading "Get in touch" [level=4] [ref=e361]
+          - list [ref=e362]:
+            - listitem [ref=e363]:
+              - link "ryxtechie@gmail.com" [ref=e364] [cursor=pointer]:
+                - /url: mailto:ryxtechie@gmail.com
+            - listitem [ref=e365]:
+              - link "WhatsApp us" [ref=e366] [cursor=pointer]:
+                - /url: https://wa.me/916374853277
+            - listitem [ref=e367]:
+              - link "WhatsApp us" [ref=e368] [cursor=pointer]:
+                - /url: https://wa.me/918667258008
+        - generic [ref=e369]:
+          - heading "Offline" [level=4] [ref=e370]
+          - generic [ref=e371]:
+            - paragraph [ref=e372]: RYX Tech
+            - paragraph [ref=e373]: Coimbatore, Tamil Nadu
+            - paragraph [ref=e374]: India
+            - paragraph [ref=e375]: Est. 2025
+      - generic [ref=e376]:
+        - paragraph [ref=e377]: Designed & built by RYX, powered by Next.js
+        - generic [ref=e378]:
+          - generic [ref=e379]: © 2026 RYX. All rights reserved
+          - link "Terms & Privacy" [ref=e380] [cursor=pointer]:
+            - /url: /terms
+  - button "Open RAVEN" [ref=e787] [cursor=pointer]:
+    - img "RAVEN" [ref=e789]
+  - region "Notifications alt+T"
+  - alert [ref=e381]

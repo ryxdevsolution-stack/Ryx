@@ -180,8 +180,25 @@ export default async function BlogPostPage({ params }: PageProps) {
               dangerouslySetInnerHTML={{ __html: mdToHtml(post.content) }}
             />
 
+            {/* Service CTA */}
+            <div className="mt-16 rounded-2xl bg-neutral-950 px-8 py-10 text-center">
+              <p className="text-xs font-semibold tracking-[0.18em] uppercase text-neutral-400 mb-3">Work with RYX</p>
+              <h3 className="text-xl sm:text-2xl font-bold text-white mb-3 leading-snug">
+                Need help building this for your business?
+              </h3>
+              <p className="text-sm text-neutral-400 mb-6 max-w-sm mx-auto">
+                We build custom software, web apps, and billing systems for Indian businesses. Direct developer access.
+              </p>
+              <a
+                href="/contact"
+                className="inline-flex items-center gap-2 bg-white text-black text-sm font-semibold px-6 py-2.5 rounded-full hover:bg-neutral-100 transition-colors duration-200"
+              >
+                Talk to us →
+              </a>
+            </div>
+
             {/* Bottom nav */}
-            <div className="mt-20 pt-10 border-t border-neutral-200 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6">
+            <div className="mt-12 pt-10 border-t border-neutral-200 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6">
               <Link
                 href="/blog"
                 className="inline-flex items-center gap-2 text-sm font-semibold text-black hover:text-neutral-600 transition-colors group"

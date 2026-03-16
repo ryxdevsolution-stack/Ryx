@@ -74,9 +74,9 @@ export function SplashCursor({
     const canvas = canvasRef.current;
     if (!canvas) return;
 
-    let pointers: Pointer[] = [pointerPrototype()];
+    const pointers: Pointer[] = [pointerPrototype()];
 
-    let config = {
+    const config = {
       SIM_RESOLUTION: SIM_RESOLUTION!,
       DYE_RESOLUTION: DYE_RESOLUTION!,
       CAPTURE_RESOLUTION: CAPTURE_RESOLUTION!,
@@ -139,10 +139,14 @@ export function SplashCursor({
 
       const halfFloatTexType = isWebGL2
         ? (gl as WebGL2RenderingContext).HALF_FLOAT
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
         : (halfFloat && (halfFloat as any).HALF_FLOAT_OES) || 0;
 
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       let formatRGBA: any;
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       let formatRG: any;
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       let formatR: any;
 
       if (isWebGL2) {
@@ -270,7 +274,7 @@ export function SplashCursor({
     }
 
     function getUniforms(program: WebGLProgram) {
-      let uniforms: Record<string, WebGLUniformLocation | null> = {};
+      const uniforms: Record<string, WebGLUniformLocation | null> = {};
       const uniformCount = gl.getProgramParameter(program, gl.ACTIVE_UNIFORMS);
       for (let i = 0; i < uniformCount; i++) {
         const uniformInfo = gl.getActiveUniform(program, i);
@@ -833,7 +837,7 @@ export function SplashCursor({
       const w = gl.drawingBufferWidth;
       const h = gl.drawingBufferHeight;
       const aspectRatio = w / h;
-      let aspect = aspectRatio < 1 ? 1 / aspectRatio : aspectRatio;
+      const aspect = aspectRatio < 1 ? 1 / aspectRatio : aspectRatio;
       const min = Math.round(resolution);
       const max = Math.round(resolution * aspect);
       if (w > h) {
@@ -1217,7 +1221,7 @@ export function SplashCursor({
     // Ambient auto-animation for touch/mobile devices (no cursor)
     // Also kicks in on desktop after 2s of no interaction
     const isTouchDevice = window.matchMedia('(pointer: coarse)').matches;
-    let ambientTimer: ReturnType<typeof setTimeout> | null = null;
+    const ambientTimer: ReturnType<typeof setTimeout> | null = null;
     let ambientActive = false;
     let ambientT = 0; // time accumulator for smooth path
 

@@ -17,11 +17,12 @@ export const SITE_CONFIG = {
     { label: "About us", href: "/about" },
     { label: "Services", href: "/services" },
     { label: "Portfolio", href: "/portfolio" },
+    { label: "Pricing", href: "/pricing" },
     { label: "Blog", href: "/blog" },
     { label: "Contact", href: "/contact" },
   ],
   social: {
-    facebook: "https://www.linkedin.com/company/ryx-tech/",
+    facebook: "",
     linkedin: "https://www.linkedin.com/company/ryx-tech/",
     twitter: "https://x.com/ryxdev",
     instagram: "https://www.instagram.com/ryx_tech/",

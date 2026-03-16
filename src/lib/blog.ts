@@ -51,7 +51,8 @@ export function getAllPosts(): BlogPostMeta[] {
     .map((slug) => {
       const post = getPost(slug);
       if (!post) return null;
-      const { content, ...meta } = post;
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
+      const { content: _content, ...meta } = post;
       return meta;
     })
     .filter((p): p is BlogPostMeta => p !== null)

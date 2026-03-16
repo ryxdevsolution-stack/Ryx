@@ -8,7 +8,7 @@ const withBundleAnalyzer = bundleAnalyzer({
 const nextConfig: NextConfig = {
   // Performance optimizations for Lighthouse 95+
   experimental: {
-    optimizePackageImports: ['lucide-react', 'framer-motion', '@radix-ui/react-accordion', '@radix-ui/react-dialog', 'react-scroll-parallax', 'ogl'],
+    optimizePackageImports: ['lucide-react', 'framer-motion', '@radix-ui/react-accordion', '@radix-ui/react-dialog', 'react-scroll-parallax', 'ogl', 'three', '@react-three/fiber', '@react-three/drei'],
     webpackBuildWorker: true,
     staleTimes: {
       dynamic: 30,   // cache navigations for 30s — reduces repeat-visit latency
@@ -29,11 +29,6 @@ const nextConfig: NextConfig = {
 
   // Enable React Strict Mode for better development experience
   reactStrictMode: true,
-  
-  // 🚨 CRITICAL: Disable ESLint during builds for deployment
-  eslint: {
-    ignoreDuringBuilds: true,
-  },
   
   // Image optimization
   images: {
@@ -80,13 +75,6 @@ const nextConfig: NextConfig = {
     ];
   },
 
-  webpack(config: any) {
-    config.module.rules.push({
-      test: /\.glb$/,
-      type: 'asset/resource',
-    });
-    return config;
-  },
 };
 
 export default withBundleAnalyzer(nextConfig);

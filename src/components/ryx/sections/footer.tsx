@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import Link from "next/link";
 import dynamic from "next/dynamic";
@@ -38,14 +38,14 @@ const SOCIAL_LABELS = {
 
 type SocialKey = keyof typeof SOCIAL_ICONS;
 
-const SOCIAL_ENTRIES = (Object.keys(SITE_CONFIG.social) as SocialKey[]).map(
-  (key) => ({
+const SOCIAL_ENTRIES = (Object.keys(SITE_CONFIG.social) as SocialKey[])
+  .filter((key) => SITE_CONFIG.social[key] !== "")
+  .map((key) => ({
     name: SOCIAL_LABELS[key],
     icon: SOCIAL_ICONS[key],
     href: SITE_CONFIG.social[key],
     disabled: key === "twitter",
-  })
-);
+  }));
 
 const FOOTER_NAV = [
   ...SITE_CONFIG.nav,
@@ -55,6 +55,11 @@ const FOOTER_NAV = [
 export function Footer() {
   const [email, setEmail] = useState("");
   const [subscribed, setSubscribed] = useState(false);
+  const [isDesktop, setIsDesktop] = useState(false);
+
+  useEffect(() => {
+    setIsDesktop(window.innerWidth >= 768);
+  }, []);
 
   const handleNewsletter = (e: React.FormEvent) => {
     e.preventDefault();
@@ -70,17 +75,19 @@ export function Footer() {
       data-no-ribbon
     >
       <div className="absolute inset-0 ig-texture-dark" />
-      <SplashCursor
-        DENSITY_DISSIPATION={3.0}
-        VELOCITY_DISSIPATION={2.0}
-        SPLAT_RADIUS={0.22}
-        SPLAT_FORCE={4000}
-        CURL={8}
-        PRESSURE={0.5}
-        SHADING={true}
-        TRANSPARENT={true}
-        COLOR_UPDATE_SPEED={3}
-      />
+      {isDesktop && (
+        <SplashCursor
+          DENSITY_DISSIPATION={3.0}
+          VELOCITY_DISSIPATION={2.0}
+          SPLAT_RADIUS={0.22}
+          SPLAT_FORCE={4000}
+          CURL={8}
+          PRESSURE={0.5}
+          SHADING={true}
+          TRANSPARENT={true}
+          COLOR_UPDATE_SPEED={3}
+        />
+      )}
 
       <div className="relative z-[2] max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Large brand text */}
@@ -98,7 +105,7 @@ export function Footer() {
 
         {/* Social links row */}
         <motion.div
-          className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 border-t border-b border-ig-white-10"
+          className="grid grid-cols-2 sm:grid-cols-4 border-t border-b border-ig-white-10"
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}

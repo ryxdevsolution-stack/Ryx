@@ -236,18 +236,20 @@ export default function Galaxy({
 
     let isDestroyed = false;
     let animateId: number;
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    let idleHandle: any;
+    let idleHandle: number;
 
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    const ric = typeof (window as any).requestIdleCallback === 'function'
-      ? (window as any).requestIdleCallback.bind(window)
+    type RicWindow = Window & {
+      requestIdleCallback?: (cb: () => void) => number;
+      cancelIdleCallback?: (handle: number) => void;
+    };
+    const w = window as RicWindow;
+    const ric = typeof w.requestIdleCallback === 'function'
+      ? w.requestIdleCallback.bind(w)
       : (cb: () => void) => setTimeout(cb, 50);
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    const cic = typeof (window as any).cancelIdleCallback === 'function'
-      ? (window as any).cancelIdleCallback.bind(window)
+    const cic = typeof w.cancelIdleCallback === 'function'
+      ? w.cancelIdleCallback.bind(w)
       : clearTimeout;
-    const schedule = (cb: () => void) => { idleHandle = ric(cb); };
+    const schedule = (cb: () => void) => { idleHandle = ric(cb) as number; };
 
     schedule(async () => {
       if (isDestroyed) return;

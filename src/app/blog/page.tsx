@@ -8,19 +8,21 @@ import { BlogBeamHeroWrapper } from "@/components/ryx/blog-beam-hero-wrapper";
 import { BreadcrumbSchema } from "@/components/seo/breadcrumb-schema";
 
 export const metadata: Metadata = {
-  title: "Blog — Web Development & Business Insights | RYX Tech",
+  title: "Blog — Web Dev & Business Insights",
   description:
     "Articles on web development, GST billing software, custom software, and growing your business online. By RYX Tech, Coimbatore.",
   alternates: { canonical: "https://ryxtech.in/blog" },
   openGraph: {
-    title: "Blog — Web Development & Business Insights | RYX Tech",
+    title: "Blog — Web Dev & Business Insights",
     description: "Articles on web development, GST billing software, custom software, and growing your business online. By RYX Tech, Coimbatore.",
     url: "https://ryxtech.in/blog",
+    type: "website",
+    siteName: "RYX Tech",
     images: [{ url: "/og-image.jpg", width: 1200, height: 630, alt: "RYX Tech Blog" }],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Blog — Web Development & Business Insights | RYX Tech",
+    title: "Blog — Web Dev & Business Insights",
     description: "Articles on web development, GST billing software, custom software, and growing your business online.",
     images: ["/og-image.jpg"],
   },
@@ -221,15 +223,15 @@ export default function BlogPage() {
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 lg:grid-flow-dense">
                 {featured && <PostCard post={featured} size="hero" />}
                 {rest.map((post, i) => {
-                  const sizes: CardSize[] = [
-                    "tall",                        // i=0  — beside hero (row 1: 2+1=3)
-                    "tall", "tall", "square",      // i=1,2,3 — row 2: 1+1+1=3
-                    "wide", "square",              // i=4,5   — row 3: 2+1=3
-                    "square", "square", "square",  // i=6,7,8 — row 4: 1+1+1=3
-                    "wide", "compact",             // i=9,10  — row 5: 2+1=3
-                    "compact", "compact",          // i=11,12 — row 6: fills out
+                  const CARD_PATTERN: CardSize[] = [
+                    "tall",
+                    "tall", "tall", "square",
+                    "wide", "square",
+                    "square", "square", "square",
+                    "wide", "compact",
+                    "compact", "compact",
                   ];
-                  return <PostCard key={post.slug} post={post} size={sizes[i] ?? "compact"} />;
+                  return <PostCard key={post.slug} post={post} size={CARD_PATTERN[i % CARD_PATTERN.length] ?? "compact"} />;
                 })}
               </div>
             )}

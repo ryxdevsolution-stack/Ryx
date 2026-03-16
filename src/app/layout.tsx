@@ -50,7 +50,7 @@ export const metadata: Metadata = {
     template: "%s | RYX Tech",
   },
   description:
-    "RYX Tech — Coimbatore-based software company. We built Valoryx (offline-first GST billing), BigTeam (community platform), and business websites. Direct developer access, WhatsApp support.",
+    "RYX Tech — Coimbatore software company. Valoryx GST billing, web apps, business websites. Direct developer access, WhatsApp support.",
   keywords: [
     // Product
     "billing software india", "GST billing software", "GST invoicing app", "offline billing software",
@@ -186,7 +186,7 @@ export default function RootLayout({
       ],
       "sameAs": [
         "https://github.com/ryxdevsolution-stack",
-        "https://instagram.com/ryxdev",
+        "https://instagram.com/ryx_tech",
         "https://linkedin.com/company/ryxdev",
         "https://x.com/ryxdev",
       ],

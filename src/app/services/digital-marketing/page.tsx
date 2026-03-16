@@ -3,9 +3,9 @@ import DigitalMarketingClient from "./digital-marketing-client";
 import { BreadcrumbSchema } from "@/components/seo/breadcrumb-schema";
 
 export const metadata: Metadata = {
-  title: "Digital Marketing Services in Coimbatore | Google Ads, Meta Ads, Social Media | RYX Tech",
+  title: "Digital Marketing in Coimbatore",
   description:
-    "RYX Tech offers end-to-end digital marketing in Coimbatore — Google Ads, Meta Ads, Instagram & LinkedIn management, content strategy, and WhatsApp campaigns. Results-driven marketing for Indian businesses.",
+    "Digital marketing by RYX Tech, Coimbatore — Google Ads, Meta Ads, social media, content strategy, WhatsApp campaigns for Indian businesses.",
   alternates: { canonical: "https://ryxtech.in/services/digital-marketing" },
   keywords: [
     "digital marketing coimbatore",
@@ -20,17 +20,19 @@ export const metadata: Metadata = {
     "lead generation coimbatore",
   ],
   openGraph: {
-    title: "Digital Marketing Services in Coimbatore | RYX Tech",
+    title: "Digital Marketing in Coimbatore",
     description:
-      "Google Ads, Meta Ads, social media management, and content strategy for Indian businesses. RYX Tech, Coimbatore.",
+      "Digital marketing by RYX Tech, Coimbatore — Google Ads, Meta Ads, social media, content strategy, WhatsApp campaigns for Indian businesses.",
     url: "https://ryxtech.in/services/digital-marketing",
+    type: "website",
+    siteName: "RYX Tech",
     images: [{ url: "/og-image.jpg", width: 1200, height: 630, alt: "Digital Marketing by RYX Tech" }],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Digital Marketing Services in Coimbatore | RYX Tech",
+    title: "Digital Marketing in Coimbatore",
     description:
-      "Google Ads, Meta Ads, social media management, and content strategy for Indian businesses.",
+      "Digital marketing by RYX Tech, Coimbatore — Google Ads, Meta Ads, social media, content strategy, WhatsApp campaigns for Indian businesses.",
     images: ["/og-image.jpg"],
   },
 };
