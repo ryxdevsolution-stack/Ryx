@@ -17,6 +17,7 @@ import {
   TrendingUp,
 } from "lucide-react";
 
+import Link from "next/link";
 import { Navbar } from "@/components/ryx/navbar";
 import { SectionLabel } from "@/components/ryx/section-label";
 import { ScriptText } from "@/components/ryx/script-text";
@@ -223,6 +224,32 @@ export default function ServicesClient() {
                     ))}
                   </ul>
                 </motion.div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* ── Dedicated Service Pages — internal links for SEO ── */}
+        <section className="bg-neutral-50 border-t border-neutral-100 py-12">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <p className="text-xs font-semibold tracking-widest uppercase text-neutral-400 mb-6">Explore by service</p>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
+              {[
+                { label: "Web Design Coimbatore", href: "/services/web-design-coimbatore", desc: "Responsive, SEO-optimized websites" },
+                { label: "Website Development Coimbatore", href: "/services/website-development-coimbatore", desc: "Professional websites from ₹40,000" },
+                { label: "Web Application Development", href: "/services/web-application-development", desc: "Full-stack React + Flask apps" },
+                { label: "Custom Software Development", href: "/services/custom-software-development", desc: "Automation, billing, business tools" },
+                { label: "GST Billing Software", href: "/services/gst-billing-software", desc: "Valoryx — offline-first GST billing" },
+                { label: "Digital Marketing", href: "/services/digital-marketing", desc: "Google Ads, Meta Ads, SEO" },
+              ].map((item) => (
+                <Link
+                  key={item.href}
+                  href={item.href}
+                  className="group flex flex-col gap-1 p-4 rounded-xl border border-neutral-200 bg-white hover:border-black hover:shadow-sm transition-all duration-200"
+                >
+                  <span className="text-sm font-semibold text-black group-hover:underline">{item.label} →</span>
+                  <span className="text-xs text-neutral-500">{item.desc}</span>
+                </Link>
               ))}
             </div>
           </div>

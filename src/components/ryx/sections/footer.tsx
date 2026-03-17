@@ -162,7 +162,7 @@ export function Footer() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 py-14 sm:py-20">
           {/* Stay connected — newsletter */}
           <motion.div
-            className="lg:col-span-5"
+            className="lg:col-span-4"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -199,6 +199,35 @@ export function Footer() {
                 ✓ You&apos;re subscribed!
               </p>
             )}
+          </motion.div>
+
+          {/* Services links — SEO internal nav */}
+          <motion.div
+            className="lg:col-span-2"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.15 }}
+          >
+            <h4 className="text-xs text-ig-text-light-muted uppercase tracking-wider mb-5">
+              Our Services
+            </h4>
+            <ul className="space-y-3">
+              {[
+                { label: "Web Design Coimbatore", href: "/services/web-design-coimbatore" },
+                { label: "Website Development", href: "/services/website-development-coimbatore" },
+                { label: "Web App Development", href: "/services/web-application-development" },
+                { label: "Custom Software", href: "/services/custom-software-development" },
+                { label: "GST Billing Software", href: "/services/gst-billing-software" },
+                { label: "Digital Marketing", href: "/services/digital-marketing" },
+              ].map((link) => (
+                <li key={link.href}>
+                  <Link href={link.href} className="text-sm text-white/70 hover:text-white transition-colors">
+                    {link.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
           </motion.div>
 
           {/* Main links */}
@@ -271,7 +300,7 @@ export function Footer() {
 
           {/* Offline */}
           <motion.div
-            className="lg:col-span-3"
+            className="lg:col-span-2"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
